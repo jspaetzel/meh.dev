@@ -2,9 +2,10 @@
 layout: project
 title:  "GroupmePHP"
 start_date:   2014-01-01
-categories: 
+active: true
+categories:
 - project
-links: 
+links:
 - https://github.com/zzbomb/GroupMePHP
 ---
 
