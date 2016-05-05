@@ -8,7 +8,9 @@ layout: default
       <li>
           <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
           <header class="post-header">
-            <h2 class="post-title" itemprop="name headline">{{ post.title }}</h2>
+            <h2 class="post-title" itemprop="name headline">
+                <a href="#">{{ post.title }}</a>
+            </h2>
             <div class="post-meta">
                 <time datetime="{{ post.date | date_to_xmlschema }}" itemprop="datePublished">{{ post.date | date: "%b %-d, %Y" }}</time>
                 {% if post.tags.size > 0 %}
