@@ -2,10 +2,10 @@
 layout: project
 title:  "Chemical Servers"
 start_date:   2010-01-01
-categories: 
+categories:
 - project
-links: 
-- http://chemicalservers.com/
+links:
+- Website: http://chemicalservers.com/
 ---
 
 Server Administration and Customer Service. Apache, cPanel and related technologies.

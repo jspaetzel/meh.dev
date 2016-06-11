@@ -6,7 +6,7 @@ active: true
 categories:
 - project
 links:
-- http://enl.io/
+- ENL.IO Website: http://enl.io/
 ---
 
 Community tools for my local, regional, and the international ingress community. For this project I have used a variety of tools including but not limited to PHP, Javascript, JSON, MySQL, Phantomjs, AngularJs, PHP Slim Framework, GroupMe chat API, Google+ Login, Google Location Service APIs, OAuth.

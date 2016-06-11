@@ -2,12 +2,12 @@
 layout: project
 title:  "Tetris"
 start_date:   2012-01-01
-categories: 
+categories:
 - project
 tags:
 - java
-links: 
-- https://github.com/zzbomb/TetrisJava
+links:
+- Github Repo: https://github.com/zzbomb/TetrisJava
 ---
 
 A quick personal attempt at Tetris using Java w/ JME3. Incomplete.

@@ -1,0 +1,23 @@
+---
+layout: project
+title:  "Stalk Me"
+start_date: 2014-12-08
+active: false
+categories:
+- project
+links:
+- Google Play: https://play.google.com/store/apps/details?id=me.gostalk.stalkme
+tags:
+- Android
+- PHP
+authors:
+- me
+- ben
+- ryan
+screenshots:
+- /stalkme/preview_login.png
+- /stalkme/preview_namelist.png
+- /stalkme/preview_notification.png
+---
+
+Stalk Me is an app for letting the people you care about know where you are, exactly when you want them to. It was a final project for CS411 - Android Development @ ODU. Backend written with slim framework and frontend using native android development.

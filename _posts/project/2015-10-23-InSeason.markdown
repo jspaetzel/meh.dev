@@ -1,0 +1,25 @@
+---
+layout: project
+title:  "In Season"
+start_date: 2015-10-23
+active: false
+categories:
+- project
+tags:
+- Hackathon
+- jQuery
+- ASP.NET
+links:
+- Website Git Repo: https://github.com/rcamp021/InSeason
+- API Git Repo: https://github.com/rcamp021/InSeasonWebAPI
+- Open Data, Hunting & Fishing: https://github.com/opendata/Hunting-and-Fishing
+authors:
+- me
+- ben
+- ryan
+- tucker
+screenshots:
+- /inseason/inseason-preview.png
+---
+
+In Season was a hackathon project for digesting the publically available hunting and fishing data for the state of Virginia and making it easier to understand. The user chooses a date and county in order to learn more about the hunting regulations on that date for that particular locality.

@@ -7,11 +7,9 @@
 
 # Site settings
 title: John Spaetzel
-email: 
+email:
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "http://johnspaetzel.com"
-twitter_username: johnspaetzel
-github_username:  zzbomb
 
 # Build settings
 markdown: kramdown

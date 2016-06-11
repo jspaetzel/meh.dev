@@ -2,12 +2,12 @@
 layout: project
 title:  "Dots"
 start_date:   2010-01-01
-categories: 
+categories:
 - project
 tags:
 - java
-links: 
-- https://github.com/zzbomb/Dots
+links:
+- Github Repo: https://github.com/zzbomb/Dots
 ---
 
 3D version of the classic 2D game, Dots. School project using Java Monkey Engine 3.
