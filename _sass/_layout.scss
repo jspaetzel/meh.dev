@@ -2,10 +2,12 @@
  * Site header
  */
 .site-header {
-    border-top: 5px solid $grey-color-dark;
     border-bottom: 1px solid $grey-color-light;
+    background: #FFFFFF;
     min-height: 56px;
-
+    -webkit-box-shadow: 0 1px 10px rgba(0, 0, 0, 0.1);
+    -moz-box-shadow: 0 1px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 1px 10px rgba(0, 0, 0, 0.1);
     // Positioning context for the mobile navigation icon
     position: relative;
 }
@@ -98,8 +100,28 @@
  * Site footer
  */
 .site-footer {
-    border-top: 1px solid $grey-color-light;
-    padding: $spacing-unit 0;
+  border-top: 1px solid $grey-color-light;
+  background: #303030;
+  padding: $spacing-unit 0;
+
+  a {
+      color: $brand-color;
+      text-decoration: none;
+      -o-transition:.5s;
+      -ms-transition:.5s;
+      -moz-transition:.5s;
+      -webkit-transition:.5s;
+      transition:.5s;
+
+      &:visited {
+          color: $brand-color;
+      }
+
+      &:hover {
+          color: $grey-color-light;
+          text-decoration: none;
+      }
+    }
 }
 
 .footer-heading {
@@ -162,7 +184,13 @@
  * Page content
  */
 .page-content {
-    padding: $spacing-unit 0;
+  padding: $spacing-unit 0;
+}
+
+.page-content > .wrapper {
+  background: #ffffff;
+  border: #dcdcdc 1px solid;
+  padding: 15px;
 }
 
 .page-heading {
@@ -179,14 +207,14 @@
 }
 
 .post-list-more {
-    text-align: left; 
-    border-radius: 20px; 
-    padding: 2px 26px; 
-    margin-bottom:20px; 
-    box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2); 
+    text-align: left;
+    border-radius: 20px;
+    padding: 2px 26px;
+    margin-bottom:20px;
+    box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2);
     background: rgba(0, 0, 0, 0.05);
     display: block;
-    
+
 }
 
 .post-list-meta {
@@ -203,7 +231,6 @@
     font-size: $small-font-size;
     color: $grey-color;
     padding: 3px;
-    padding-left: 10px;
     padding-right: 10px;
 }
 
@@ -229,6 +256,11 @@
         -moz-border-radius: 3px;
         border-radius: 3px;
         background-color: rgba(0,0,0,0.05);
+        -o-transition:.5s;
+        -ms-transition:.5s;
+        -moz-transition:.5s;
+        -webkit-transition:.5s;
+        transition:.5s;
     }
     > li:hover {
         -webkit-box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.4);
@@ -284,16 +316,21 @@ a.tag-list-link:hover {
     a {
         color: $brand-color;
         text-decoration: none;
+        -o-transition:.5s;
+        -ms-transition:.5s;
+        -moz-transition:.5s;
+        -webkit-transition:.5s;
+        transition:.5s;
 
         &:visited {
-            color: darken($brand-color, 15%);
+            color: $brand-color;
         }
 
         &:hover {
             color: $text-color;
             text-decoration: none;
         }
-}
+      }
 
 }
 
