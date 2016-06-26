@@ -13,7 +13,7 @@ tags:
 The vast majority of GitLab's CI examples usually are centered around ruby development though it is an incredibly powerful tool for any language or framework.
 
 I'll briefly demonstrate in this tutorial how to use GitLab.com to build, test, and publish any .NET application or nuget package quickly and easily.
-
+<!--more-->
 Requirements:
 
 1. Any dependencies necessary to run your application locally.

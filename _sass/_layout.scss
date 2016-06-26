@@ -187,10 +187,11 @@
   padding: $spacing-unit 0;
 }
 
-.page-content > .wrapper {
+.content-wrapper {
   background: #ffffff;
   border: #dcdcdc 1px solid;
   padding: 15px;
+  margin-bottom: 10px;
 }
 
 .page-heading {
@@ -200,10 +201,10 @@
 .post-list {
     margin-left: 0;
     list-style: none;
+}
 
-    > li {
-        margin-bottom: $spacing-unit/3;
-    }
+.post-read-more {
+  text-align: right;
 }
 
 .post-list-more {
@@ -232,6 +233,8 @@
     color: $grey-color;
     padding: 3px;
     padding-right: 10px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #dcdcdc;
 }
 
 .post-link {
@@ -302,7 +305,7 @@ a.tag-list-link:hover {
  * Posts
  */
 .post-header {
-    margin-bottom: $spacing-unit;
+    margin-bottom: $spacing-unit/3;
 }
 
 .post-title {
@@ -335,8 +338,6 @@ a.tag-list-link:hover {
 }
 
 .post-content {
-    margin-bottom: $spacing-unit;
-
     h2 {
         font-size: 32px;
 

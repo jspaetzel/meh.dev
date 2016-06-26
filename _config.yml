@@ -11,5 +11,20 @@ email:
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "http://johnspaetzel.com"
 
+excerpt_separator: <!--more-->
+
 # Build settings
 markdown: kramdown
+highlighter: rouge
+
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+  syntax_highlighter_opts:
+    # Rouge Options › https://github.com/jneen/rouge#full-options
+    css_class: 'highlight'
+    span:
+      line_numbers: false
+    block:
+      line_numbers: true
+      start_line: 1
