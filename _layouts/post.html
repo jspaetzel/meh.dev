@@ -1,7 +1,10 @@
 ---
 layout: default
 ---
-<article class="post content-wrapper" itemscope itemtype="http://schema.org/BlogPosting">
+{% assign categorykey = page.categories | first %}
+{% assign category = site.data.categories[categorykey] %}
+
+<article class="post content-wrapper category-{{ category.key }}" itemscope itemtype="http://schema.org/BlogPosting">
 
   <header class="post-header">
     <h2 class="post-title" itemprop="name headline">

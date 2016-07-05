@@ -4,9 +4,9 @@
 @charset "utf-8";
 
 // Our variables
-$base-font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+$base-font-family: 'Roboto', sans-serif;
 $base-font-size:   16px;
-$base-font-weight: 400;
+$base-font-weight: 300;
 $small-font-size:  $base-font-size * 0.875;
 $base-line-height: 1.5;
 
@@ -14,7 +14,7 @@ $spacing-unit:     30px;
 
 $text-color:       #111111;
 $background-color: #f5f5f5;
-$brand-color:      #FF4136;
+$brand-color:      #111111;
 
 $grey-color:       #828282;
 $grey-color-light: lighten($grey-color, 40%);
@@ -25,7 +25,18 @@ $content-width:    800px;
 $on-palm:          600px;
 $on-laptop:        800px;
 
+/* Colors */
+$deep-purple-500: #673AB7;
+$deep-purple-300: #9575CD;
+$deep-purple-100: #D1C4E9;
 
+$blue-500: #2196F3;
+$blue-300: #64B5F6;
+$blue-100: #BBDEFB;
+
+$blue-grey-500: #607D8B;
+$blue-grey-300: #90A4AE;
+$blue-grey-100: #CFD8DC;
 
 // Use media queries like this:
 // @include media-query($on-palm) {

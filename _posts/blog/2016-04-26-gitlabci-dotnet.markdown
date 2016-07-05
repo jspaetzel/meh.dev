@@ -3,11 +3,10 @@ layout: post
 title:  "Building Dotnet with Gitlab CI"
 date:   2016-04-26 00:00:00 -0500
 categories:
-- blog
+- operations
 tags:
 - dotnet
 - ci
-- ops
 ---
 
 The vast majority of GitLab's CI examples usually are centered around ruby development though it is an incredibly powerful tool for any language or framework.

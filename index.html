@@ -4,36 +4,43 @@ layout: default
 
 <div class="home">
   <ul class="post-list">
-    {% for post in site.categories['blog'] %}
-      <li class="content-wrapper">
-          <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
-          <header class="post-header">
-            <h2 class="post-title" itemprop="name headline">
-              <a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
-            </h2>
-            <div class="post-meta">
-                <time datetime="{{ post.date | date_to_xmlschema }}" itemprop="datePublished">{{ post.date | date: "%b %-d, %Y" }}</time>
-                {% if post.tags.size > 0 %}
-                <ul class="tag-list">
-                  {% for tag in post.tags %}
-                  <li class="inline archive-list">
-                    <a class="tag-list-link" href="/tag/{{ tag }}">{{ tag }}</a>
-                  </li>
-                  {% endfor %}
-                </ul>
-               {% endif %}
+    {% for post in site.posts %}
+      {% unless post.categories contains 'project' %}
+
+      {% assign categorykey = post.categories | first %}
+      {% assign category = site.data.categories[categorykey] %}
+
+        <li class="content-wrapper">
+            <article class="post category-{{ category.key }}" itemscope itemtype="http://schema.org/BlogPosting">
+
+            <header class="post-header">
+              <h2 class="post-title" itemprop="name headline">
+                <a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
+              </h2>
+              <div class="post-meta">
+                  <time datetime="{{ post.date | date_to_xmlschema }}" itemprop="datePublished">{{ post.date | date: "%b %-d, %Y" }}</time>
+                  {% if post.tags.size > 0 %}
+                  <ul class="tag-list">
+                    {% for tag in post.tags %}
+                    <li class="inline archive-list">
+                      <a class="tag-list-link" href="/tag/{{ tag }}">{{ tag }}</a>
+                    </li>
+                    {% endfor %}
+                  </ul>
+                 {% endif %}
+              </div>
+            </header>
+            <div class="post-content" itemprop="articleBody">
+              {{ post.excerpt }}
+              {% if post.content contains site.excerpt_separator %}
+                <div class="post-read-more">
+                  <a href="{{ post.url | prepend: site.baseurl }}">Continue Reading...</a>
+                </div>
+              {% endif %}
             </div>
-          </header>
-          <div class="post-content" itemprop="articleBody">
-            {{ post.excerpt }}
-          </div>
-          {% if post.content contains site.excerpt_separator %}
-            <div class="post-read-more">
-              <a href="{{ post.url | prepend: site.baseurl }}">Continue Reading...</a>
-            </div>
-          {% endif %}
-        </article>
-      </li>
+          </article>
+        </li>
+      {% endunless %}
     {% endfor %}
   </ul>
 

@@ -3,17 +3,16 @@ layout: post
 title:  "IIS FTP on Azure VM"
 date:   2016-06-29 00:00:00 -0500
 categories:
-- blog
+- operations
 tags:
 - ftp
-- ops
 ---
 
 
 # Azure
 Create a new VM
 
-Open ports on azure aka create endpoints. Depending on the type of VM you'll probably do this from portal.azure.com, manage.windowsazure.com, or via the azure command line.
+Open ports on azure aka create endpoints. Depending on the type of VM you'll probably do this from portal.azure.com, manage.windowsazure.com, or via the azure command line. <!--more-->
 FTP Port: 21
 FTP Passive Data Ports: 20000-20005, I used this range but you could use more or less.
 
@@ -25,7 +24,7 @@ FTP Passive Data Ports: 20000-20005, I used this range but you could use more or
 
 ### Firewall via IIS
 Specify a passive port range, the same range you opened on azure.
-Include your firewall Ip, this is to make sure that passive connections route properly. Otherwise you might end up with an error like this: 
+Include your firewall Ip, this is to make sure that passive connections route properly. Otherwise you might end up with an error like this:
 {% highlight shell %}
 227 Entering Passive Mode (172,19,0,4,78,32).
 Status:	Server sent passive reply with unroutable address. Using server address instead.
@@ -43,7 +42,7 @@ This is the setting I decided to go with, there's a good explanation of how each
 # Setting up the FTP Site, users, and directories
 
 ### FTP Site
-This is per host/name that you want to use. In my case I only needed one of these. 
+This is per host/name that you want to use. In my case I only needed one of these.
 ![Add FTP]({{ site.url }}/assets/iis-ftp-azure/addftpsite.jpg)
 ![Add FTP - 1]({{ site.url }}/assets/iis-ftp-azure/addftp-step1.jpg)
 ![Add FTP - 2]({{ site.url }}/assets/iis-ftp-azure/addftp-step2.jpg)
