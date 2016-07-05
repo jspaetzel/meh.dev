@@ -105,25 +105,6 @@
   border-top: 1px solid $grey-color-light;
   background: #303030;
   padding: $spacing-unit 0;
-
-  a {
-      color: $brand-color;
-      text-decoration: none;
-
-      &:visited {
-          color: $brand-color;
-      }
-
-      &:hover {
-          color: $grey-color-light;
-          text-decoration: none;
-          -o-transition:.5s;
-          -ms-transition:.5s;
-          -moz-transition:.5s;
-          -webkit-transition:.5s;
-          transition:.5s;
-      }
-    }
 }
 
 .footer-heading {
@@ -315,21 +296,6 @@ a.tag-list-link:hover {
     @include media-query($on-laptop) {
         font-size: 24px;
     }
-    a {
-        color: $brand-color;
-        text-decoration: none;
-
-        &:hover {
-            color: darken($grey-color, 20%);
-            text-decoration: none;
-            -o-transition:.5s;
-            -ms-transition:.5s;
-            -moz-transition:.5s;
-            -webkit-transition:.5s;
-            transition:.5s;
-        }
-      }
-
 }
 
 .post-content {
@@ -359,12 +325,24 @@ a.tag-list-link:hover {
     }
 }
 
-.category-operations {
-  .post-header {
-      background: $blue-500;
+article {
+  a {
+    text-decoration: none;
   }
   .post-title a {
     color: #ffffff;
+  }
+  a.tag-list-link, a.tag-list-link:active, a.tag-list-link:visited {
+    color: #ffffff !important;
+  }
+  a.tag-list-link:hover {
+    background: lighten($brand-color, 20%) !important;
+  }
+}
+
+.category-operations {
+  .post-header {
+      background: $blue-500;
   }
   .post-title a:hover {
     color: $blue-100;
@@ -374,10 +352,6 @@ a.tag-list-link:hover {
   }
   a.tag-list-link, a.tag-list-link:active, a.tag-list-link:visited {
     background:$blue-300;
-    color: #ffffff;
-  }
-  a.tag-list-link:hover {
-    background: lighten($brand-color, 20%);
   }
   a {
     color: $blue-500;
@@ -391,9 +365,6 @@ a.tag-list-link:hover {
   .post-header {
       background: $blue-grey-500;
   }
-  .post-title a {
-    color: #ffffff;
-  }
   .post-title a:hover {
     color: $blue-grey-100;
   }
@@ -402,10 +373,6 @@ a.tag-list-link:hover {
   }
   a.tag-list-link, a.tag-list-link:active, a.tag-list-link:visited {
     background:$blue-grey-300;
-    color: #ffffff;
-  }
-  a.tag-list-link:hover {
-    background: lighten($brand-color, 20%);
   }
   a {
     color: $blue-grey-500;
@@ -419,9 +386,6 @@ a.tag-list-link:hover {
   .post-header {
       background: $deep-purple-500;
   }
-  .post-title a {
-    color: #ffffff;
-  }
   .post-title a:hover {
     color: $deep-purple-100;
   }
@@ -430,10 +394,6 @@ a.tag-list-link:hover {
   }
   a.tag-list-link, a.tag-list-link:active, a.tag-list-link:visited {
     background:$deep-purple-300;
-    color: #ffffff;
-  }
-  a.tag-list-link:hover {
-    background: lighten($brand-color, 20%);
   }
   a {
     color: $deep-purple-500;
