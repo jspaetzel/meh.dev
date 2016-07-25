@@ -14,6 +14,9 @@ layout: default
             <article class="post category-{{ category.key }}" itemscope itemtype="http://schema.org/BlogPosting">
 
             <header class="post-header">
+              <div class="post-category-icon">
+                <i class="material-icons">{{ category.icon }}</i>
+              </div>
               <h2 class="post-title" itemprop="name headline">
                 <a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
               </h2>
@@ -46,6 +49,5 @@ layout: default
 
   <a href="/archive" class="post-list-more">
       All Posts
-      <i class="fa fa-angle-double-right" aria-hidden="true"></i>
   </a>
 </div>

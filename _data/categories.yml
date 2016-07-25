@@ -4,15 +4,18 @@ programming:
   color-500: '#673AB7'
   color-300: '#9575CD'
   color-100: '#D1C4E9'
+  icon: 'code'
 operations:
   name: Operations
   key: 'operations'
   color-500: '#2196F3'
   color-300: '#64B5F6'
   color-100: '#BBDEFB'
+  icon: 'cloud'
 other:
   name: Other
   key: 'other'
   color-500: '#607D8B'
   color-300: '#90A4AE'
   color-100: '#CFD8DC'
+  icon: 'grade'
