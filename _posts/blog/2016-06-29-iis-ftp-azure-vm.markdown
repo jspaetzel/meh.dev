@@ -9,12 +9,18 @@ tags:
 ---
 
 
-# Azure
-Create a new VM
+A quick guide on how to configure IIS for FTP on an Azure VM.
+<!--more-->
 
-Open ports on azure aka create endpoints. Depending on the type of VM you'll probably do this from portal.azure.com, manage.windowsazure.com, or via the azure command line. <!--more-->
-FTP Port: 21
-FTP Passive Data Ports: 20000-20005, I used this range but you could use more or less.
+
+# Azure
+
+Once you have a new server created you'll need to open ports to allow FTP access to the VM. You can do this by creating an endpoint for each port for the server via portal.azure.com, manage.windowsazure.com, or via the azure command line.
+
+Note the IP address of the server for later.
+
+* FTP Port: 21
+* FTP Passive Data Ports: 20000-20005, I used this range but you could use more or less.
 
 # Install FTP Service
 ![Turn on or off](./assets/iis-ftp-azure/turnwindowsfeaturesonoff.jpg)
@@ -23,8 +29,10 @@ FTP Passive Data Ports: 20000-20005, I used this range but you could use more or
 # Configuring IIS
 
 ### Firewall via IIS
+![Firewall Settings](./assets/iis-ftp-azure/firewall.png)
 Specify a passive port range, the same range you opened on azure.
 Include your firewall Ip, this is to make sure that passive connections route properly. Otherwise you might end up with an error like this:
+
 {% highlight shell %}
 227 Entering Passive Mode (172,19,0,4,78,32).
 Status:	Server sent passive reply with unroutable address. Using server address instead.
@@ -32,7 +40,7 @@ Status:	Server sent passive reply with unroutable address. Using server address 
 
 [How this works and why, here](http://grantcurell.com/2013/12/31/failed-to-retrieve-directory-listing-filezilla-connecting-to-iis-behind-nat/)
 
-![Firewall Settings](./assets/iis-ftp-azure/firewall.png)
+
 
 ### FTP User Isolation
 This is the setting I decided to go with, there's a good explanation of how each of these work in the [microsoft documentation](https://www.iis.net/configreference/system.applicationhost/sites/site/ftpserver/userisolation).
@@ -60,6 +68,5 @@ By default the new directory will be accessible to any authenticated user, to ch
 - Add a rule to allow specific users or groups.
 
 # Restart Microsoft FTP Service
-Note: Restarting the service for IIS does not take on all of the settings you applied earlier.
+Note: Restarting the service for IIS does not take on all of the settings you applied earlier. [thanks to the IIS Forums for pointing this one out](https://forums.iis.net/t/1189918.aspx)
 ![Add Virtual Directory](./assets/iis-ftp-azure/ftpservice.jpg)
-This was unclear when I was setting it up, [thanks to the IIS Forums for pointing this one out](https://forums.iis.net/t/1189918.aspx)
