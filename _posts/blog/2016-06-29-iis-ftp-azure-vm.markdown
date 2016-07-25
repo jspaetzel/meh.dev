@@ -49,8 +49,8 @@ This is per host/name that you want to use. In my case I only needed one of thes
 ![Add FTP - 3](./assets/iis-ftp-azure/addftp-step3.jpg)
 
 ### Add Virtual Directory
-![Add Virtual Directory](./assets/iis-ftp-azure/vdirectory.jpg)
-![Add Virtual Directory](./assets/iis-ftp-azure/vdirectory-2.jpg)
+![Add Virtual Directory](./assets/iis-ftp-azure/addvdirectory.jpg)
+![Add Virtual Directory](./assets/iis-ftp-azure/addvdirectory-2.jpg)
 
 ### User Restrict the Directory
 By default the new directory will be accessible to any authenticated user, to change this.
