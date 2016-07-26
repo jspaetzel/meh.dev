@@ -38,7 +38,7 @@ Don't let your schedule be held back by your imports. For anything mission criti
 - How frequent is the release cycle?
 
 ## <a name="license">Software Licensing</a>
-In general anything FOSS will be alright to use but you should probably become familiar with the common ones so that you can quickly identify them. [Github published a handy website for learning more about the most common types]('http://choosealicense.com/').
+In general anything FOSS will be alright to use but you should probably become familiar with the common ones so that you can quickly identify them. [Github published a handy website for learning more about the most common types](http://choosealicense.com/).
 
 ## <a name="track">Track Record</a>
 Learning how to analyze a project's track record can help you to predict where it's going.
@@ -49,7 +49,7 @@ Projects that are sponsored by an open source organization such as the Apache Fo
 ### Young Projects (1-3 years)
 Maturity comes with age, young projects even if they appear to be stable should be handled with care. I wouldn't recommend them for anything that cant be easily replaced.
 
-Sometimes things get shutdown entirely like with [FoundationDB]('https://techcrunch.com/2015/03/24/apple-acquires-durable-database-company-foundationdb/') and sometimes not? See what happened to [Parse]('http://blog.parse.com/announcements/moving-on/')
+Sometimes things get shutdown entirely like with [FoundationDB](https://techcrunch.com/2015/03/24/apple-acquires-durable-database-company-foundationdb/) and sometimes not? See what happened to [Parse](http://blog.parse.com/announcements/moving-on/)
 
 ### Personal Projects (any age)
 Only use one of these if your comfortable contributing back or forking the entire thing. For small components this is probably fine but for essential pieces of your application you might want to choose something with a better record.
