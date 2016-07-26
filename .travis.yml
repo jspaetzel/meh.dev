@@ -24,3 +24,5 @@ env:
   - NOKOGIRI_USE_SYSTEM_LIBRARIES=true
   - GITHUB_REPO: github.com/zzbomb/zzbomb.github.io.git
   - REPO_TARGET_BRANCH: gh-pages
+
+sudo: false # route build to the container-based infrastructure for a faster build
