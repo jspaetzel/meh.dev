@@ -353,6 +353,27 @@ article {
   border-radius: 2px 2px 0px 0px;
 }
 
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+th {
+  background: #E6E6E6;
+  border-right: 1px solid #CCCCCC;
+  border-left: 1px solid #CCCCCC;
+  border-bottom: 1px solid #CCCCCC;
+  padding: 5px;
+}
+
+td {
+  border-right: 1px solid #CCCCCC;
+  border-left: 1px solid #CCCCCC;
+  padding: 5px;
+}
+tr:nth-child(even) { background: #E6E6E6 }
+tr:nth-child(odd) { background: #FFFFFF }
+
 .category-operations {
   .post-header {
       background: $blue-500;
