@@ -445,3 +445,27 @@ tr:nth-child(odd) { background: #FFFFFF }
     color: $deep-purple-100;
   }
 }
+
+.category-project {
+  .post-header {
+      background: $orange-500;
+  }
+  .post-title a:hover {
+    color: $orange-100;
+  }
+  .post-meta {
+    color: $orange-100;
+  }
+  a.tag-list-link, a.tag-list-link:active, a.tag-list-link:visited {
+    background:$orange-300;
+  }
+  a {
+    color: $orange-500;
+  }
+  a:hover {
+    color: $orange-300;
+  }
+  .post-category-icon {
+    color: $orange-100;
+  }
+}

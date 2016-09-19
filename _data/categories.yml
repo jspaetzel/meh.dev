@@ -19,3 +19,10 @@ other:
   color-300: '#90A4AE'
   color-100: '#CFD8DC'
   icon: 'grade'
+project:
+  name: Projects
+  key: 'project'
+  color-500: '#FF9800'
+  color-300: '#FFB74D'
+  color-100: '#FFE0B2'
+  icon: 'work'
