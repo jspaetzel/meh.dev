@@ -7,6 +7,8 @@ categories:
 - project
 links:
 - Github Repo: https://github.com/zzbomb/GroupMePHP
+tags:
+- PHP
 ---
 
 PHP Library to make working with the Groupme API as painless as possible.

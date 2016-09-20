@@ -1,20 +1,17 @@
 programming:
   name: Programming
   key: 'programming'
-  color-500: '#673AB7'
-  color-300: '#9575CD'
-  color-100: '#D1C4E9'
+  style: 'purple'
   icon: 'code'
 operations:
   name: Operations
   key: 'operations'
-  color-500: '#2196F3'
-  color-300: '#64B5F6'
-  color-100: '#BBDEFB'
+  style: 'blue'
   icon: 'cloud'
 other:
   name: Other
   key: 'other'
+  style: 'grey'
   color-500: '#607D8B'
   color-300: '#90A4AE'
   color-100: '#CFD8DC'
@@ -22,7 +19,5 @@ other:
 project:
   name: Projects
   key: 'project'
-  color-500: '#FF9800'
-  color-300: '#FFB74D'
-  color-100: '#FFE0B2'
+  style: 'green'
   icon: 'work'

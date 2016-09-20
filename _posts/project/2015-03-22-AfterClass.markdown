@@ -7,8 +7,10 @@ categories:
 - project
 tags:
 - Hackathon
-- Android
 - PHP
+- Android
+- Python
+- MySQL
 links:
 - API Git Repo: https://github.com/zzbomb/AfterClassApi
 - App Git Repo: https://github.com/BenjaminEarley/AfterClass

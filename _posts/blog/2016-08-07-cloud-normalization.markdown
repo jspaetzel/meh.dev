@@ -5,9 +5,9 @@ date:   2016-08-07 00:00:00 -0500
 categories:
 - operations
 tags:
-- azure
-- aws
-- google
+- Azure
+- AWS
+- Google
 ---
 
 I've recently started using Amazon Web Services, had already been using Microsoft Azure, and have dabbled with Google's cloud services. Between them there's a *lot* of new terminology many of which has not yet been standardized. This is going to be an ongoing post basically to normalize the naming between all three.

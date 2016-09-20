@@ -2,8 +2,15 @@
 layout: project
 title:  "Pheme"
 start_date:   2012-01-01
-categories: 
+style: red
+categories:
 - project
+tags:
+- Python
+- Riak
+- CherryPy
+links:
+- Cherry Riak: https://github.com/zzbomb/cherryriak
 ---
 
-Business concept, started implemenation using Python, CherryPy, and Riak. No code has been published for now.
+Concept & initial implementation using Python, CherryPy, and Riak. Code unreleased.

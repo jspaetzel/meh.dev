@@ -2,13 +2,13 @@
 layout: project
 title:  "Centration"
 start_date:   2014-01-01
+style: grey
 categories:
 - project
 tags:
-- python
-- pyside
-- qt
-- server
+- Python
+- PySide
+- QT
 links:
 - Website: https://centrationgame.com
 ---

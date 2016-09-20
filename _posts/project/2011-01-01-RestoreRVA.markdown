@@ -1,11 +1,11 @@
 ---
 layout: project
 title:  "RestoreRVA"
-start_date:   2011-01-01
-categories: 
+start_date: 2011-01-01
+categories:
 - project
 tags:
-- wordpress
+- WordPress
 ---
 
-Wordpress website for a wood working shop in Richmond, VA.
+WordPress website for a wood working shop in Richmond, VA.

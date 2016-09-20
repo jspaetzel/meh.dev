@@ -5,7 +5,7 @@ start_date:   2010-01-01
 categories:
 - project
 tags:
-- java
+- Java
 links:
 - Github Repo: https://github.com/zzbomb/Dots
 ---

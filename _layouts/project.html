@@ -36,10 +36,34 @@ layout: default
 </style>
 {% endif %}
 
-<article class="post content-wrapper">
+{% assign categorykey = page.categories | first %}
+{% assign category = site.data.categories[categorykey] %}
+
+{% if page.style == null %}
+  {% assign style = category.style %}
+{% else %}
+  {% assign style = page.style %}
+{% endif %}
+
+<article class="post content-wrapper content-style-{{ style }}">
 
   <header class="post-header">
-    <h1 class="post-title">{{ page.title }}</h1>
+    <div class="post-category-icon">
+      <i class="material-icons">{{ category.icon }}</i>
+    </div>
+    <h2 class="post-title" itemprop="name headline">
+        <a href="#">{{ page.title }}</a>
+    </h2>
+    <div class="post-meta">
+        <time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">{{ page.date | date: "%b %-d, %Y" }}</time>
+        {% if page.tags.size > 0 %}
+        <ul class="tag-list">
+          {% for tag in page.tags %}
+          <li class="inline archive-list"><a class="tag-list-link" href="/tag/{{ tag }}">{{ tag }}</a></li>
+          {% endfor %}
+        </ul>
+        {% endif %}
+    </div>
   </header>
 
   <div class="post-content">

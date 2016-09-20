@@ -1,0 +1,21 @@
+---
+layout: project
+title:  "Hack Chat"
+start_date: 2016-02-28
+active: false
+categories:
+- project
+style: pink
+links:
+- Google Play: https://play.google.com/store/apps/details?id=com.benjaminearley.hackproject
+tags:
+- Hackathon
+- Android
+- Firebase
+- Logo
+authors:
+- me
+- ben
+---
+
+Stalk Me is an app for letting the people you care about know where you are, exactly when you want them to. It was a final project for CS411 - Android Development @ ODU. Backend written with slim framework and frontend using native android development.

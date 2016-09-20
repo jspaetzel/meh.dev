@@ -5,8 +5,8 @@ start_date:   2012-01-01
 categories:
 - project
 tags:
-- java
-- minecraft
+- Java
+- Minecraft
 links:
 - Git Change: https://github.com/zzbomb/worldguard/blob/master/src/main/java/com/sk89q/worldguard/bukkit/WorldGuardBlockListener.java
 - Video Demo: https://www.youtube.com/watch?v=tFAuGcVIRsQ

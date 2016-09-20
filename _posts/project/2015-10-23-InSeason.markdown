@@ -3,12 +3,13 @@ layout: project
 title:  "In Season"
 start_date: 2015-10-23
 active: false
+style: blue
 categories:
 - project
 tags:
 - Hackathon
 - jQuery
-- ASP.NET
+- C Sharp
 links:
 - Website Git Repo: https://github.com/rcamp021/InSeason
 - API Git Repo: https://github.com/rcamp021/InSeasonWebAPI

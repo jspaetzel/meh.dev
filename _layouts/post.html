@@ -4,7 +4,13 @@ layout: default
 {% assign categorykey = page.categories | first %}
 {% assign category = site.data.categories[categorykey] %}
 
-<article class="post content-wrapper category-{{ category.key }}" itemscope itemtype="http://schema.org/BlogPosting">
+{% if page.style == null %}
+  {% assign style = category.style %}
+{% else %}
+  {% assign style = post.style %}
+{% endif %}
+
+<article class="post content-wrapper content-style-{{ style }}" itemscope itemtype="http://schema.org/BlogPosting">
 
   <header class="post-header">
     <div class="post-category-icon">

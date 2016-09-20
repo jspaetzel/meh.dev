@@ -2,10 +2,10 @@
 layout: project
 title:  "Jitterzz Koffee"
 start_date:   2011-01-01
-categories: 
+categories:
 - project
 tags:
-- wordpress
+- WordPress
 ---
 
-Wordpress website for a coffee shop in Williamsburg, VA.
+WordPress website for a coffee shop in Williamsburg, VA.

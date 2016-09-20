@@ -3,6 +3,7 @@ layout: project
 title:  "Stalk Me"
 start_date: 2014-12-08
 active: false
+style: red
 categories:
 - project
 links:
@@ -10,6 +11,7 @@ links:
 tags:
 - Android
 - PHP
+- MySQL
 authors:
 - me
 - ben
