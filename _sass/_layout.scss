@@ -278,6 +278,21 @@ a.tag-list-link:hover {
     background: darken($grey-color, 20%);
     text-decoration: none;
 }
+
+.tag-list-small {
+  font-size: 10px;
+  color: #ffffff;
+  list-style: none;
+  margin-left: 5px;
+  margin-right:0;
+  margin-top: 0;
+  margin-bottom: 0;
+  display: inline;
+  > a.tag-list-link {
+    padding: 2px 5px;
+  }
+}
+
 .inline {
     display: inline;
 }
@@ -288,7 +303,6 @@ a.tag-list-link:hover {
  */
 
 .post-title {
-    font-size: 32px;
     line-height: 1;
 
     @include media-query($on-laptop) {
@@ -374,12 +388,12 @@ td {
 tr:nth-child(even) { background: #E6E6E6 }
 tr:nth-child(odd) { background: #FFFFFF }
 
-.category-operations {
+.content-style-blue {
   .post-header {
       background: $blue-500;
   }
   .post-title a:hover {
-    color: $blue-100;
+      color: $blue-100;
   }
   .post-meta {
     color: $blue-100;
@@ -398,7 +412,7 @@ tr:nth-child(odd) { background: #FFFFFF }
   }
 }
 
-.category-other {
+.content-style-grey {
   .post-header {
       background: $blue-grey-500;
   }
@@ -422,7 +436,7 @@ tr:nth-child(odd) { background: #FFFFFF }
   }
 }
 
-.category-programming {
+.content-style-purple {
   .post-header {
       background: $deep-purple-500;
   }
@@ -446,7 +460,55 @@ tr:nth-child(odd) { background: #FFFFFF }
   }
 }
 
-.category-project {
+.content-style-red {
+  .post-header {
+      background: $red-500;
+  }
+  .post-title a:hover {
+    color: $red-100;
+  }
+  .post-meta {
+    color: $red-100;
+  }
+  a.tag-list-link, a.tag-list-link:active, a.tag-list-link:visited {
+    background:$red-300;
+  }
+  a {
+    color: $red-500;
+  }
+  a:hover {
+    color: $red-300;
+  }
+  .post-category-icon {
+    color: $red-100;
+  }
+}
+
+.content-style-pink {
+  .post-header {
+      background: $pink-500;
+  }
+  .post-title a:hover {
+    color: $pink-100;
+  }
+  .post-meta {
+    color: $pink-100;
+  }
+  a.tag-list-link, a.tag-list-link:active, a.tag-list-link:visited {
+    background:$pink-300;
+  }
+  a {
+    color: $pink-500;
+  }
+  a:hover {
+    color: $pink-300;
+  }
+  .post-category-icon {
+    color: $pink-100;
+  }
+}
+
+.content-style-orange {
   .post-header {
       background: $orange-500;
   }
@@ -467,5 +529,29 @@ tr:nth-child(odd) { background: #FFFFFF }
   }
   .post-category-icon {
     color: $orange-100;
+  }
+}
+
+.content-style-green {
+  .post-header {
+      background: $green-500;
+  }
+  .post-title a:hover {
+    color: $green-100;
+  }
+  .post-meta {
+    color: $green-100;
+  }
+  a.tag-list-link, a.tag-list-link:active, a.tag-list-link:visited {
+    background:$green-300;
+  }
+  a {
+    color: $green-500;
+  }
+  a:hover {
+    color: $green-300;
+  }
+  .post-category-icon {
+    color: $green-100;
   }
 }
