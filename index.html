@@ -6,18 +6,11 @@ layout: default
   <ul class="post-list">
     {% for post in site.posts %}
 
-
       {% assign categorykey = post.categories | first %}
       {% assign category = site.data.categories[categorykey] %}
 
-      {% if post.style == null %}
-        {% assign style = category.style %}
-      {% else %}
-        {% assign style = post.style %}
-      {% endif %}
-
         <li class="content-wrapper">
-            <article class="post content-style-{{ style }}" itemscope itemtype="http://schema.org/BlogPosting">
+            <article class="post content-style-{{ category.style }}" itemscope itemtype="http://schema.org/BlogPosting">
 
             <header class="post-header">
               <div class="post-category-icon">
@@ -53,6 +46,6 @@ layout: default
   </ul>
 
   <a href="/archive" class="post-list-more">
-      All Posts
+      See All Posts
   </a>
 </div>

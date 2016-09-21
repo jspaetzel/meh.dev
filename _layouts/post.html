@@ -1,16 +1,45 @@
 ---
 layout: default
 ---
+
+{% if page.screenshots.size > 0 %}
+<style>
+.screenshot-container {
+  display: table;
+}
+/* clearfix */
+.screenshot-container:before,
+.screenshot-container:after {
+    content: "";
+    display: table;
+}
+.container:after {
+    clear: both;
+}
+
+.screenshot-item {
+  float: left;
+  margin-bottom: 10px;
+}
+.screenshot-item img {
+  max-width: 100%;
+  max-height: 100%;
+  vertical-align: bottom;
+}
+.first-item {
+  clear: both;
+}
+/* remove margin bottom on last row */
+.last-row, .last-row ~ .item {
+  margin-bottom: 0;
+}
+</style>
+{% endif %}
+
 {% assign categorykey = page.categories | first %}
 {% assign category = site.data.categories[categorykey] %}
 
-{% if page.style == null %}
-  {% assign style = category.style %}
-{% else %}
-  {% assign style = post.style %}
-{% endif %}
-
-<article class="post content-wrapper content-style-{{ style }}" itemscope itemtype="http://schema.org/BlogPosting">
+<article class="post content-wrapper content-style-{{ category.style }}" itemscope itemtype="http://schema.org/BlogPosting">
 
   <header class="post-header">
     <div class="post-category-icon">
@@ -32,5 +61,49 @@ layout: default
   </header>
   <div class="post-content" itemprop="articleBody">
     {{ content }}
+
+    {% if page.screenshots.size > 0 %}
+      <div class="screenshot-container">
+        {% for img in page.screenshots %}
+          <div class="screenshot-item">
+            <img src="/assets/{{ img }}" width="140"/>
+          </div>
+        {% endfor %}
+      </div>
+    {% endif %}
+
+    {% if page.authors.size > 0 %}
+      <h3>Team</h3>
+      <ul>
+        {% for member in page.authors %}
+          {% assign author = site.data.authors[member] %}
+          {% if author.name %}
+            <li>
+              {% if author.web %} <a href="{{ author.web }}"> {% endif %}
+              {{ author.name }}
+              {% if author.web %} </a> {% endif %}
+            </li>
+          {% endif %}
+        {% endfor %}
+      </ul>
+    {% endif %}
+    {% if page.links.size > 0 %}
+      <h3>Links</h3>
+      <ul>
+        {% for link_hash in page.links %}
+          {% for link in link_hash %}
+            <li><a href="{{ link[1] }}">{{ link[0] }}</a></li>
+          {% endfor %}
+        {% endfor %}
+      </ul>
+    {% endif %}
   </div>
 </article>
+
+{% if page.screenshots.size > 0 %}
+<script src="/js/row-grid.min.js"></script>
+<script>
+var container = document.getElementsByClassName('screenshot-container')[0];
+rowGrid(container, {itemSelector: ".screenshot-item", minMargin: 10, maxMargin: 25, firstItemClass: "first-item", lastRowClass: 'last-row', resize: true});
+</script>
+{% endif %}

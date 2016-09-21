@@ -1,10 +1,11 @@
 ---
-layout: project
+layout: post
+project: true
 title:  "GroupmePHP"
-start_date:   2014-01-01
+start_date:   2014-03-20
 active: true
 categories:
-- project
+- programming
 links:
 - Github Repo: https://github.com/zzbomb/GroupMePHP
 tags:

@@ -1,10 +1,10 @@
 ---
-layout: project
+layout: post
+project: true
 title:  "Chemical Servers"
-start_date:   2010-01-01
-style: blue
+start_date:   2010-01-30
 categories:
-- project
+- operations
 links:
 - Website: http://chemicalservers.com/
 tags:

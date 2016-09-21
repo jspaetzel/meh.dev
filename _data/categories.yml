@@ -12,12 +12,19 @@ other:
   name: Other
   key: 'other'
   style: 'grey'
-  color-500: '#607D8B'
-  color-300: '#90A4AE'
-  color-100: '#CFD8DC'
   icon: 'grade'
-project:
-  name: Projects
-  key: 'project'
-  style: 'green'
-  icon: 'work'
+mobile:
+    name: Mobile
+    key: 'mobile'
+    style: 'green'
+    icon: 'phone_android'
+games:
+    name: games
+    key: 'games'
+    style: 'red'
+    icon: 'games'
+data:
+    name: data
+    key: 'data'
+    style: 'orange'
+    icon: 'sd_card'

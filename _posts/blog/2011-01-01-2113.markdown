@@ -1,10 +1,10 @@
 ---
-layout: project
+layout: post
+project: true
 title:  "2113"
 start_date: 2011-01-01
-style: orange
 categories:
-- project
+- other
 tags:
 - WordPress
 ---

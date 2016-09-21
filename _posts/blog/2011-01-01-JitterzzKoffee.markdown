@@ -1,9 +1,10 @@
 ---
-layout: project
+layout: post
+project: true
 title:  "Jitterzz Koffee"
 start_date:   2011-01-01
 categories:
-- project
+- other
 tags:
 - WordPress
 ---

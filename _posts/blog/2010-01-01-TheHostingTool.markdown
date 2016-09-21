@@ -1,10 +1,10 @@
 ---
-layout: project
+layout: post
+project: true
 title:  "The Hosting Tool"
 start_date: 2010-01-01
-style: blue
 categories:
-- project
+- operations
 links:
 - The Hosting Tool Website: http://thehostingtool.com/
 tags:

@@ -1,0 +1,21 @@
+---
+layout: post
+project: true
+title:  "Hack Chat"
+start_date: 2016-02-28
+active: false
+categories:
+- mobile
+links:
+- Google Play: https://play.google.com/store/apps/details?id=com.benjaminearley.hackproject
+tags:
+- Hackathon
+- Android
+- Firebase
+- Logo
+authors:
+- me
+- ben
+---
+
+Hack chat is a prototype chat application built in one night during at ODU's Hack the Campus. It uses geo fences to establish restricted localized chats for campus students.

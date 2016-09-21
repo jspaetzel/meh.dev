@@ -1,10 +1,11 @@
 ---
-layout: project
+layout: post
+project: true
 title:  "Passcodes"
 start_date:   2015-09-15
 active: true
 categories:
-- project
+- mobile
 links:
 - Play Store: https://play.google.com/store/apps/details?id=io.enl.passcode
 tags:

@@ -1,10 +1,10 @@
 ---
-layout: project
+layout: post
+project: true
 title:  "Empire Avenue"
 start_date:   2012-01-01
-style: blue
 categories:
-- project
+- programming
 links:
 - Github Repo: https://github.com/zzbomb/EmpireAvenue
 - Kred: http://www.empire.kred/zzbomb

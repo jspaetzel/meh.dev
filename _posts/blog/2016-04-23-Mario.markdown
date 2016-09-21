@@ -1,14 +1,14 @@
 ---
-layout: project
+layout: post
+project: true
 title:  "Mario"
 start_date: 2016-04-23
 active: false
 categories:
-- project
+- games
 tags:
 - C Sharp
 - Unity3d
-style: red
 screenshots:
 - /mario-unity/world-start.png
 - /mario-unity/coin-first.png
