@@ -7,7 +7,7 @@ active: true
 categories:
 - games
 links:
-- ENL.IO Website: http://enl.io/
+- ENL.IO Website: https://enl.io/
 tags:
 - PHP
 - Javascript
@@ -17,4 +17,14 @@ tags:
 - Vagrant
 ---
 
-Community tools for my local, regional, and the international ingress community.
+ENL.IO is a large ongoing project to support the global Enlightened Ingress community. <!--more-->
+I started the precursor to this project in 2013 on behalf of Hampton Roads Enlightened in Virginia. The scope of the project was expanded in 2014 to include other areas which initially included Richmond, VA and Washington D.C. but has since grown to include many other areas in the U.S. and abroad.
+
+Some of the core functionality includes:
+- Complex group access control management
+- Multi-platform chat integration with Telegram & GroupMe
+- Google plus integration
+- Chat robots for serious gameplay and fun
+- Social network features for connecting users
+- Event Signups & Forms
+- Security and activity auditing

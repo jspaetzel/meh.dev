@@ -23,7 +23,12 @@ layout: default
                 </h3>
               </header>
               <div class="post-content">
-                <p>{{ post.content }}</p>
+                {{ post.excerpt }}
+                {% if post.content contains site.excerpt_separator %}
+                  <div class="post-read-more">
+                    <a href="{{ post.url | prepend: site.baseurl }}">Continue Reading...</a>
+                  </div>
+                {% endif %}
                 <div class="post-meta">
                     <!--{% if post.date.size > 0 %}
                       <time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">{{ post.date | date: "%b %-d, %Y" }}</time>
