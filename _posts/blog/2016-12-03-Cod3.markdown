@@ -1,0 +1,26 @@
+---
+layout: post
+project: true
+title:  "Cod3"
+start_date: 2016-12-02
+categories:
+- data
+tags:
+- Hackathon
+- MSSQL
+- C Sharp
+links:
+- Cod3 Web Repository: https://github.com/rcamp021/Cod3
+- Cod3 API Repository: https://github.com/rcamp021/Cod3API
+- Mobile Application: https://github.com/BenjaminEarley/cod3AndroidApp
+authors:
+- me
+- ryan
+- jennie
+- ben
+- jeremy
+---
+
+Cod3 estimates the response time of EMS and police to any specific point in the city of Virginia Beach using publically available data sources.
+
+Cod3 was created during the Dominion Enterprise Hack Data event on December 2nd and 3rd of 2016. The name is a play on the emergency services code for flashing lights and sirens (Code 3).
