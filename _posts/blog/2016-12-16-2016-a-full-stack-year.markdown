@@ -10,7 +10,7 @@ We're near the end of 2016, to reflect on this year ive assembled some highlight
 
 - January 16, 2016: Moved from Virginia Beach, VA to Norfolk, VA
 - January 30, 2016: 6th anniversary of [Chemical Servers]({{ site.baseurl }}{% post_url 2010-01-30-ChemicalServers %})
-- February 6, 2016: Supported <!--more-->implementation of Telegram support into enl.io
+- February 6, 2016: Supported implementation of Telegram support into enl.io<!--more-->
 - February 26, 2016: Placed 2nd with [Hack Chat]({{ site.baseurl }}{% post_url 2016-02-28-HackChat %}) at ODU Hack the Campus
 - March 8, 2016: Wrote an [image uploading application](https://github.com/zzbomb/upload) to learn Slim Framework 3
 - March 20, 2016: 2nd anniversary of maintaining and using a [groupme php api library](https://github.com/zzbomb/GroupMePHP)
