@@ -1,18 +1,16 @@
 ---
 layout: page
-title: Posts
+title: Archive
 permalink: /archive/
 ---
 
-<div class="home">
-  <ul class="post-list">
-    {% for post in site.posts %}
-      <li>
-        <div class="post-list-meta">{{ post.date | date: "%b %-d, %Y" }}</div>
-        <a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
-      </li>
-    {% endfor %}
-  </ul>
-
-  <!--<p class="rss-subscribe">subscribe <a href="{{ "/feed.xml" | prepend: site.baseurl }}">via RSS</a></p>-->
-</div>
+<ul class="post-list">
+  {% for post in site.posts %}
+    <li>
+      <div class="post-list-meta">{{ post.date | date: "%b %-d, %Y" }}</div>
+      <a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
+    </li>
+  {% endfor %}
+</ul>
+<br/>
+<p class="rss-subscribe">subscribe <a href="{{ "/feed.xml" | prepend: site.baseurl }}">via RSS</a></p>

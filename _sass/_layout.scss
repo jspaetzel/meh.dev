@@ -243,10 +243,17 @@ header {
       > .post-header {
         width: 100%;
         padding: 0px;
-        border-radius: 2px;
+        border-radius: 2px 2px 0 0;
         > .post-title {
           padding: 8px;
           margin: 0;
+        }
+        > .post-meta {
+          padding-top: 0;
+          padding-bottom: 8px;
+          time {
+            padding-right: 4px;
+          }
         }
         > .post-category-icon i {
           margin: 8px;

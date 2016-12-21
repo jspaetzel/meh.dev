@@ -13,7 +13,7 @@ links:
 - Github Repository: https://github.com/zzbomb/supybot-plugins
 ---
 
-This is an assortment of supybot plugins that I wrote or modified and used for a while on IRC.
+This is an assortment of supybot plugins that I wrote or modified and used for a while on IRC. <!--more-->
 
 - Chan: Returns a random image off the first page of a 4chan <board>
 - ChemicalServers: Quick help functions for the support channel for my webhost. !nameservers, !cpanel, !contact, !forums
