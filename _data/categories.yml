@@ -19,12 +19,12 @@ mobile:
     style: 'green'
     icon: 'phone_android'
 games:
-    name: games
+    name: Gaming
     key: 'games'
     style: 'red'
     icon: 'games'
 data:
-    name: data
+    name: Data
     key: 'data'
     style: 'orange'
     icon: 'sd_card'

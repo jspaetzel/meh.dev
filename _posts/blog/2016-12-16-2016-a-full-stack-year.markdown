@@ -6,7 +6,7 @@ categories:
 - other
 ---
 
-We're near the end of 2016, to reflect on this year ive assembled some highlights from my calendar and side projects git repositories.
+We're near the end of 2016, to reflect on this year ive assembled some highlights from my calendar and side project's git repositories.
 
 - January 16, 2016: Moved from Virginia Beach, VA to Norfolk, VA
 - January 30, 2016: 6th anniversary of [Chemical Servers]({{ site.baseurl }}{% post_url 2010-01-30-ChemicalServers %})
@@ -38,6 +38,6 @@ And some screenshots from my illustrious 2016 git history
 ### Github
 ![Github Stats](./assets/2016-a-full-stack-year/github.png)
 
-Other projects I contributed to this year without specific dates include: 
+Other projects I contributed to this year without specific dates include:
 - [zellsbells.com](http://zellsbells.com/)
 - UnEquity Theatre Company
