@@ -351,8 +351,11 @@ article {
   a {
     text-decoration: none;
   }
-  .post-title a {
-    color: #ffffff;
+  .post-title {
+    > a, a:visited {
+      color: #ffffff;
+    }
+
   }
   a.tag-list-link, a.tag-list-link:active, a.tag-list-link:visited {
     color: #ffffff !important;
@@ -420,10 +423,10 @@ tr:nth-child(odd) {
   a.tag-list-link, a.tag-list-link:active, a.tag-list-link:visited {
     background: $blue-300;
   }
-  a {
+  a, a:visited {
     color: $blue-500;
   }
-  a:hover {
+  a:hover, a:active {
     color: $blue-300;
   }
   .post-category-icon {
@@ -447,10 +450,10 @@ tr:nth-child(odd) {
   a.tag-list-link, a.tag-list-link:active, a.tag-list-link:visited {
     background: $blue-grey-300;
   }
-  a {
+  a, a:visited {
     color: $blue-grey-500;
   }
-  a:hover {
+  a:hover, a:active {
     color: $blue-grey-300;
   }
   .post-category-icon {
@@ -474,10 +477,10 @@ tr:nth-child(odd) {
   a.tag-list-link, a.tag-list-link:active, a.tag-list-link:visited {
     background: $deep-purple-300;
   }
-  a {
+  a, a:visited {
     color: $deep-purple-500;
   }
-  a:hover {
+  a:hover, a:active {
     color: $deep-purple-300;
   }
   .post-category-icon {
@@ -501,10 +504,10 @@ tr:nth-child(odd) {
   a.tag-list-link, a.tag-list-link:active, a.tag-list-link:visited {
     background: $red-300;
   }
-  a {
+  a, a:visited {
     color: $red-500;
   }
-  a:hover {
+  a:hover, a:active {
     color: $red-300;
   }
   .post-category-icon {
@@ -528,10 +531,10 @@ tr:nth-child(odd) {
   a.tag-list-link, a.tag-list-link:active, a.tag-list-link:visited {
     background: $pink-300;
   }
-  a {
+  a, a:visited {
     color: $pink-500;
   }
-  a:hover {
+  a:hover, a:active {
     color: $pink-300;
   }
   .post-category-icon {
@@ -555,10 +558,10 @@ tr:nth-child(odd) {
   a.tag-list-link, a.tag-list-link:active, a.tag-list-link:visited {
     background: $orange-300;
   }
-  a {
+  a, a:visited {
     color: $orange-500;
   }
-  a:hover {
+  a:hover, a:active {
     color: $orange-300;
   }
   .post-category-icon {
@@ -582,10 +585,10 @@ tr:nth-child(odd) {
   a.tag-list-link, a.tag-list-link:active, a.tag-list-link:visited {
     background: $green-300;
   }
-  a {
+  a, a:visited {
     color: $green-500;
   }
-  a:hover {
+  a:hover, a:active {
     color: $green-300;
   }
   .post-category-icon {
