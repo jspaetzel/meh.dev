@@ -45,10 +45,10 @@ I tried to compare a few others but most cloud providers optimize for higher mem
 Note: My estimates only consider CPU, Memory, Transfer, and same instance SSD storage. These estimates do not take into account fees, licensing costs, or storage when charged separately from cpu & memory. I'm disregarding special features & services that may raise the value of services that are specific to each provider.
 
 ## How's the uptime?
-I've had one [notable outage]('https://partyvan.eu/transparency/emails/2015-02-17-prometeus-outage.txt') in the last 4 years. A friend added one of my domains to his monitoring service back in 2010. [You can see uptime for every day since 2010 here]('http://chemicalservers.grd.net.pl/monitor/archive/?2016-10-01').
+I've had one [notable outage](https://partyvan.eu/transparency/emails/2015-02-17-prometeus-outage.txt) in the last 4 years. A friend added one of my domains to his monitoring service back in 2010. [You can see uptime for every day since 2010 here](http://chemicalservers.grd.net.pl/monitor/archive/?2016-10-01).
 
 ## What is your stack?
-I use a control panel on my systems to allow myself and other developers to interact with the server more easily. For this I use [https://vestacp.com/] it makes managing the server easier on myself without getting in the way.
+I use a control panel on my systems to allow myself and other developers to interact with the server more easily. For this I use [Vestacp](https://vestacp.com/) it makes managing the server easier on myself without getting in the way.
 
 My current stack with this is
 - Nginx in front of Apache with mod_php7, mod_mono for websites
@@ -73,7 +73,7 @@ Server B: I didn't need this one when I got it, but my provider had a killer Bla
 Since 2009 I have had several other servers with other providers. I'm pretty happy with my current one though and haven't needed to switch since 2013.
 
 ## Who's your provider?
-I presently use [https://www.prometeus.net/] which has been a good experience. They have the right mix of support for me. I only contact them when there's something I cant do from the control panel they provide, which means I've only ever contacted them with billing questions.
+I presently use [prometeus](https://www.prometeus.net/) which has been a good experience. They have the right mix of support for me. I only contact them when there's something I cant do from the control panel they provide, which means I've only ever contacted them with billing questions.
 
 ## Thanks for reading
 If you have any questions feel free to reach out to me. While writing this I realized there are several more topics that I could go into greater depth on and which will likely be future posts.
