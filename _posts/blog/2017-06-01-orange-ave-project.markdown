@@ -1,0 +1,15 @@
+---
+layout: post
+project: true
+title:  "Orange Avenue Project"
+start_date: 2017-06-01
+categories:
+- data
+tags:
+- WordPress
+- Email
+links:
+- Orange Avenue Project Website: http://orangeaveproject.org/
+---
+
+This is a theatre project in association with Zeiders Center for the Performing Arts made to bring people together annually to remember the lives of those that were lost on June 12, 2016 in Orlando, Florida. My main part in the project is the development of their website.
