@@ -10,7 +10,7 @@ tags:
 - Python
 - Beautiful Soup
 links:
-- Github Repository: https://github.com/zzbomb/supybot-plugins
+- Github Repository: https://github.com/jspaetzel/supybot-plugins
 ---
 
 This is an assortment of supybot plugins that I wrote or modified and used for a while on IRC. <!--more-->

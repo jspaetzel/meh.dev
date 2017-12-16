@@ -6,11 +6,11 @@ start_date: 2017-07-11
 categories:
 - programming
 tags:
-- C#
+- C Sharp
 - Mono
 - Telegram
 links:
-- Github: https://github.com/zzbomb/TelegramService
+- Github: https://github.com/jspaetzel/TelegramService
 ---
 
 This service worked in conjunction with enl.io to provide a interface to interact with the telegram TL-schema API via HTTP in a stateless manner.

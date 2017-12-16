@@ -7,7 +7,7 @@ active: true
 categories:
 - programming
 links:
-- Github Repo: https://github.com/zzbomb/GroupMePHP
+- Github Repo: https://github.com/jspaetzel/GroupMePHP
 tags:
 - PHP
 ---

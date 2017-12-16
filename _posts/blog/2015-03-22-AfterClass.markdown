@@ -13,7 +13,7 @@ tags:
 - Python
 - MySQL
 links:
-- API Git Repo: https://github.com/zzbomb/AfterClassApi
+- API Git Repo: https://github.com/jspaetzel/AfterClassApi
 - App Git Repo: https://github.com/BenjaminEarley/AfterClass
 - Data Scraper: https://github.com/Akayllin/WebScraper
 ---

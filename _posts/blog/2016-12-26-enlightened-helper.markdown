@@ -10,7 +10,7 @@ tags:
 - AWS
 - Alexa
 links:
-- Github Repository: https://github.com/zzbomb/AlexaJarvis
+- Github Repository: https://github.com/jspaetzel/AlexaJarvis
 - Amazon Alexa Skill: https://www.amazon.com/John-Spaetzel-Enlightened-Helper/dp/B01N2R6J69
 ---
 

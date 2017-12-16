@@ -12,8 +12,8 @@ We're near the end of 2016, to reflect on this year ive assembled some highlight
 - January 30, 2016: 6th anniversary of [Chemical Servers]({{ site.baseurl }}{% post_url 2010-01-30-ChemicalServers %})
 - February 6, 2016: Supported implementation of Telegram support into enl.io<!--more-->
 - February 26, 2016: Placed 2nd with [Hack Chat]({{ site.baseurl }}{% post_url 2016-02-28-HackChat %}) at ODU Hack the Campus
-- March 8, 2016: Wrote an [image uploading application](https://github.com/zzbomb/upload) to learn Slim Framework 3
-- March 20, 2016: 2nd anniversary of maintaining and using a [groupme php api library](https://github.com/zzbomb/GroupMePHP)
+- March 8, 2016: Wrote an [image uploading application](https://github.com/jspaetzel/upload) to learn Slim Framework 3
+- March 20, 2016: 2nd anniversary of maintaining and using a [groupme php api library](https://github.com/jspaetzel/GroupMePHP)
 - March 2016: Completed final project, [Mario]({{ site.baseurl }}{% post_url 2016-04-23-Mario %}), for ECE 407 at ODU
 - March 2016: Completed capstone project, Strome InFusion, for CS 411 at ODU
 - April 2, 2016: Weekend ingress anomaly trip to Orlando, FL

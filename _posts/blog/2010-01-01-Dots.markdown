@@ -8,7 +8,7 @@ categories:
 tags:
 - Java
 links:
-- Github Repo: https://github.com/zzbomb/Dots
+- Github Repo: https://github.com/jspaetzel/Dots
 ---
 
 3D version of the classic 2D game, Dots. School project using Java Monkey Engine 3.

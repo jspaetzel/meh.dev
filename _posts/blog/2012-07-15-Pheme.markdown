@@ -10,7 +10,7 @@ tags:
 - Riak
 - CherryPy
 links:
-- Cherry Riak: https://github.com/zzbomb/cherryriak
+- Cherry Riak: https://github.com/jspaetzel/cherryriak
 ---
 
 Concept & initial implementation of a video streaming service using Python, CherryPy, and Riak. Code unreleased.
