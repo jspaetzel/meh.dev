@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Do more with text expansion & clipboard management"
+title:  "Text expansion & clipboard management"
 date:   2018-04-24 00:00:00 -0800
 categories:
 - other
