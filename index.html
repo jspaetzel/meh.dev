@@ -35,29 +35,14 @@ layout: default
         </div>
         <div class="item">
             <h3>About Me</h3>
-            <p>I'm John Spaetzel. I am a full stack software developer in Norfolk, VA.</p>
+            <p>I'm John Spaetzel. I'm a full stack software developer at <a href="https://www.hellosign.com/" target="_blank">HelloSign</a> in San Francisco, CA.</p>
 
-            <p>When im not programming I am also an avid gamer, runner, foodie in training, and lifelong eagle scout.</p>
-
-            <ul>
-                <li><p>During highschool I created <a href="/chemicalservers">a business selling website hosting</a>, had
-                    my first paying client for website development, worked as a lifeguard, and purchased my first car.</p>
-                </li>
-                <li><p>In 2011 I began my Computer Science degree at Old Dominion University and started working at
-                    <a href="http://inmotionhosting.com">InMotion Hosting</a>.</p>
-                </li>
-                <li><p>In 2014 I came upon <a href="http://outsitenetworks.com">Outsite Networks</a> by chance and while
-                    part time dove headfirst into .NET software development.</p>
-                </li>
-                <li><p>In 2016 I completed my bachelors degree and have since continued to work full time with Outsite
-                    Networks.</p>
-                </li>
-            </ul>
+            <p>When im not programming or writing I am also an avid gamer, runner, foodie in training, and lifelong eagle scout.</p>
 
             <br/>
             <h3>My Latest Posts & Projects</h3>
             <ul class="post-list">
-                {% for post in site.posts limit:3 %}
+                {% for post in site.posts limit:5 %}
                 <li>
                     <div class="post-list-meta">{{ post.date | date: "%b %-d, %Y" }}</div>
                     <a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>

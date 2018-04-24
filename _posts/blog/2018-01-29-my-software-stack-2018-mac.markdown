@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "My Software Stack (2018) - Mac Edition!"
-date:   2018-01-29 00:00:00 -0500
+date:   2018-01-29 00:00:00 -0800
 categories:
 - other
 ---
