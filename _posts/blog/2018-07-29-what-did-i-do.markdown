@@ -18,5 +18,5 @@ I'll normally create several notes throughout a busy day. They generally come do
 * The day journal. Almost every date or every few days I create a note that's just about the day or maybe a couple days. It might have things I need to do, things I want to reference later, sometimes it's just a brief summary. It's usually titled with the date and maybe a highlight.
 * The post. A topic that I've started thinking about a little but im not yet ready to draft. Usually these are just musings. Sometimes I tag these different ways, whether it's something I want to publish to my blog or otherwise.
 * TICKET-1234: Sometimes if im working on a specific ticket for several days ill create a note for that topic and ill keep that note updated day to day until it's done. These are usually Jira epics and often transfer into wiki articles for documenation well.
-x
+
 I've been writing all of my notes digitally for around 8 months and it's come out to a huge success. Standups are easier since I simply summarize my notes, I can store more context since it's digital and I can copy & paste, and I think my overall performance has improved significantly. 
