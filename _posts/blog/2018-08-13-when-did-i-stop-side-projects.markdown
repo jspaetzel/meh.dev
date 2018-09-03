@@ -12,7 +12,7 @@ Some speculation
 * Am I getting burned out from programming at work?
 * Are my existing projects distracting me from starting new ones?
 * Do I need to find more interesting projects?
-
+<!--more-->
 I've been blaming it on all of these things but maybe it's been something else. I realized when a friend messaged me last week and asked if I wanted to hear their pitch for a new app. I usually always entertain these because they're usually interesting but something different happened this time. It took me a few days to even ask for more information. Why?
 
 I think it's because after having had a few dozen of these pitched to me I know exactly how it's most likely to end. Which is crazy! The best and most interesting things ive done have all been from taking advantage of an opportunity when it presents itself. That got me thinking... Is that why I haven't worked on a new project in a while? Am I trying to over-optimize my time usage by avoiding projects I dont know for certain whether they will go anywhere?
