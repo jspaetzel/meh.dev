@@ -1,3 +1,11 @@
+---
+layout: post
+title:  "2018 Retrospective"
+date:   2018-12-31 00:00:00 -0800
+categories:
+- other
+---
+
 Wow. It's already been a year, it felt like a longer period of time in a shorter window of space. This year I adjusted to a new city and in a lot of ways a new life. I came at it with no specific goals so I can proudly say that I accomplished everything I set out to do. I've been unaccountable and it has been glorious.
 
 <!--more--> 
@@ -29,6 +37,7 @@ I've excluded most social activities from this list because there were so many t
 * December 1st, 2018: Blog post: [Stop clearing the cache](https://johnspaetzel.com/stop-clearing-the-cache)
 * December 7th, 2018: Visited Chicago for Santa Speedo Run.
 * December 16th, 2018: Lake Merced Christmas Relays.
+* December 31st, 2018: This post.
 
 I can conclusively say that this has been a very good year.
 
