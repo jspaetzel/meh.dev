@@ -8,9 +8,9 @@ categories:
 
 Last year I wrote [a post](2016-a-full-stack-year) highlighting all of the interesting things I did during the year. It was very cathardic so I'm doing it again for 2017!
 
-* Feburary 3, 2017: Trip to New York
+* February 3, 2017: Trip to New York
 * February 17, 2017: Helped parents pack/move to Tampa
-* March 6, 2017: Blog Post: [Maintainble Servers](maintainable-servers)
+* March 6, 2017: Blog Post: [Maintainable Servers](maintainable-servers)
 * March 27, 2017: Retitled vehicle into my name from parents
 * April 9, 2017: Oversaw first production deployment using sql server data tools
 * April 25, 2017: Started a 2x weekly cycle class. (continued through september)
