@@ -1,10 +1,7 @@
 ---
 layout: post
-project: true
 title:  "Beach App"
 start_date: 2018-09-02
-categories:
-- mobile
 tags:
 - Android
 - Flutter

@@ -2,8 +2,6 @@
 layout: post
 title:  "When did I stop side projects?"
 date:   2018-08-13 00:00:00 -0800
-categories:
-- other
 ---
 
 Before, during, and a while after college I never had trouble finding time for side projects but it's been gradually getting harder. The amount of free time I have has gone up so why does the amount of time I spend on side projects keep decreasing?

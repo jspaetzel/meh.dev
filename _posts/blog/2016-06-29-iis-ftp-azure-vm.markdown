@@ -2,8 +2,6 @@
 layout: post
 title:  "IIS FTP on Azure VM"
 date:   2016-06-29 00:00:00 -0500
-categories:
-- operations
 tags:
 - FTP
 ---

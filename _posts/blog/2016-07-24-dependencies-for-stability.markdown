@@ -2,8 +2,6 @@
 layout: post
 title:  "Dependencies for stability"
 date:   2016-07-24 00:00:00 -0500
-categories:
-- programming
 ---
 
 # How to choose dependencies for stability

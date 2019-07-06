@@ -25,15 +25,9 @@ layout: default
 </style>
 {% endif %}
 
-{% assign categorykey = page.categories | first %}
-{% assign category = site.data.categories[categorykey] %}
-
-<article class="post content-wrapper content-style-{{ category.style }}" itemscope itemtype="http://schema.org/BlogPosting">
+<article class="post content-wrapper content-style-green" itemscope itemtype="http://schema.org/BlogPosting">
 
   <header class="post-header">
-    <div class="post-category-icon">
-      <i class="material-icons">{{ category.icon }}</i>
-    </div>
     <h2 class="post-title" itemprop="name headline">
         <a href="#">{{ page.title }}</a>
     </h2>

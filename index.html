@@ -2,42 +2,13 @@
 layout: default
 ---
 
-<style>
-    .home-container {
-        padding-top: 20px;
-        padding-bottom: 20px;
-    }
-    .avatar {
-        float: right;
-        margin:10px;
-        background: #e8e8e8;
-        border-radius: 5px;
-    }
-    .avatar img {
-        border-radius: 20px;
-        padding: 15px;
-    }
-    .avatar-meta {
-        padding-bottom: 15px;
-        text-align: center;
-    }
-</style>
-
 <article class="content-wrapper content-style-green">
-    <div class="wrapper home-container">
-        <div class="avatar">
-            <img src="https://0.gravatar.com/avatar/ccf00de89ec54577fb9fd612358a9808?s=150">
-            <div class="avatar-meta">
-                <a href="mailto:john.spaetzel@gmail.com"><i class="fa fa-envelope" aria-hidden="true"></i></a>
-                <a href="https://github.com/jspaetzel"><i class="fa fa-github" aria-hidden="true"></i></a>
-                <a href="https://gitlab.com/jspaetzel"><i class="fa fa-gitlab" aria-hidden="true"></i></a>
-            </div>
-        </div>
+    <div class="page-content">
         <div class="item">
             <h3>About Me</h3>
             <p><span id="hello">Hello</span>! I'm John Spaetzel. I'm a full stack software developer at <a href="https://www.hellosign.com/" target="_blank">HelloSign</a> in San Francisco, CA.</p>
 
-            <p>When im not programming or writing I am also an avid gamer, runner, foodie in training, and lifelong eagle scout.</p>
+            <p>When im not programming, I am also an avid traveler, gamer, foodie, runner, and lifelong eagle scout.</p>
 
             <br/>
             <h3>My Latest Posts & Projects</h3>
@@ -48,12 +19,19 @@ layout: default
                     <a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
                 </li>
                 {% endfor %}
+                <br>
+                <a href="/archive">Or see the full archive...</a>
             </ul>
 
             <br/>
             <h3>Contact</h3>
-            <p>You can find me all over the web usually as by a variant of my name like <strong>jspaetzel</strong> or my
-                pseudonym <strong>bomb</strong>.</p>
+            <p>If we're already in contact please email me directly otherwise please feel free to reach out to me via social media and i'll do my best to respond.</p>
+            <div class="social">
+                <a href="https://github.com/jspaetzel"><i class="fa fa-github" aria-hidden="true"></i></a>
+                <a href="https://gitlab.com/jspaetzel"><i class="fa fa-gitlab" aria-hidden="true"></i></a>
+                <a href="https://twitter.com/jspaetzel"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                <a href="https://www.linkedin.com/in/johnspaetzel/"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+            </div>
         </div>
     </div>
 </article>

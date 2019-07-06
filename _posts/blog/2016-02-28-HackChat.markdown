@@ -1,11 +1,8 @@
 ---
 layout: post
-project: true
 title:  "Hack Chat"
 start_date: 2016-02-28
 active: false
-categories:
-- mobile
 links:
 - Google Play: https://play.google.com/store/apps/details?id=com.benjaminearley.hackproject
 tags:

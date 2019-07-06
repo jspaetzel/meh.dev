@@ -1,10 +1,7 @@
 ---
 layout: post
-project: true
 title:  "ODU OUT"
 start_date:   2012-03-22
-categories:
-- other
 links:
 - ODUOUT Website: http://oduout.com/
 tags:

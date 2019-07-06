@@ -1,10 +1,7 @@
 ---
 layout: post
-project: true
 title:  "The Starving Artists"
 start_date:   2013-01-01
-categories:
-- other
 links:
 - Website: http://odustarvingarts.com/
 tags:

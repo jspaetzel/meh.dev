@@ -2,8 +2,6 @@
 layout: post
 title:  "2018 Retrospective"
 date:   2018-12-31 00:00:00 -0800
-categories:
-- other
 ---
 
 Wow. It's already been a year, it felt like a longer period of time in a shorter window of space. This year I adjusted to a new city and in a lot of ways a new life. I came at it with no specific goals so I can proudly say that I accomplished everything I set out to do. I've been unaccountable and it has been glorious.

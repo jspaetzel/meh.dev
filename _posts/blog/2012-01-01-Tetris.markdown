@@ -1,10 +1,7 @@
 ---
 layout: post
-project: true
 title:  "Tetris"
 start_date:   2012-01-01
-categories:
-- games
 tags:
 - Java
 links:

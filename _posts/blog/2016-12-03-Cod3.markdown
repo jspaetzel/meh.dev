@@ -1,10 +1,7 @@
 ---
 layout: post
-project: true
 title:  "Cod3"
 start_date: 2016-12-02
-categories:
-- data
 tags:
 - Hackathon
 - MSSQL

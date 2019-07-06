@@ -2,8 +2,6 @@
 layout: post
 title:  "My Software Stack (2016)"
 date:   2016-05-10 00:00:00 -0500
-categories:
-- other
 ---
 
 I use a *lot* of tools. So here's a list.

@@ -1,10 +1,7 @@
 ---
 layout: post
-project: true
 title:  "Centration"
 start_date:   2014-01-01
-categories:
-- games
 tags:
 - Python
 - PySide

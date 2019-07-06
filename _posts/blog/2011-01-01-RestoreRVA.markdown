@@ -1,10 +1,7 @@
 ---
 layout: post
-project: true
 title:  "RestoreRVA"
 start_date: 2011-01-01
-categories:
-- other
 tags:
 - WordPress
 ---

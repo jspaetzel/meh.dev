@@ -1,11 +1,8 @@
 ---
 layout: post
-project: true
 title:  "After Class"
 start_date: 2015-03-22
 active: false
-categories:
-- mobile
 tags:
 - Hackathon
 - PHP

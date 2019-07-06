@@ -1,11 +1,8 @@
 ---
 layout: post
-project: true
 title:  "Supybot Plugins"
 start_date: 2010-05-16
 active: false
-categories:
-- programming
 tags:
 - Python
 - Beautiful Soup

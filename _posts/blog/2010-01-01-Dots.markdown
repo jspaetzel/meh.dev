@@ -1,10 +1,7 @@
 ---
 layout: post
-project: true
 title:  "Dots"
 start_date:   2010-01-01
-categories:
-- games
 tags:
 - Java
 links:

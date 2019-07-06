@@ -1,11 +1,8 @@
 ---
 layout: post
-project: true
 title:  "In Season"
 start_date: 2015-10-23
 active: false
-categories:
-- data
 tags:
 - Hackathon
 - jQuery

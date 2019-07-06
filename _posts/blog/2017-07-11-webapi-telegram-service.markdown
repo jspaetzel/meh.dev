@@ -1,10 +1,7 @@
 ---
 layout: post
-project: true
 title:  "WebApi2 Telegram Service"
 start_date: 2017-07-11
-categories:
-- programming
 tags:
 - C Sharp
 - Mono

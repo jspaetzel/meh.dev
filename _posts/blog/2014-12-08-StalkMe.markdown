@@ -1,11 +1,8 @@
 ---
 layout: post
-project: true
 title:  "Stalk Me"
 start_date: 2014-12-08
 active: false
-categories:
-- mobile
 links:
 - Google Play: https://play.google.com/store/apps/details?id=me.gostalk.stalkme
 tags:

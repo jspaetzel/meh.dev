@@ -1,10 +1,7 @@
 ---
 layout: post
-project: true
 title:  "Orange Avenue Project"
 start_date: 2017-06-01
-categories:
-- data
 tags:
 - WordPress
 - Email

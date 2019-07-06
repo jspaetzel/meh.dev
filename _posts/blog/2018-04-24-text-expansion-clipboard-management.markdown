@@ -2,8 +2,6 @@
 layout: post
 title:  "Text expansion & clipboard management"
 date:   2018-04-24 00:00:00 -0800
-categories:
-- other
 ---
 
 If you dont currently use a text expander or a clipboard manager then stop what your doing **right now** and go download both. 

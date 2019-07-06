@@ -2,8 +2,6 @@
 layout: post
 title:  "My Software Stack (2017)"
 date:   2017-07-12 00:00:00 -0500
-categories:
-- other
 ---
 
 This is an update on last year's article

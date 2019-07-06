@@ -1,10 +1,7 @@
 ---
 layout: post
-project: true
 title:  "Pheme"
 start_date:   2012-07-15
-categories:
-- programming
 tags:
 - Python
 - Riak

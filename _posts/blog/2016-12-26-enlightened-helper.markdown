@@ -1,10 +1,7 @@
 ---
 layout: post
-project: true
 title:  "Enlightened Helper"
 start_date: 2016-12-26
-categories:
-- programming
 tags:
 - PHP
 - AWS

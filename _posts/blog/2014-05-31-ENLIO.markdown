@@ -1,11 +1,8 @@
 ---
 layout: post
-project: true
 title:  "ENL.IO"
 start_date:   2014-05-31
 active: true
-categories:
-- games
 links:
 - ENL.IO Website: https://enl.io/
 tags:
