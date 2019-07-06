@@ -63,10 +63,6 @@
  * Pages
  */
 
-.page-content {
-  padding: 30px;
-}
-
 .social {
   padding: 10px;
 }
@@ -87,13 +83,13 @@
  */
 .content-wrapper {
   background: #ffffff;
+  margin-top: 40px;
   margin-bottom: 40px;
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
   border-radius: 2px;
 }
 
 header {
-  padding: 8px 10px;
+  padding: 20px;
 }
 
 .post-meta {

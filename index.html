@@ -5,15 +5,13 @@ layout: default
 <article class="content-wrapper content-style-green">
     <div class="page-content">
         <div class="item">
-            <h3>About Me</h3>
-            <p><span id="hello">Hello</span>! I'm John Spaetzel. I'm a full stack software developer at <a href="https://www.hellosign.com/" target="_blank">HelloSign</a> in San Francisco, CA.</p>
-
-            <p>When im not programming, I am also an avid traveler, gamer, foodie, runner, and lifelong eagle scout.</p>
+            <h2>About Me</h2>
+            <p><span id="hello">Hello</span>! I'm John Spaetzel. I'm a full stack software developer at <a href="https://www.hellosign.com/" target="_blank">HelloSign</a> in San Francisco, CA. When im not programming, I am also an avid traveler, gamer, foodie, runner, and lifelong eagle scout.</p>
 
             <br/>
-            <h3>My Latest Posts & Projects</h3>
+            <h2>My Latest Posts & Projects</h2>
             <ul class="post-list">
-                {% for post in site.posts limit:5 %}
+                {% for post in site.posts limit:7 %}
                 <li>
                     <div class="post-list-meta">{{ post.date | date: "%b %-d, %Y" }}</div>
                     <a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
@@ -24,7 +22,7 @@ layout: default
             </ul>
 
             <br/>
-            <h3>Contact</h3>
+            <h2>Contact</h2>
             <p>If we're already in contact please email me directly otherwise please feel free to reach out to me via social media and i'll do my best to respond.</p>
             <div class="social">
                 <a href="https://github.com/jspaetzel"><i class="fa fa-github" aria-hidden="true"></i></a>
