@@ -6,6 +6,7 @@ links:
 - Website: http://odustarvingarts.com/
 tags:
 - OrgSync
+- Project
 ---
 
 Web integration with OrgSync for The Starving Artists, a group at Old Dominion University.

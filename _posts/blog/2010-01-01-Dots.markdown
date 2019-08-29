@@ -4,6 +4,7 @@ title:  "Dots"
 start_date:   2010-01-01
 tags:
 - Java
+- Project
 links:
 - Github Repo: https://github.com/jspaetzel/Dots
 ---

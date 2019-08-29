@@ -6,6 +6,7 @@ tags:
 - Python
 - PySide
 - QT
+- Project
 links:
 - Website: https://centrationgame.com
 ---

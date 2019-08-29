@@ -6,6 +6,9 @@ links:
 - Website: http://chemicalservers.com/
 tags:
 - Hosting
+- Project
 ---
 
-Server Administration and Customer Service. Apache, cPanel and related technologies.
+Free and paid web hosting services. Purchased and maintained virtual servers, created marketing materials, and provided a broad range of customer support for users. 
+
+Extensively used Apache, cPanel and related technologies.

@@ -11,7 +11,7 @@ layout: default
             <br/>
             <h2>My Latest Posts & Projects</h2>
             <ul class="post-list">
-                {% for post in site.posts limit:7 %}
+                {% for post in site.posts limit:6 %}
                 <li>
                     <div class="post-list-meta">{{ post.date | date: "%b %-d, %Y" }}</div>
                     <a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>

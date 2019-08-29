@@ -4,6 +4,7 @@ title:  "Tetris"
 start_date:   2012-01-01
 tags:
 - Java
+- Project
 links:
 - Github Repo: https://github.com/jspaetzel/TetrisJava
 ---

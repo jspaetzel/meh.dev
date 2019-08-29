@@ -9,6 +9,7 @@ tags:
 - Android
 - Python
 - MySQL
+- Project
 links:
 - API Git Repo: https://github.com/jspaetzel/AfterClassApi
 - App Git Repo: https://github.com/BenjaminEarley/AfterClass

@@ -6,6 +6,7 @@ links:
 - ODUOUT Website: http://oduout.com/
 tags:
 - OrgSync
+- Project
 ---
 
 Website design and integration with OrgSync for the organization ODU OUT at Old Dominion University.
