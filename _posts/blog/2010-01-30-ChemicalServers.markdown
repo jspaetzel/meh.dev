@@ -12,3 +12,6 @@ tags:
 Free and paid web hosting services. Purchased and maintained virtual servers, created marketing materials, and provided a broad range of customer support for users. 
 
 Extensively used Apache, cPanel and related technologies.
+
+![ChemicalServers Screenshot](./assets/chemicalservers-screenshot.png)
+

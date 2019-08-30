@@ -8,3 +8,5 @@ tags:
 ---
 
 WordPress website for a coffee shop in Williamsburg, VA.
+
+![Jitterzz](./assets/jitterzz-screenshot.png "Jitterzz")

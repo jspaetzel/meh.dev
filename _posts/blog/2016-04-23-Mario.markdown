@@ -7,11 +7,15 @@ tags:
 - C Sharp
 - Unity3d
 - Project
-screenshots:
-- /mario-unity/world-start.png
-- /mario-unity/coin-first.png
-- /mario-unity/coin2.png
-- /mario-unity/world-end.png
 ---
 
 A rough clone of the first level of Mario for my final project in ECE 407 at ODU using Unity3d with C#
+
+
+![World Start](./assets/mario-unity/world-start.png)
+
+![First Coin](./assets/mario-unity/coin-first.png)
+
+![Another Coin](./assets/mario-unity/coin2.png)
+
+![World End](./assets/mario-unity/world-end.png)

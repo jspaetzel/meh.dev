@@ -10,3 +10,5 @@ links:
 ---
 
 3D version of the classic 2D game, Dots. School project using Java Monkey Engine 3.
+
+![dots](./assets/dots-screenshot.png "Dots")
