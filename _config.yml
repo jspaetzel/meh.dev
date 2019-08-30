@@ -11,6 +11,9 @@ email:
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "http://johnspaetzel.com"
 
+plugins:
+  - jekyll-sitemap
+
 excerpt_separator: <!--more-->
 
 # Build settings
