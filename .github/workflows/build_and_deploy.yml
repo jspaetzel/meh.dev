@@ -16,7 +16,7 @@ jobs:
       - run: bundle install
       - run: bundle exec jekyll build
       - run: |
-          git clone "https://${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
+          git clone "https://${GITHUB_PAT}@github.com/${GITHUB_REPOSITORY}.git"
           cd $(basename "${GITHUB_REPOSITORY}")
           git config user.name "Gitub Actions"
           git config user.email ""
@@ -24,4 +24,6 @@ jobs:
           touch .nojekyll
           git add -A .
           git commit -m "Generated Jekyll site by Github Action - ${GITHUB_ACTION}"
-          git push --force "https://${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" HEAD:gh-pages
+          git push --force "https://${GITHUB_PAT}@github.com/${GITHUB_REPOSITORY}.git" HEAD:gh-pages
+        env: 
+          GITHUB_PAT: ${{ secrets.GITHUB_PAT }}
