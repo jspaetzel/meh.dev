@@ -21,9 +21,9 @@ jobs:
       - run: cd $(basename ${GITHUB_REPOSITORY%.git})
       - run: git config user.name "Gitub Actions"
       - run: git config user.email ""
-      - run: rsync -az --delete --exclude '.git*' ../_site/ .
+      - run: rsync -avz --delete --exclude '.git*' ../_site/ .
       - run: touch .nojekyll
       - run: git add -A .
-      - run: git commit -m "Generated Jekyll site by Travis CI - ${GITHUB_ACTION}"
+      - run: git commit -m "Generated Jekyll site by Github Action - ${GITHUB_ACTION}"
       - run: git status
       # - run: git push --force "https://${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}" HEAD:gh-pages
