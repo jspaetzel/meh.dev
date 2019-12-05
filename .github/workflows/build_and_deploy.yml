@@ -17,18 +17,19 @@ jobs:
           ruby-version: '2.x'
       #- run: bundle install
       #- run: bundle exec jekyll build
-      - run: mkdir _site
-      - run: touch _site/test
-      - run: pwd
-      - run: git clone "https://${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
-      - run: cd $(basename "${GITHUB_REPOSITORY}")
-      - run: pwd
-      - run: git config user.name "Gitub Actions"
-      - run: git config user.email ""
-      - run: rsync -avz --delete --exclude '.git*' ${GITHUB_WORKSPACE}/_site/ ${GITHUB_WORKSPACE}/$(basename ${GITHUB_REPOSITORY})/
-      - run: touch .nojekyll
-      - run: git add -A .
-      - run: git commit -m "Generated Jekyll site by Github Action - ${GITHUB_ACTION}"
-      - run: git status
-      - run: ls
+      - run: |
+          mkdir _site
+          touch _site/test
+      - run: |
+          git clone "https://${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
+          cd $(basename "${GITHUB_REPOSITORY}")
+          pwd
+          git config user.name "Gitub Actions"
+          git config user.email ""
+          rsync -avz --delete --exclude '.git*' ${GITHUB_WORKSPACE}/_site/ ${GITHUB_WORKSPACE}/$(basename ${GITHUB_REPOSITORY})/
+          touch .nojekyll
+          git add -A .
+          git commit -m "Generated Jekyll site by Github Action - ${GITHUB_ACTION}"
+          git status
+          git ls
       # - run: git push --force "https://${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}" HEAD:gh-pages
