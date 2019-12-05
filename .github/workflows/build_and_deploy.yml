@@ -23,7 +23,7 @@ jobs:
       - run: cd $(basename ${GITHUB_REPOSITORY%.git})
       - run: git config user.name "Gitub Actions"
       - run: git config user.email ""
-      - run: rsync -avz --delete --exclude '.git*' ${HOME}/_site/ .
+      - run: rsync -avz --delete --exclude '.git*' ${GITHUB_WORKSPACE}/_site/ .
       - run: touch .nojekyll
       - run: git add -A .
       - run: git commit -m "Generated Jekyll site by Github Action - ${GITHUB_ACTION}"
