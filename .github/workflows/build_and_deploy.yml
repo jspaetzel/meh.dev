@@ -26,4 +26,4 @@ jobs:
           touch .nojekyll
           git add -A .
           git commit -m "Generated Jekyll site by Github Action - ${GITHUB_ACTION}"
-          git push --force "https://${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}" HEAD:gh-pages
+          git push --force "https://${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" HEAD:gh-pages
