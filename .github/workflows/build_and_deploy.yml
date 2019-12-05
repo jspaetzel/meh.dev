@@ -17,11 +17,9 @@ jobs:
           ruby-version: '2.x'
       #- run: bundle install
       #- run: bundle exec jekyll build
-      - name: Build
       - run: |
           mkdir _site
           touch _site/test
-      - name: Deploy
       - run: |
           git clone "https://${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
           cd $(basename "${GITHUB_REPOSITORY}")
