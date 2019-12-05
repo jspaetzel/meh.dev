@@ -17,6 +17,8 @@ jobs:
           ruby-version: '2.x'
       - run: bundle install
       - run: bundle exec jekyll build
+      - env: 
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - run: |
           git clone "https://${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
           cd $(basename "${GITHUB_REPOSITORY}")
