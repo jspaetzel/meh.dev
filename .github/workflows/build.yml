@@ -8,10 +8,11 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@master
-    - uses: actions/setup-ruby@v1
-      with:
-        ruby-version: '2.2'
-    - run: bundle install
-    - run: bundle exec jekyll build
+      - name: Setup Ruby
+      - uses: actions/checkout@master
+      - uses: actions/setup-ruby@v1
+        with:
+          ruby-version: '2.x'
+      - run: bundle install
+      - run: bundle exec jekyll build
       
