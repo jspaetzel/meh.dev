@@ -19,8 +19,9 @@ jobs:
       #- run: bundle exec jekyll build
       - run: mkdir _site
       - run: touch _site/test
+      - run: pwd
       - run: git clone "https://${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
-      - run: cd $(basename ${GITHUB_REPOSITORY})
+      - run: cd $(basename "${GITHUB_REPOSITORY}")
       - run: pwd
       - run: git config user.name "Gitub Actions"
       - run: git config user.email ""
