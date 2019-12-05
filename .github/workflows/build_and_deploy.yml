@@ -17,19 +17,18 @@ jobs:
           ruby-version: '2.x'
       #- run: bundle install
       #- run: bundle exec jekyll build
+      - name: Build
       - run: |
           mkdir _site
           touch _site/test
+      - name: Deploy
       - run: |
           git clone "https://${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
           cd $(basename "${GITHUB_REPOSITORY}")
-          pwd
           git config user.name "Gitub Actions"
           git config user.email ""
-          rsync -avz --delete --exclude '.git*' ${GITHUB_WORKSPACE}/_site/ ${GITHUB_WORKSPACE}/$(basename ${GITHUB_REPOSITORY})/
+          rsync -avz --delete --exclude '.git*' ../_site/ .
           touch .nojekyll
           git add -A .
           git commit -m "Generated Jekyll site by Github Action - ${GITHUB_ACTION}"
-          git status
-          git ls
-      # - run: git push --force "https://${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}" HEAD:gh-pages
+          ls
