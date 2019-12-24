@@ -1,0 +1,47 @@
+---
+layout: post
+title:  "2019 Reflection"
+date:   2019-12-23 00:00:00 -0800
+---
+
+It's coming up on the end of 2019 and as usual it's time to reflect on the previous year.
+
+Checkout some of the previous years: 
+* [2018 Retrospective](2018-retrospective)
+* [2017 - Wear some flowers in your hair](2017-wear-flowers-in-your-hair)
+* [2016 A Full Stack Year](2016-a-full-stack-year)
+
+# Travel
+
+Google Maps has a fabulous feature... It tracks your location everywhere all the time. It's kinda creepy but I actually love it. So here's a map of almost everywhere I went in 2019.
+
+![Map of 2019](./assets/2019-reflection/map.png)
+
+There's too many individual locations to list so instead how about some stats?
+* Trips (Overnight): 16
+* Flight Segments: 43
+* Cruises: 2
+* Ubers & Lyfts: 93
+* States: 11
+* Countries: 5
+
+# Work
+
+HelloSign got acquired
+Team has grown tremendously
+Holding onto the things that are most important to you and why this is challenging.
+
+# Goals
+
+At the beginning of 2019 I had some specific goals in mind and ehh, I did alright.
+* Exercise: I've been exercising less not more as intended. Down to about 1 day or less a week so there is definitely room to improve. 
+* Writing: This makes the 6th blog post of the year, a far cry from weekly but they were spaced out throughout the year so the consistency has been pretty good. I also refreshed the style of this blog pretty substantially.
+* Finishing: I didn't release the beach app. It's barely received any attention at all so I should probably work on that.
+* Reading: I haven't really been reading more. But not less either?
+* Plants: I bought 3 plants and they are all still alive!
+* Travel: Blew this one out of the water and went on a ton of trips.
+* Social: Traveled quite a bit with friends & made some new ones along the way. I'm in a pretty good place socially right now. 
+
+# Software & Hardware Usage
+
+Back to Linux!
