@@ -4,7 +4,7 @@ title:  "2019 Reflection"
 date:   2019-12-23 00:00:00 -0800
 ---
 
-It's coming up on the end of 2019 and as usual it's time to reflect on the previous year.
+It's now 2020 and as usual it's time to reflect on the previous year.
 
 Checkout some of the previous years: 
 * [2018 Retrospective](2018-retrospective)
@@ -34,13 +34,13 @@ Holding onto the things that are most important to you and why this is challengi
 # Goals
 
 At the beginning of 2019 I had some specific goals in mind and ehh, I did alright.
-* Exercise: I've been exercising less not more as intended. Down to about 1 day or less a week so there is definitely room to improve. 
-* Writing: This makes the 6th blog post of the year, a far cry from weekly but they were spaced out throughout the year so the consistency has been pretty good. I also refreshed the style of this blog pretty substantially.
-* Finishing: I didn't release the beach app. It's barely received any attention at all so I should probably work on that.
+* Exercise: I did well for the first half of the year but then drifted out of a routine. I'm now down to about 1 day or less a week. 
+* Writing: I made 5 posts in 2019, a far cry from weekly but they were spaced out throughout the year so at least I was consistent. I also refreshed the style of this blog pretty substantially.
+* Finishing: I didn't release the beach app. It's barely received any attention at all and I think I'm steering away from working on it further. I think there are two main reasons for this. I've been favoring backend technologies with which this doesn't align and I've been away from computers more in general.
 * Reading: I haven't really been reading more. But not less either?
 * Plants: I bought 3 plants and they are all still alive!
-* Travel: Blew this one out of the water and went on a ton of trips.
-* Social: Traveled quite a bit with friends & made some new ones along the way. I'm in a pretty good place socially right now. 
+* Travel: I blew this one out of the water and went on a ton of trips.
+* Social: Traveled quite a bit with friends & made some new ones along the way. I'm in a pretty good place socially right now. I love living in San Francisco.
 
 # Software & Hardware Usage
 
