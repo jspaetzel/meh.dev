@@ -6,7 +6,7 @@ date:   2019-12-23 00:00:00 -0800
 
 It's 2020 and as usual it's time to reflect on the previous year.
 
-Checkout some of the previous years: 
+Checkout some of the previous years:  
 * [2018 Retrospective](2018-retrospective)
 * [2017 Wear some flowers in your hair](2017-wear-flowers-in-your-hair)
 * [2016 A Full Stack Year](2016-a-full-stack-year)
@@ -52,7 +52,7 @@ My goals in 2020 are less specific then last year and im mostly looking forward 
 
 I dont see much of a reason to change too much so ill limit it to 3 this year.
 * I'm hoping to get a promotion and I'd like to really succeed in that role.
-* I'd like to be healitier however I dont have a specific goal. I've started this already a little by adding biking to my commute.
+* I'd like to be healitier however I dont have a specific goal. I've started this already a little by adding biking to my commute. I'd like to get back to a gym routine in some fashion.
 * Lastly I want to read & write more then last year. As part of that I want to remodel this website some and make it more generic by shifting it to a new domain `meh.dev` which I bought a while ago.
 
-That's all for 2019. On to 2020!
+## That's all for 2019. On to 2020!
