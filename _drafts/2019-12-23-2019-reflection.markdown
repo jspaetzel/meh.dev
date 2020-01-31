@@ -8,7 +8,7 @@ It's 2020 and as usual it's time to reflect on the previous year.
 
 Checkout some of the previous years: 
 * [2018 Retrospective](2018-retrospective)
-* [2017 - Wear some flowers in your hair](2017-wear-flowers-in-your-hair)
+* [2017 Wear some flowers in your hair](2017-wear-flowers-in-your-hair)
 * [2016 A Full Stack Year](2016-a-full-stack-year)
 
 # Goals
@@ -40,7 +40,7 @@ I had a blast in 2019 and hope to travel more in 2020. The only thing related to
 
 # Hello Dropbox
 
-My career shifted somewhat in 2020. Most notably near the beginning of the year HelloSign was acquired by Dropbox and is now "HelloSign, a Dropbox Company". This has created some new opportunities for me and has been an interesting transition from a small company to a much larger and well know one. I was hoping to work for a larger tech company at some point so this aligned well, I just wasn't expecting that it would happen in 2019.
+My career shifted somewhat in 2020. Most notably near the beginning of the year HelloSign was acquired by Dropbox and is now "HelloSign, a Dropbox Company". This has created some new opportunities for me and has been an interesting transition from a small company to a larger company. At over 2,000 full time employees dropbox we're not about 20x larger but really that's still not a big company. More notably Dropbox has very common name recognition, most places I go now people know who I work for which is kind cool! I was hoping to work for a larger tech company at some point so this aligned well, I just wasn't expecting that it would happen in 2019.
 
 I also switched teams to one with significantly more autonomy. This is a blessing and a curse, on one hand ive had more creative influence over the direction of my team however I am also more responsible which is moderately more stressful. This is still getting started and im looking forward to see how things develop.
 
@@ -52,7 +52,7 @@ My goals in 2020 are less specific then last year and im mostly looking forward 
 
 I dont see much of a reason to change too much so ill limit it to 3 this year.
 * I'm hoping to get a promotion and I'd like to really succeed in that role.
-* I'd like to be healitier however I dont have a specific goal. I've started this already a little by adding biking into my commute.
-* Lastly I want to read & write more then last year. As part of that I want to remodel this website again a little and make it more generic by shifting it to a new domain `meh.dev` which I bought a while ago.
+* I'd like to be healitier however I dont have a specific goal. I've started this already a little by adding biking to my commute.
+* Lastly I want to read & write more then last year. As part of that I want to remodel this website some and make it more generic by shifting it to a new domain `meh.dev` which I bought a while ago.
 
 That's all for 2019. On to 2020!
