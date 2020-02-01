@@ -3,7 +3,7 @@ layout: post
 title:  "2016 a full stack year"
 date:   2016-12-16 00:00:00 -0500
 tags:
-- Retro
+- Year in Review
 ---
 
 We're near the end of 2016, to reflect on this year ive assembled some highlights from my calendar and side project's git repositories.

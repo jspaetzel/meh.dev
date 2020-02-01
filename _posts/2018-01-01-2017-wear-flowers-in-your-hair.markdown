@@ -3,7 +3,7 @@ layout: post
 title:  "2017 Wear some flowers in your hair"
 date:   2018-01-01 00:00:00 -0800
 tags:
-- Retro
+- Year in Review
 ---
 
 Last year I wrote [a post](2016-a-full-stack-year) highlighting all of the interesting things I did during the year. It was very cathardic so I'm doing it again for 2017!
