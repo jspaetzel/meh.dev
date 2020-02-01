@@ -71,8 +71,8 @@ $red-100: #FFCDD2;
 
 // Import partials from `sass_dir` (defaults to `_sass`)
 @import
-        "normalize",
-        "base",
-        "layout",
+        "base", // Set our defaults
+        "normalize", // Normalize after defaults for consistency
+        "layout", // Add specific layout styles
         "syntax-highlighting"
 ;
