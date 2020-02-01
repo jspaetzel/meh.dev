@@ -2,6 +2,10 @@
 layout: post
 title:  "Responsive Tables with CSS"
 date:   2019-10-13 00:00:00 -0800
+tags:
+- Frontend
+- Web
+- CSS
 ---
 
 Vertical alignment in CSS can be difficult, one of the strategies for doing this is to use `vertical-align` which allows vertical alignment with an inline or table-cell box.

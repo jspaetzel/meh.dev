@@ -2,6 +2,8 @@
 layout: post
 title:  "AutoKey, GO!"
 date:   2019-08-25 00:00:00 -0800
+tags:
+- Productivity
 ---
 
 AutoKey is a text expansion/replacement utility for Linux. In addition to text expansion capabilities it's also able to be triggered by hotkeys and create custom prompts for inputs. 

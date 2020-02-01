@@ -2,6 +2,8 @@
 layout: post
 title:  "Stop clearing the cache"
 date:   2018-12-01 00:00:00 -0800
+tags:
+- Rants
 ---
 
 In the last hour I ran into 3 broken websites which were all broken by running outdated javascript files which were cached in my browser. 

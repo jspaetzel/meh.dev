@@ -2,6 +2,10 @@
 layout: post
 title:  "Drop-in Github Action Jekyll Builds"
 date:   2019-12-04 00:00:00 -0800
+tags:
+- CI
+- Jekyll
+- Github Actions
 ---
 
 Github Actions are a reasonably powerful way to automate your CI/CD pipeline. I've experimented with using it to build this website and came up with an easy to use script that's a drop in way of building and deploying a jekyll website.

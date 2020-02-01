@@ -2,6 +2,8 @@
 layout: post
 title:  "A simple Ubiquity WiFi setup"
 date:   2019-10-02 00:00:00 -0800
+tags:
+- Networking
 ---
 
 My apartment has a really simple Ubiquity configuration which is easily the best wireless setup ive had to date and only cost about $250.

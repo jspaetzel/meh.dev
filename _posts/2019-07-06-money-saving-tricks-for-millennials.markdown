@@ -2,6 +2,8 @@
 layout: post
 title:  "Money saving tricks for millennials"
 date:   2019-07-06 00:00:00 -0800
+tags:
+- Financial
 ---
 
 It's interesting to me how even small amounts of money can be used to make more money. Here's what im doing so that I can save more money without cutting down on avocado toast or my travel plans. I try to ensure that all of my idle money is put to work as much as possible while limiting my exposure to risk <!--more-->and keeping it readily available for when I have high unexpected expenses.
