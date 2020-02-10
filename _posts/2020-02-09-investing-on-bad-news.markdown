@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Bad news is good news"
-date:   2020-01-31 00:00:00 -0800
+date:   2020-02-09 00:00:00 -0800
 tags:
 - Money
 - Stocks
