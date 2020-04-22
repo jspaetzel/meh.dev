@@ -39,7 +39,6 @@ When creating an archive, we can use the `$TAG_NAME` which is supplied by Jenkin
 {% raw %}
 stage("Create Archive") {
     when {
-        branch 'master'
         tag '*'
     }
     steps {
@@ -62,7 +61,6 @@ Publishing stage
 {% raw %}
 stage("Publish") {
     when {
-        branch 'master'
         tag '*'
     }
     steps {
