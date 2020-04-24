@@ -14,11 +14,11 @@ This is a quick guide for how to publish a custom Composer package to Artifactor
 
 ## Configuration
 
-* Setup the [Jenkins Artifactory Plug-in]('https://www.jfrog.com/confluence/display/JFROG/Jenkins+Artifactory+Plug-in'), this will make things easier since you wont need to manage credentials or make http requests directly from the pipeline. 
+* Setup the [Jenkins Artifactory Plug-in](https://www.jfrog.com/confluence/display/JFROG/Jenkins+Artifactory+Plug-in), this will make things easier since you wont need to manage credentials or make http requests directly from the pipeline. 
 
 * Enable tags as a "Branch Source" in Jenkins. For Github this is under the folder or project settings. "Discover tags" should be an enabled behavior. If this isn't set you may not see tags be built in Jenkins.
 
-* Create a local Composer repository in Artifactory. [See the JFrog documentation for how to create]('https://www.jfrog.com/confluence/display/JFROG/PHP+Composer+Repositories').
+* Create a local Composer repository in Artifactory. [See the JFrog documentation for how to create](https://www.jfrog.com/confluence/display/JFROG/PHP+Composer+Repositories).
 
 ## composer.json
 
@@ -51,7 +51,7 @@ stage("Create Archive") {
 Note: `archiveArtifacts` only archives the artifact to Jenkins, this is optional and can be left out if you only want to push the archive to Artifactory.
 
 ## Publishing to Artifactory from your Jenkinsfile
-When publishing it's possible to set the version using a property. Since we are using the plugin and we're providing a [file spec]('https://www.jfrog.com/confluence/display/JFROG/Using+File+Specs')  we'll pass it in as a prop. `"props": "composer.version=$TAG_NAME"`. If we weren't using the plugin it would be specified as a url query variable like this: `?properties=composer.version=$TAG_NAME`.
+When publishing it's possible to set the version using a property. Since we are using the plugin and we're providing a [file spec](https://www.jfrog.com/confluence/display/JFROG/Using+File+Specs)  we'll pass it in as a prop. `"props": "composer.version=$TAG_NAME"`. If we weren't using the plugin it would be specified as a url query variable like this: `?properties=composer.version=$TAG_NAME`.
 
 In the target, `composer-local` is the name of my local Composer repository in Artifactory. Change that to what yours is named and change `example` to the name of your package or other path where you want the package published. Do not forget the trailing `/` in the target otherwise it will become the filename.
 
