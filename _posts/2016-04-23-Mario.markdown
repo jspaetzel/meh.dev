@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Mario"
-start_date: 2016-04-23
+date: 2016-04-23
 active: false
 tags:
 - C Sharp

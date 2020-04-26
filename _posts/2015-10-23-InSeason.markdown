@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "In Season"
-start_date: 2015-10-23
+date: 2015-10-23
 active: false
 tags:
 - Hackathon

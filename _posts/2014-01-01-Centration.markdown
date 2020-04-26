@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Centration"
-start_date:   2014-01-01
+date:   2014-01-01
 tags:
 - Python
 - PySide

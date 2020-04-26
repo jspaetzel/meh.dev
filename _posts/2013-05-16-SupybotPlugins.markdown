@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Supybot Plugins"
-start_date: 2010-05-16
+date: 2010-05-16
 active: false
 tags:
 - Python

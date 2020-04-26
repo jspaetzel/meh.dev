@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "The Starving Artists"
-start_date:   2013-01-01
+date:   2013-01-01
 tags:
 - OrgSync
 - Project
