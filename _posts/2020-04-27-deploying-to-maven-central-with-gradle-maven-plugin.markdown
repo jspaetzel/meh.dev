@@ -2,6 +2,7 @@
 layout: post
 title:  "Deploying to Maven Central with Gradle Maven Plugin"
 date:   2020-04-27 00:00:00 -0800
+edited: 2020-04-28 00:00:00 -0800
 tags:
 - CI
 - Gradle

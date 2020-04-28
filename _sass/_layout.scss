@@ -104,6 +104,14 @@ header {
   font-size: $small-font-size;
   color: $grey-color;
   padding: 3px 10px;
+  .post-meta-icon {
+    display: inline;
+    padding-right: 3px;
+  }
+  .post-meta-text {
+    display: inline;
+    padding-right: 6px;
+  }
 }
 
 .post-link {
