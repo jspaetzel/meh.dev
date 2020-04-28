@@ -24,19 +24,15 @@ This is a quick guide for how to publish a custom Composer package to Artifactor
 
 * Do not specify a `"version"`, it will be populated by Jenkins via a git tag.
 * Include `"archive"` options since you probably do not want to push up the vendor folder or other things that shouldn't be part of a package. For instance I exclude tests since consumers of my package wont be running tests, I only need them during CI and development.
-{% highlight json %}
-{% raw %}
+```json
 "archive": {
      "exclude": ["/vendor", "/build", "**/Tests/*"]
 }
-{% endraw %}
-{% endhighlight %}
-
+```
 
 ## Archive creation in Jenkinsfile
 When creating an archive, we can use the `$TAG_NAME` which is supplied by Jenkins. You should change `example` to the name of your package.
-{% highlight groovy %}
-{% raw %}
+```groovy
 stage("Create Archive") {
     when {
         tag '*'
@@ -46,8 +42,8 @@ stage("Create Archive") {
         archiveArtifacts artifacts: 'build/*.zip'
     }
 }
-{% endraw %}
-{% endhighlight %}
+```
+
 Note: `archiveArtifacts` only archives the artifact to Jenkins, this is optional and can be left out if you only want to push the archive to Artifactory.
 
 ## Publishing to Artifactory from your Jenkinsfile
@@ -57,8 +53,7 @@ In the target, `composer-local` is the name of my local Composer repository in A
 
 
 Publishing stage
-{% highlight groovy %}
-{% raw %}
+```groovy
 stage("Publish") {
     when {
         tag '*'
@@ -79,5 +74,4 @@ stage("Publish") {
         }
     }
 }
-{% endraw %}
-{% endhighlight %}
+```

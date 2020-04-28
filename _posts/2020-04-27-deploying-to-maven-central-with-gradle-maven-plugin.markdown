@@ -16,26 +16,17 @@ When building new projects I generally want to install the bare mininum and then
 
 The upload task need to be modified to allow builds without any signing credentials to avoid these two errors by just doing less.
 
-{% highlight text %}
-{% raw %}
-Could not get unknown property 'ossrhUsername' for object of type org.gradle.api.publication.maven.internal.deployer.DefaultGroovyMavenDeployer.
-{% endraw %}
-{% endhighlight %}
+```Could not get unknown property 'ossrhUsername' for object of type org.gradle.api.publication.maven.internal.deployer.DefaultGroovyMavenDeployer.```
 
 This error is because the 'ossrhUsername' variable is unset.
 
-{% highlight text %}
-{% raw %}
-Cannot perform signing task ':signArchives' because it has no configured signatory
-{% endraw %}
-{% endhighlight %}
+```Cannot perform signing task ':signArchives' because it has no configured signatory```
 
 And this one is because the username/password is set but empty.
 
 ## Complete Example build.gradle
 
-{% highlight groovy %}
-{% raw %}
+```groovy
 // Apply Plugins
 apply plugin: 'java'
 apply plugin: 'maven'
@@ -122,21 +113,17 @@ repositories {
 }
 
 dependencies {}
-
-{% endraw %}
-{% endhighlight %}
+```
 
 ## Configuration
 
 When you are ready to upload you'll also need the credentials for signing in a `gradle.properties` file.
 
-{% highlight yaml %}
-{% raw %}
+```yaml
 signing.keyId=YourKeyId
 signing.password=YourPublicKeyPassword
 signing.secretKeyRingFile=PathToYourKeyRingFile
 
 ossrhUsername=your-jira-id
 ossrhPassword=your-jira-password
-{% endraw %}
-{% endhighlight %}
+```

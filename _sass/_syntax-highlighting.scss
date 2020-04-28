@@ -1,29 +1,68 @@
 /**
  * Code formatting
  */
- pre,
- code {
-     font-family: 'Roboto Mono', monospace;
-     font-size: 13px;
-     border-radius: 3px;
-     border: 1px solid #ddd;
-     color: #111111;
- }
- 
- code {
-     padding: 1px 5px;
- }
- 
- pre {
-     padding: 8px 12px;
-     overflow-x: auto;
- 
-     > code {
-         border: 0;
-         padding-right: 0;
-         padding-left: 0;
-     }
- }
+
+// Clear conflicting table styles
+.highlight table {
+    border: 0;
+    margin: 0;
+    width: auto;
+}
+
+.highlight table td, .highlight table th, .highlight table tr {
+    border: 0;
+    padding: 0;
+}
+
+.highlight pre {
+    border: 0;
+    margin: 0;
+}
+
+.highlight .rouge-gutter pre {
+    background: #eff2f3;
+    color: #869194;
+    padding-left: 10px;
+    padding-right: 10px;
+    text-align: right;
+}
+
+.highlight .rouge-code pre {
+    background: #f7f7f7;
+    padding-left: 10px;
+    width: 100%;
+}
+
+pre {
+    overflow: auto;
+}
+
+pre,
+code {
+    font-family: 'Roboto Mono', monospace;
+}
+
+.highlight code {
+    padding: 0;
+}
+
+code {
+    background: #eee;
+    border-radius: 3px;
+    color: #555;
+    padding: 2px 4px;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+}
+
+
+.highlight, pre {
+    background: #f7f7f7;
+    color: #4d4d4c;
+    line-height: 1.6;
+    margin: 0 auto 20px;
+}
+
 
 /**
  * Syntax highlighting styles

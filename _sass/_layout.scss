@@ -81,11 +81,19 @@
 /**
  * Content
  */
-.content-wrapper {
-  background: #ffffff;
-  margin-top: 40px;
-  margin-bottom: 40px;
-  border-radius: 2px;
+ .content-wrapper {
+  background: #fff;
+  border-radius: initial;
+  box-shadow: initial;
+  box-sizing: border-box;
+  width: 100%;
+}
+@media (max-width: 991px) {
+  .content-wrapper {
+    border-radius: initial;
+    padding: 20px;
+    width: 100%;
+  }
 }
 
 header {
@@ -222,6 +230,7 @@ a.tag-list-link:hover {
 
 .post-content {
   padding: 15px;
+  text-align: justify;
   h2 {
     font-size: 32px;
 

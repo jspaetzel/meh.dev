@@ -21,35 +21,35 @@ A quick introduction to building asp.net projects with the command line using ms
 
 #### Building from the CLI
 
-{% highlight shell %}
+```shell
 cd your_project_dir
 nuget restore
 msbuild yoursolution.sln
-{% endhighlight %}
+```
 
 #### Testing your build
 I regularly use NUnit & VS Test Tools, but any runner will work.
 
 MSTest aka Visual Studio Test Tools
-{% highlight shell %}mstest /testcontainer:testproject/bin/Debug/testproject.dll{% endhighlight %}
+```mstest /testcontainer:testproject/bin/Debug/testproject.dll```
 
-NUnit
-{% highlight shell %}nunit-console testproject.csproj{% endhighlight %}
+NUnit: ```nunit-console testproject.csproj```
+
 Nunit also lets you reference the DLL directly, whereas mstest does not
-{% highlight shell %}nunit-console testproject/bin/Debug/testproject.dll{% endhighlight %}
+```nunit-console testproject/bin/Debug/testproject.dll```
 
 #### Creating & publishing a nuget package
-{% highlight shell %}
+```shell
 nuget pack "my-project.csproj" -IncludeReferencedProjects -Build -Properties Configuration=Release -Version 1.0.0
 nuget push \*.nupkg %NugetAPIKey%
-{% endhighlight %}
+```
 Want to publish to a private nuget server? Tack on: -Source %NugetSource%'
 
 #### Publishing a website
 Using a publishing profile this is really easy
-{% highlight shell %}
+```shell
 msbuild my-project.csproj /p:Configuration=Release /t:ReBuild /p:PublishProfile="my-profile-name" /p:DeployOnBuild=True /p:password="MyDeploymentPassword"  /p:VisualStudioVersion=12.0
-{% endhighlight %}
+```
 
 ## Setup a gitlab runner
 Find the docs for this on the gitlab website, they're good!
@@ -60,7 +60,7 @@ Once you have a runner working on a machine you can add a config file to a proje
 
 Here's a full example of one that works fine for a simple project that you want to continuously build, test, and deploy.
 
-{% highlight yml %}
+```yml
 stages:
   - build
 
@@ -77,7 +77,7 @@ build:
   - 'nuget push \*.nupkg %NugetAPIKey% -Source %NugetSource%'
  only:
    - master
-{% endhighlight %}
+```
 Most of these are the familiar commands that we went over above, but there's a couple things to point out.
 - %CI_BUILD_ID% : Automatic variable for the unique build number
 - %NugetAPIKey% : Custom project variable

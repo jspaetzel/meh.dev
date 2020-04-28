@@ -12,8 +12,7 @@ dl, dd, ol, ul, figure {
 }
 
 p {
-    line-height: 1.8em;
-    font-size: 18px;
+    margin: 0 0 20px 0;
 }
 
 ul li, ol li {
@@ -33,6 +32,8 @@ body {
     -o-font-feature-settings: "kern" 1;
     font-feature-settings: "kern" 1;
     font-kerning: normal;
+    font-size: 1em;
+    line-height: 2;
 }
 
 
@@ -95,13 +96,17 @@ h1, h2, h3, h4, h5, h6 {
     font-family: 'Josefin Sans', sans-serif;
     font-weight: $base-font-weight;
     letter-spacing: 1px;
+    font-weight: bold;
+    line-height: 1.5;
+    margin: 20px 0 15px;
 }
 
-h2 {line-height: 36px;padding-bottom: 14px;padding-top: 30px; font-size: 24px;}
-h3 {line-height: 34px;padding-bottom: 14px;padding-top: 30px; font-size: 22px;}
-h4 {line-height: 32px;padding-bottom: 14px;padding-top: 30px; font-size: 20px;}
-h5 {line-height: 30px;padding-bottom: 14px;padding-top: 30px; font-size: 18px;}
-h6 {line-height: 28px;padding-bottom: 14px;padding-top: 30px; font-size: 16px;}
+h1 { font-size: 1.5em; }
+h2 { font-size: 1.375em; }
+h3 { font-size: 1.25em; }
+h4 { font-size: 1.125em; }
+h5 { font-size: 1em; }
+h6 { font-size: 0.875em; }
 
 /**
  * Links
@@ -178,20 +183,18 @@ blockquote {
 /**
  * Wrapper
  */
-.wrapper {
-    max-width: -webkit-calc(#{$content-width} - (#{$spacing-unit} * 2));
-    max-width:         calc(#{$content-width} - (#{$spacing-unit} * 2));
-    margin-right: auto;
-    margin-left: auto;
-    padding-right: $spacing-unit;
-    padding-left: $spacing-unit;
-    @extend %clearfix;
 
-    @include media-query($on-laptop) {
-        max-width: -webkit-calc(#{$content-width} - (#{$spacing-unit}));
-        max-width:         calc(#{$content-width} - (#{$spacing-unit}));
-        padding-right: $spacing-unit / 2;
-        padding-left: $spacing-unit / 2;
+.wrapper {
+    align-items: flex-start;
+    display: flex;
+    justify-content: space-between;
+    margin: 0 auto;
+    width: calc(100% - 20px);
+}
+
+@media (min-width: 1200px) {
+    .wrapper {
+        width: 1160px;
     }
 }
 

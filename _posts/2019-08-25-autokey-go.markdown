@@ -15,7 +15,7 @@ Features:
 * Opening of Jira tickets
 * Search for things faster
 
-{% highlight python %}
+```python
 import re
 import urllib
 import webbrowser
@@ -39,6 +39,6 @@ elif re.search('^google/.+$', command):
     webbrowser.open('https://google.com/?q=' + urllib.parse.quote(command))
 elif len(command) > 0:
     webbrowser.open('https://duckduckgo.com/?q=' + urllib.parse.quote(command))
-{% endhighlight %}
+```
 
 [Checkout my other post about text expanders & clipboard management](text-expansion-clipboard-management).

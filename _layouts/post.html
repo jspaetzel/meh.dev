@@ -40,6 +40,7 @@ layout: default
         {% endif %}
     </div>
   </header>
+  
   <div class="post-content" itemprop="articleBody">
     {{ content }}
 
@@ -79,28 +80,29 @@ layout: default
       </ul>
     {% endif %}
   </div>
+
+  {% if page.screenshots.size > 0 %}
+  <script src="/js/row-grid.min.js"></script>
+  <script>
+  var container = document.getElementsByClassName('screenshot-container')[0];
+  rowGrid(container, {itemSelector: ".screenshot-item", minMargin: 10, maxMargin: 25, firstItemClass: "first-item", lastRowClass: 'last-row', resize: true});
+  </script>
+  {% endif %}
+
+  <div id="disqus_thread"></div>
+  <script>
+  var disqus_config = function () {
+    this.page.url = "{{ site.url }}{{ page.url }}";
+    this.page.identifier = '{{ page.id }}';
+  };
+  (function() {
+  var d = document, s = d.createElement('script');
+  s.src = 'https://jspaetzel.disqus.com/embed.js';
+  s.setAttribute('data-timestamp', +new Date());
+  (d.head || d.body).appendChild(s);
+  })();
+  </script>
+  <noscript>Please enable JavaScript to view comments</noscript>
+  <script id="dsq-count-scr" src="//jspaetzel.disqus.com/count.js" async></script>
 </article>
 
-{% if page.screenshots.size > 0 %}
-<script src="/js/row-grid.min.js"></script>
-<script>
-var container = document.getElementsByClassName('screenshot-container')[0];
-rowGrid(container, {itemSelector: ".screenshot-item", minMargin: 10, maxMargin: 25, firstItemClass: "first-item", lastRowClass: 'last-row', resize: true});
-</script>
-{% endif %}
-
-<div id="disqus_thread"></div>
-<script>
-var disqus_config = function () {
-  this.page.url = "{{ site.url }}{{ page.url }}";
-  this.page.identifier = '{{ page.id }}';
-};
-(function() {
-var d = document, s = d.createElement('script');
-s.src = 'https://jspaetzel.disqus.com/embed.js';
-s.setAttribute('data-timestamp', +new Date());
-(d.head || d.body).appendChild(s);
-})();
-</script>
-<noscript>Please enable JavaScript to view comments</noscript>
-<script id="dsq-count-scr" src="//jspaetzel.disqus.com/count.js" async></script>

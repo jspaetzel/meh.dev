@@ -21,31 +21,31 @@ A responsive layout like this is nice for mobile devices because it'll rearrange
 
 A horizontal layout is pretty easy with tables, we just create a div styled as a table
 
-{% highlight css %}
+```css
 .table {
     display: table;
     table-layout:fixed;
     width: 100%;
     height: 100%;
 }
-{% endhighlight %}
+```
 
 add a row
-{% highlight css %}
+```css
 .row {
     display: table-row;
 }
-{% endhighlight %}
+```
 
 and add a few cells to the row using `vertical-align` to center our content in each cell
-{% highlight css %}
+```css
 .cell {
     display: table-cell;
     vertical-align: middle;
     text-align: center;
     overflow: hidden;
 }
-{% endhighlight %}
+```
 
 # Changing to a vertical layout
 
@@ -56,7 +56,7 @@ To change from a row with cells to a single column with rows we just need to do 
 * table > table > rows  > cells
 
 # Full Code Sample
-{% highlight html %}
+```html
 <html>
 <head>
     <style type="text/css">
@@ -121,4 +121,4 @@ To change from a row with cells to a single column with rows we just need to do 
     </div>
 </body>
 </html>
-{% endhighlight %}
+```

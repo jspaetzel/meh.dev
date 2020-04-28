@@ -31,10 +31,10 @@ Note the IP address of the server for later.
 Specify a passive port range, the same range you opened on azure.
 Include your firewall Ip, this is to make sure that passive connections route properly. Otherwise you might end up with an error like this:
 
-{% highlight shell %}
+```shell
 227 Entering Passive Mode (172,19,0,4,78,32).
 Status:	Server sent passive reply with unroutable address. Using server address instead.
-{% endhighlight %}
+```
 
 [How this works and why, here](http://grantcurell.com/2013/12/31/failed-to-retrieve-directory-listing-filezilla-connecting-to-iis-behind-nat/)
 

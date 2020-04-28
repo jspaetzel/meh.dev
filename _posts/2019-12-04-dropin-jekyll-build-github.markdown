@@ -25,8 +25,8 @@ Add the new personal access token your repository as a secret named **GITHUB_PAT
 
 ## Github yaml actions script
 This file should be added like: `.github/workflows/build_and_deploy.yml`
-{% highlight yaml %}
-{% raw %}
+
+```yaml
 name: CI
 
 on:
@@ -56,8 +56,8 @@ jobs:
           git push --force "https://${GITHUB_PAT}@github.com/${GITHUB_REPOSITORY}.git" HEAD:gh-pages
         env: 
           GITHUB_PAT: ${{ secrets.GITHUB_PAT }}
-{% endraw %}
-{% endhighlight %}
+```
+
 
 With this yaml added to the repo your site should get built and deployed automatically to github pages.
 
