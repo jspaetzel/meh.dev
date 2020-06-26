@@ -1,0 +1,93 @@
+---
+layout: post
+title:  "What I Use"
+date:   2020-06-26T00:49:38.133962-07:00
+edited: 2020-06-26T01:51:07.871230-07:00
+tags:
+- Software Stack
+---
+
+This is a living post for what I use frequently, probably everyday. I'll update this periodically and welcome suggestions for improvements.
+
+## Systems
+* Lenovo Thinkpad X1 Carbon with Ubuntu 20.10 ❤️
+* Macbook Pro with Ubuntu 20.10, Windows 10, and MacOS
+* Pixel 3 ❤️
+* iPhone 8
+* Ubiquity UniFi ❤️
+* Sonnet Breakaway box with Nvidia 1070 ❤️
+
+I prefer to work in Ubuntu but my personal laptop is a Macbook Pro which I got in 2017. It runs Ubuntu pretty well so I've kept it around. I also use it for gaming which is why I have a tri-boot configuration.
+
+I have an iPhone from work but my main device is the Pixel 3. I've kept the iPhone because I like to compare functionality side-by-side and it's also handy to have a backup device on a different network provider.
+
+## Developer Tools
+* IDE: PHPStorm 💲❤️
+* Editor: VS Code
+* Terminal: Terminator
+
+## Software
+* Firefox mobile and desktop for my browser
+* AutoKey for autocomplete ❤️
+* CopyQ for clipboard management
+* Dropbox for file storage
+* Dropbox Paper for shared notes ❤️
+* Flameshot for screenshots
+* Authy for 2FA ❤️
+* Spotify for music 💲❤️
+* 1Password for passwords 💲
+* Standard Notes for taking notes 💲❤️
+* Google Keep for notes with reminders
+* Google Calendar ❤️
+* Google Photos ❤️
+* Gmail for email
+* Pocket Casts
+
+## Service Providers
+* GoogleFi 💲❤️
+* Verizon 💲
+* MonkeyBrains 💲❤️
+
+## Financial Services
+* Splitwise with roommate ❤️
+* Robinhood
+* SoFi
+* Chase Sapphire Reserve Card 💲❤️
+* Citi Double Cash Card
+
+## Online Shopping
+* Amazon 💲❤️
+* Target
+* Walmart
+
+I typically price check anything I buy on Amazon and occasionally make purchases elsewhere but it's frustrating how often I regret buying things from anywhere other then Amazon due to shipping delays or issues. 😢
+
+## Entertainment
+* Amazon Prime Video 💲
+* Netflix 💲
+* Hulu 💲
+
+## Communication
+Communication platforms get an entire section because they are obnoxious. I unfortunately use all of these regularly since I cant convince the people in my life to standardize. I would pay so much for someone to fix this.
+
+* Telegram
+* GroupMe
+* Slack
+* Duo
+* Facebook Messenger
+* Discord ❤️
+* Signal
+* Snapchat
+* WhatsApp
+* Google Meet
+* Zoom
+* Google Hangouts (Sms)
+* iMessage
+* Email
+
+The worst thing about the state of messengers today is that the only one of these I like using is Discord which is only useful to me when gaming. Facebook messenger is probably my second pick... but with reservations.
+
+## Legend
+
+* 💲 are monthly or annual subscriptions
+* ❤️ are things that I love
