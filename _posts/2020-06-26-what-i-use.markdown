@@ -2,7 +2,7 @@
 layout: post
 title:  "What i use"
 date:   2020-06-26T00:49:38.133962-07:00
-edited: 2020-06-26T01:51:07.871230-07:00
+edited: 2020-11-14T11:27:54.891708-08:00
 tags:
 - Software Stack
 ---
@@ -11,7 +11,7 @@ This is a living post for what I use frequently, probably everyday. I'll update 
 
 ## Systems
 * Lenovo Thinkpad X1 Carbon with Ubuntu 20.10 ❤️
-* Macbook Pro with Ubuntu 20.10, Windows 10, and MacOS
+* Macbook Pro with Ubuntu 20.10, Windows 10
 * Pixel 3 ❤️
 * iPhone 8
 * Ubiquity UniFi ❤️
@@ -27,6 +27,8 @@ I have an iPhone from work but my main device is the Pixel 3. I've kept the iPho
 * Terminal: Terminator
 
 ## Software
+The software listed here are the essentials that are I use everyday that I want to endorse.
+
 * Firefox mobile and desktop for my browser
 * AutoKey for autocomplete ❤️
 * CopyQ for clipboard management
@@ -42,50 +44,6 @@ I have an iPhone from work but my main device is the Pixel 3. I've kept the iPho
 * Google Photos ❤️
 * Gmail for email
 * Pocket Casts
-
-## Service Providers
-* GoogleFi 💲❤️
-* Verizon 💲
-* MonkeyBrains 💲❤️
-
-## Financial Services
-* Splitwise with roommate ❤️
-* Robinhood
-* SoFi
-* Chase Sapphire Reserve Card 💲❤️
-* Citi Double Cash Card
-
-## Online Shopping
-* Amazon 💲❤️
-* Target
-* Walmart
-
-I typically price check anything I buy on Amazon and occasionally make purchases elsewhere but it's frustrating how often I regret buying things from anywhere other then Amazon due to shipping delays or issues. 😢
-
-## Entertainment
-* Amazon Prime Video 💲
-* Netflix 💲
-* Hulu 💲
-
-## Communication
-Communication platforms get an entire section because they are obnoxious. I unfortunately use all of these regularly since I cant convince the people in my life to standardize. I would pay so much for someone to fix this.
-
-* Telegram
-* GroupMe
-* Slack
-* Duo
-* Facebook Messenger
-* Discord ❤️
-* Signal
-* Snapchat
-* WhatsApp
-* Google Meet
-* Zoom
-* Google Hangouts (Sms)
-* iMessage
-* Email
-
-The worst thing about the state of messengers today is that the only one of these I like using is Discord which is only useful to me when gaming. Facebook messenger is probably my second pick... but with reservations.
 
 ## Legend
 
