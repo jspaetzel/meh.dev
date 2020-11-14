@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "The End of An Era of Hosting"
+title:  "Shutting down my web hosting services"
 date:   2020-06-12 00:00:00 -0800
 tags:
 - Retro

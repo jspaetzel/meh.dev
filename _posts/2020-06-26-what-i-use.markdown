@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "What I Use"
+title:  "What i use"
 date:   2020-06-26T00:49:38.133962-07:00
 edited: 2020-06-26T01:51:07.871230-07:00
 tags:
