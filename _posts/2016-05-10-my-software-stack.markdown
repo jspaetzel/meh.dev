@@ -2,6 +2,7 @@
 layout: post
 title:  "My Software Stack (2016)"
 date:   2016-05-10 00:00:00 -0500
+edited:   2016-05-10 00:00:00 -0500
 tags:
 - Software Stack
 ---

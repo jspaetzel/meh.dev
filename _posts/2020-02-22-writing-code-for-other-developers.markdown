@@ -2,6 +2,7 @@
 layout: post
 title:  "Writing code for other developers"
 date:   2020-02-22 00:00:00 -0800
+edited:   2020-02-22 00:00:00 -0800
 tags:
 - Programming
 ---

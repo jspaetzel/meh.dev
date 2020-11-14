@@ -2,6 +2,7 @@
 layout: post
 title:  "Stop clearing the cache"
 date:   2018-12-01 00:00:00 -0800
+edited:   2018-12-01 00:00:00 -0800
 tags:
 - Rants
 ---

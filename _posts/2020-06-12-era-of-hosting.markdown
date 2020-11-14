@@ -2,6 +2,7 @@
 layout: post
 title:  "Shutting down my web hosting services"
 date:   2020-06-12 00:00:00 -0800
+edited:   2020-06-12 00:00:00 -0800
 tags:
 - Retro
 - Hosting

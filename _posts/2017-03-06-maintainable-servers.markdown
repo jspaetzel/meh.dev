@@ -2,6 +2,7 @@
 layout: post
 title:  "Maintainable Servers - 4 years of service and counting"
 date:   2017-03-06 00:00:00 -0500
+edited:   2017-03-06 00:00:00 -0500
 ---
 
 Today one of my personal servers reached a new milestone, it's 4th year of service! To commemorate the occasion I've written about how I run my servers in a way that is maintainable. <!--more--> I'm also excited because I just updated from PHP 5.6 to PHP 7.0 and from Ubuntu 14.04 to 16.04 with no serious problems. This was the most maintenance I have had to do in the last 4 years and it only took several hours.

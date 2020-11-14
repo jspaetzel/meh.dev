@@ -39,7 +39,9 @@ layout: default
             {{ page.date | date: "%b %-d, %Y" }}
           </time>
         </div>
-        {% if page.edited %}
+        {% assign editedDate = page.edited | date: '%s' %}
+        {% assign datePublished = page.date | date: '%s' %}
+        {% if editedDate and editedDate != datePublished %}
           <div class="post-meta-text">
             <div class="post-meta-icon">
               <i class="far fa-calendar-check"></i>

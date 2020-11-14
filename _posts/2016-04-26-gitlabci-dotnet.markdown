@@ -2,6 +2,7 @@
 layout: post
 title:  "Building Dotnet with Gitlab CI"
 date:   2016-04-26 00:00:00 -0500
+edited:   2016-04-26 00:00:00 -0500
 tags:
 - Dotnet
 - CI

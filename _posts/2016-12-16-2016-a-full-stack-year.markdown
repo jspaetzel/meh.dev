@@ -2,6 +2,7 @@
 layout: post
 title:  "2016 a full stack year"
 date:   2016-12-16 00:00:00 -0500
+edited:   2016-12-16 00:00:00 -0500
 tags:
 - Year in Review
 ---

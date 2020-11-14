@@ -2,6 +2,7 @@
 layout: post
 title:  "Dots"
 date:   2010-01-01
+edited: 2010-01-01
 tags:
 - Java
 - Project

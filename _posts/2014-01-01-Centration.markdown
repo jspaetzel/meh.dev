@@ -2,6 +2,7 @@
 layout: post
 title:  "Centration"
 date:   2014-01-01
+edited:   2014-01-01
 tags:
 - Python
 - PySide

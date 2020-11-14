@@ -2,6 +2,7 @@
 layout: post
 title:  "Dependencies for stability"
 date:   2016-07-24 00:00:00 -0500
+edited:   2016-07-24 00:00:00 -0500
 ---
 
 # How to choose dependencies for stability

@@ -2,6 +2,7 @@
 layout: post
 title:  "Publishing private composer packages to Artifactory with Jenkins"
 date:   2020-04-22 00:00:00 -0800
+edited:   2020-04-22 00:00:00 -0800
 tags:
 - CI
 - PHP

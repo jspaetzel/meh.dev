@@ -2,6 +2,7 @@
 layout: post
 title:  "Responsive Tables with CSS"
 date:   2019-10-13 00:00:00 -0800
+edited:   2019-10-13 00:00:00 -0800
 tags:
 - Frontend
 - Web
