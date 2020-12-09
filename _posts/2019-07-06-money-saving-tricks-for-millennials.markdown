@@ -65,7 +65,7 @@ After those first 90 days on the promotional account you don't earn hardly anyth
 ## Loans
 My limited experience has been with Student Loans which were directly subsidized by the government. If you are in a situation where you are receiving a loan *READ THE TERMS IN FULL* to unnecessary or unexpected costs.
 
-To give a personal example: I was surprised by this in 2015 when I paid off my student loans. In my case I received two very small loans which typicall have a 6 month grace period after graduating college. One in 2011, and one in 2012. These were both Direct Subsidized Loans from the department of education, named the same way and received year after year. So you might think may be the same, and it turns out if I had received this loan on different dates, they would have been the same. 
+To give a personal example: I was surprised by this in 2015 when I paid off my student loans. In my case I received two very small loans which typically have a 6 month grace period after graduating college. One in 2011, and one in 2012. These were both Direct Subsidized Loans from the department of education, named the same way and received year after year. So you might think may be the same, and it turns out if I had received this loan on different dates, they would have been the same. 
 
 Surprise: This was not the case. The differences are clearly stated on the student aid website now...
 

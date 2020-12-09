@@ -23,7 +23,7 @@ Some of the core functionality includes:
 - Complex group access control management
 - Multi-platform chat integration with Telegram & GroupMe
 - Google plus integration
-- Chat robots for serious gameplay and fun
+- Chat robots for serious game-play and fun
 - Social network features for connecting users
-- Event Signups & Forms
+- Event SignUps & Forms
 - Security and activity auditing

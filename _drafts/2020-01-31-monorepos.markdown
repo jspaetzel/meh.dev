@@ -6,4 +6,4 @@ tags:
 - Retro
 ---
 
-This is now an age old debate. My bias is undoubtably in favor of monorepos. Why?... tbd.
+This is now an age old debate. My bias is undoubtedly in favor of monorepos. Why?... tbd.

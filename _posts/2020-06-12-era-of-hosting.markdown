@@ -12,7 +12,7 @@ tags:
 
 I got involved in developing and hosting websites when I was pretty young. Surprisingly I've managed to save copies of almost everything I've ever written. The earliest sites actually run best still because they have the fewest dependencies.
 
-My first website was a flash game website which never made it online, it was an HTML website which I distributed to some friends on rewritable CD-Rom discs. At the time my internet home was dial-up with a 56k modem and we only had one phone line. I could only get on for brief periods. 
+My first website was a flash game website which never made it online, it was an HTML website which I distributed to some friends on re-writable CD-Rom discs. At the time my internet home was dial-up with a 56k modem and we only had one phone line. I could only get on for brief periods. 
 
 I started this project learning how to save copies of web pages, but the problem with a saved website is that links don't work without internet. And I wanted the links to work, I wanted to simulate the being online. So I created my own website and embedded all of the content I wanted. 
 

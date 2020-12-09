@@ -2,7 +2,7 @@
 layout: post
 title:  "I visited Maui during the pandemic"
 date:   2020-12-01T14:57:24.528141-08:00
-edited: 2020-12-01T14:57:24.528141-08:00
+edited: 2020-12-08T19:53:14.265610-08:00
 tags:
 - Travel
 ---
@@ -11,7 +11,7 @@ I'd never been to Hawaii or Maui before this year even though it's a meer 5 hour
 
 Because of the COVID-19 pandemic it was particularly cheap to travel and staying on the island was also cheaper then usual. Hawaii has been particularly cautious about trying to prevent the spread of the virus, and their efforts have been effective. Most of the Hawaiian islands have a dramatically lower infection-rate then the rest of the United States.
 
-Hawaii should be extra cautious. They're isolated and have much more control over who comes in and out of the islands compared to most states. They also have extra incentive to protect residents. Hawaii's population is steadily aging at a faster rate then most of the United States. [From 2010 to 2019 the elderly population (65+) of Hawaii grew by 62.3%](https://web.archive.org/web/20201017121959/https://census.hawaii.gov/wp-content/uploads/2020/06/Hawaii-Population-Characteristics-2019.pdf). This older population is also disproportionatly affected by the pandemic which are [90x more at risk of dying from COVID-19](https://web.archive.org/web/20201201020338/https://www.cdc.gov/coronavirus/2019-ncov/need-extra-precautions/older-adults.html) compared to young adults.
+Hawaii should be extra cautious. They're isolated and have much more control over who comes in and out of the islands compared to most states. They also have extra incentive to protect residents. Hawaii's population is steadily aging at a faster rate then most of the United States. [From 2010 to 2019 the elderly population (65+) of Hawaii grew by 62.3%](https://web.archive.org/web/20201017121959/https://census.hawaii.gov/wp-content/uploads/2020/06/Hawaii-Population-Characteristics-2019.pdf). This older population is also disproportionately affected by the pandemic which are [90x more at risk of dying from COVID-19](https://web.archive.org/web/20201201020338/https://www.cdc.gov/coronavirus/2019-ncov/need-extra-precautions/older-adults.html) compared to young adults.
 
 ![COVID Jeep](./assets/maui/covid_jeep.jpg)
 
@@ -25,7 +25,7 @@ When our flight landed we were still awaiting test results so we took a Lyft dir
 
 The Hawaiian governor has been writing a series of supplementary [emergency proclamations](https://web.archive.org/web/20201115120318/https://governor.hawaii.gov/wp-content/uploads/2020/03/2003109-ATG_COVID-19-Supplementary-Proclamation-signed.pdf) which change policies throughout the islands. One of the policies the Hawaiian government set was to prevent car rentals for anyone who's not exempt from quarantine. We weren't aware of this before traveling so were surprised we weren't able to get a car initially and had to take a fairly expensive Lyft to where we were staying while we waited for test results.
 
-![Maui Quaratining](./assets/maui/quarantine.jpg)
+![Maui Quarantining](./assets/maui/quarantine.jpg)
 
 # Quaratining
 
@@ -37,7 +37,7 @@ Test results can vary in how long they take to be returned, in our case we were 
 
 While Quarantining you're not allowed to leave to buy groceries or food. Delivery services on the islands can be lacking but there are a few services that provide delivery of most items. I wish I knew about [808 PickUps](https://www.fooddeliverymaui.com/) sooner which is a local business like DoorDash but with a larger local selection. Other services like Instacart also work fine for larger grocery deliveries.
 
-![Maui Quaratining 2](./assets/maui/quarantine_2.jpg)
+![Maui Quarantining 2](./assets/maui/quarantine_2.jpg)
 
 # Exploring the island
 

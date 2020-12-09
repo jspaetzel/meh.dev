@@ -11,4 +11,4 @@ tags:
 - Project
 ---
 
-PHP Library to make working with the Groupme API as painless as possible.
+PHP Library to make working with the GroupMe API as painless as possible.

@@ -10,7 +10,7 @@ tags:
 - Maven
 ---
 
-When building new projects I generally want to install the bare mininum and then build. The defaults on [Sonatype's website for deploying to OSSRH with Gradle](https://central.sonatype.org/pages/gradle.html) modify the build configuration and causes the build to fail if you dont have credentials set. Building without credentials can be useful for projects which have other contributors who may not be involved in the signing or publishing of artifacts. This post shows what should be changed included in your `gradle.build` file in order to do both.
+When building new projects I generally want to install the bare minimum and then build. The defaults on [Sonatype's website for deploying to OSSRH with Gradle](https://central.sonatype.org/pages/gradle.html) modify the build configuration and causes the build to fail if you don't have credentials set. Building without credentials can be useful for projects which have other contributors who may not be involved in the signing or publishing of artifacts. This post shows what should be changed included in your `gradle.build` file in order to do both.
 
 
 ## Errors encountered
