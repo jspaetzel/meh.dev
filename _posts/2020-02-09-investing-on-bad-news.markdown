@@ -23,8 +23,7 @@ I'm comfortable with having an aggressive stock portfolio so later last year I s
 
 As for Robinhood my strategy is going to remain similar, I think I just need to follow my own advice more often and not take as many risks on less known companies.
 
-> ![Robinhood 1 Yr](./assets/robinhood_bad_news_is_good_news.png)
-> Robinhood from Feb 2019 to Feb 2020
+{% include image_quoted.html url="/assets/robinhood_bad_news_is_good_news.png" text="Robinhood from Feb 2019 to Feb 2020" %}
 
 ## Picking companies
 The hardest part for me is picking companies. The companies that have done best for me are ones that I'm personally familiar, I've used their products, I know their quality, and hopefully I've met a few people who work there. Whereas the worst performing ones have been companies that I know by name but most of my insight is from the news rather then hands on experience.

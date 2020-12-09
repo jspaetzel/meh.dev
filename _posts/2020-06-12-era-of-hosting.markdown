@@ -18,7 +18,7 @@ I started this project learning how to save copies of web pages, but the problem
 
 In order to do this I'd save a bunch of web pages and then I'd take them apart and put them back together to create a website! It worked out alright!
 
-![Games I Like](./assets/old-websites/gamesilike.png)
+{% include image_quoted.html url="/assets/old-websites/gamesilike.png" text="Games I Like" %}
 
 Some of the files from this website are dated 2002, so I think I was probably 7 or 8 years old. I got into Flash development for a while after this and built a few other sites that also never went online.
 
@@ -36,8 +36,7 @@ In a couple of years I outgrew this free sandbox and paid for a virtual private 
 
 With a VPS I had more processing power then I needed so I started sharing resources with other forum members who also needed more resources then the free hosting service provided. A few of them even started paying me so I bought a new domain, welfarehost.com on June 20, 2009 and started a free and paid web service. 
 
-![Welfare Host](./assets/old-websites/welfarehost.png)
-
+{% include image_quoted.html url="/assets/old-websites/welfarehost.png" text="Welfare Host" %}
 
 I still think Welfare Host is a kinda clever name, it was a web host that gave free hosting to anyone who needed it and as it turns out a lot of folks needed it. At one point there were around 1000 websites hosted on it for free and all of that  hosting managed to be supported by a few dozen that upgraded to paid accounts.
 
@@ -47,7 +46,8 @@ My goal had been to create a service with enough users that I could have a few w
 
 This project kept expanding and at some point someone pointed out that they didn't like the sound of being on and paying for welfare so I changed names and bought chemicalservers.com on Jan 30, 2010.
 
-![Chemical Servers](./assets/old-websites/chemicalservers.png)
+{% include image_quoted.html url="/assets/old-websites/chemicalservers.png" text="Chemical Servers" %}
+
 
 This site or one of many variations stayed live for several years. I worked on it in the evenings after school and at night when I probably have been sleeping. At it's height it has a few thousand users and quite a few paying ones. 
 

@@ -19,7 +19,7 @@ I started some preliminary design & research for this app in early 2018. After w
 
 See a preview of some of the iterations I've gone through while designing the main Beach View for the app: 
 
-{% include image.html url="/assets/beach-app/Version_0.png" text="Initial Mockup" width="200" %}
-{% include image.html url="/assets/beach-app/Version_0.1.jpg" text="v0.1" width="200" %}
-{% include image.html url="/assets/beach-app/Version_0.2.png" text="v0.2" width="200" %}
-{% include image.html url="/assets/beach-app/Version_0.3.png" text="v0.3" width="200" %}
+{% include image_quoted.html url="/assets/beach-app/Version_0.png" text="Initial Mockup" width="200" %}
+{% include image_quoted.html url="/assets/beach-app/Version_0.1.jpg" text="v0.1" width="200" %}
+{% include image_quoted.html url="/assets/beach-app/Version_0.2.png" text="v0.2" width="200" %}
+{% include image_quoted.html url="/assets/beach-app/Version_0.3.png" text="v0.3" width="200" %}
