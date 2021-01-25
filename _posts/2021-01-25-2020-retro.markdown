@@ -1,0 +1,60 @@
+---
+layout: post
+title:  "2020 Retrospective"
+date:   2021-01-25T14:05:40.136265-08:00
+edited:   2021-01-25T14:05:40.136265-08:00
+tags:
+- Year in Review
+---
+
+It's 2021 and time to reflect on 2020. Sometimes I start these posts early in December but this year I was so busy throughout December that I didn't even think about it until mid-January.
+
+This post is part of a series, want to look back further? Checkout my previous years:
+* [2019 Reflection](2019-reflection)
+* [2018 Retrospective](2018-retrospective)
+* [2017 Wear some flowers in your hair](2017-wear-flowers-in-your-hair)
+* [2016 A Full Stack Year](2016-a-full-stack-year)
+
+## What happened in 2020?
+Overall 2020 was not bad for me!
+
+I spent a lot of time at home, I walked around and truly enjoyed my neighborhood. It's quirky and beautiful!
+
+{% include image_quoted.html url="/assets/2020-retro/collage-neighborhood.jpg" text="A few shots from around Castro" %}
+
+I still traveled some. I [made it Maui](maui-during-pandemic) with my roommate. I also did a fair bit of domestic travel which included LOTS of driving. I went with my sister on our first cross country road-trip from D.C. to San Francisco.
+
+{% include image_quoted.html url="/assets/2020-retro/2020-map.png" text="A map of all of my 2020 Travel" %}
+
+
+I shutdown a long term [side project](era-of-hosting). Closing it down was hard but worthwhile. I've got [one more long-term project](enlio) that I'm shuttering before the end of 2021. I'm hopeful that having fewer ongoing projects will give me more time to start some a new one.
+
+I increased my open-source contributions in 2020 and [contributed](https://github.com/federico-terzi/modulo) [to](https://github.com/lightSAML/lightSAML) [several](https://github.com/symfony/symfony-docs) [projects](https://github.com/autokey/autokey) that aren't my own. This is the first year where I have felt truly confident when contributing to other open-source projects and I want to continue this in 2021 with more substantial contributions.
+
+My goals for 2020 were pretty slim, which is fortunate since 2020 went off the rails. Here's how I did..
+* Promoted to Senior Software Engineer at work. ✔️
+* Health-wise I failed, I stopped biking to work when we started working from home and I haven't been to the gym. I have been running occasionally but less then previously. ❌
+* I re-modeled my personal website some, there's still room for improvement but there always will be. I cheated a little and switched domains while writing this post so johnspaetzel.com is now meh.dev. ✔️
+
+## What's next for 2021?
+
+I don't really know, the pandemic is still raging, and although a vaccine is now being distributed it'll be a while before things return fully to normal. As I write this the bay area is just coming down from it's highest case surge.
+
+{% include image_quoted.html url="/assets/2020-retro/covid-cases.png" text="Graph of new COVID-19 Cases in the Bay Area as of January 25th, 2021" %}
+
+
+I'm hoping to travel more internationally but probably not until the later half of the year. I'm looking forward to visiting my family again in Florida hopefully at some point as well, though I'll probably wait to be vaccinated before visiting.
+
+In December I worked on some new investments, consolidated work & personal cell phones, and I switched health insurance providers to a lower cost more convenient option. Basically I decided it's a good time to stop procrastinating. Continuing this trend in January I want to spend time spring cleaning and sell or donate anything that I haven't used in the last few years. I also want to do do some upgrades to my home office such as get a new webcam, mic, and maybe new desk.
+
+ > I decided it's a good time to stop procrastinating.
+
+I want to **simplify my life** and switch operating systems so that I use them same one for personal and work. Context switching between MacOS, Windows, and Ubuntu has made life more difficult then I like to admit. Even for simple things like writing this post, **fragmentation made things more difficult** since my build tool-chain wasn't readily available in Windows.
+
+I've been working from home for the last 9 months since our offices closed. I still haven't quite settled into a work routine that works well. This isn't ideal and I need to make more of an effort to **create separate space for work**.
+
+I still want to exercise more regularly and develop some good habits, one of these that I think I'll need to make an effort on is to **do regular meal planning**. Since im working from home every day it would be quite a bit better if I cooked at home regularly and ordered less take-out.
+
+# In... Conclusion?
+
+2021 feels like a continuation of 2020 which was put on hold by the pandemic. I think 2021 will be an optimization cycle without really specific goals. I want to upgrade all the little things in my life that could be better so that when opportunity or inspiration strikes I'll be at my best.
