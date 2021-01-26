@@ -9,7 +9,7 @@
 title: John Spaetzel
 email:
 baseurl: "" # the subpath of your site, e.g. /blog
-url: "https://johnspaetzel.com"
+url: "https://meh.dev"
 
 plugins:
   - jekyll-sitemap

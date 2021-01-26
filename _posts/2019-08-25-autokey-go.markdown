@@ -27,7 +27,7 @@ retCode, command = dialog.input_dialog(title='Go',
 
 bookmarks = {
     "gh": "https://github.com/jspaetzel",
-    "js": "https://johnspaetzel.com",
+    "js": "https://meh.dev",
     "groupmephp": "https://github.com/jspaetzel/GroupMePHP",
 }
 

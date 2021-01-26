@@ -1,3 +1,3 @@
-# johnspaetzel.com
+# meh.dev
 
-![Build Status](https://github.com/jspaetzel/johnspaetzel.com/workflows/CI/badge.svg?branch=master)
+![Build Status](https://github.com/jspaetzel/meh.dev/workflows/CI/badge.svg?branch=master)
