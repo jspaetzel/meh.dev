@@ -62,4 +62,4 @@ jobs:
 
 With this yaml added to the repo your site should get built and deployed automatically to github pages.
 
-This script is pretty slow for my site which requires several native extensions to build. With some caching or by building those in a container first this can likely be improved in speed significantly.
+This script was initially pretty slow for my site which requires several native extensions to build. With the new `ruby/setup-ruby@v1` github action the speed has increased substantially since the ruby extensions are now cached between builds!
