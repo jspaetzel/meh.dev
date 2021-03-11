@@ -2,14 +2,14 @@
 layout: post
 title:  "Drop-in Github Action Jekyll Builds"
 date:   2019-12-04 00:00:00 -0800
-edited:   2019-12-04 00:00:00 -0800
+edited: 2021-03-11T02:12:44.495718-08:00
 tags:
 - CI
 - Jekyll
 - Github Actions
 ---
 
-Github Actions are a reasonably powerful way to automate your CI/CD pipeline. I've experimented with using it to build this website and came up with an easy to use script that's a drop in way of building and deploying a jekyll website.
+Github Actions are a powerful way to automate your CI/CD pipeline. I've experimented with using it to build this website and came up with an easy to use script that's a drop in way of building and deploying jekyll to github pages.
 
 This script has a couple assumptions: 
 * Jekyll builds the site into the `_site` directory
@@ -40,10 +40,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@master
-      - uses: actions/setup-ruby@v1
+      - uses: ruby/setup-ruby@v1
         with:
-          ruby-version: '2.x'
-      - run: bundle install
+          ruby-version: '2.7'
+          bundler-cache: true
       - run: bundle exec jekyll build
       - run: |
           git clone "https://${GITHUB_PAT}@github.com/${GITHUB_REPOSITORY}.git"
