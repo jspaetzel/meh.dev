@@ -34,7 +34,7 @@ layout: default
           <div class="post-meta-icon">
             <i class="far fa-calendar"></i>
           </div>
-          Posted on 
+          Posted on
           <time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">
             {{ page.date | date: "%b %-d, %Y" }}
           </time>
@@ -46,14 +46,14 @@ layout: default
             <div class="post-meta-icon">
               <i class="far fa-calendar-check"></i>
             </div>
-            Edited on 
+            Edited on
             <time datetime="{{ page.edited | date_to_xmlschema }}" itemprop="dateModified">
               {{ page.edited | date: "%b %-d, %Y" }}
             </time>
           </div>
-          
+
         {% endif %}
-        
+
         {% if page.tags.size > 0 %}
         <ul class="tag-list">
           {% for tag in page.tags %}
@@ -63,7 +63,7 @@ layout: default
         {% endif %}
     </div>
   </header>
-  
+
   <div class="post-content" itemprop="articleBody">
     {{ content }}
 
