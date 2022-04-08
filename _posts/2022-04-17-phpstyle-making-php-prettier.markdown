@@ -17,7 +17,7 @@ Why doesn't PHP have more uniform, opinionated, styles? We see it with so many o
 
 In typical PHP fashion, we have a lot choices... This is a blessing and a curse working in such a mature language. I uncovered while [researching static analysis tools](php-static-analysis-tools) that there are two dominate tools for styling php, neither very opinionated out of the box.
 
-**[PHP_CodeSniffer](https://github.com/squizlabs/PHP_CodeSniffer) & PHP-CS-Fixer**
+**[PHP_CodeSniffer](https://github.com/squizlabs/PHP_CodeSniffer) & [PHP-CS-Fixer](https://cs.symfony.com/)**
 
 The main difference between these two is that PHP-CS-Fixer is fully automated. Once it's configured any issues it finds it will always fix. 
 
