@@ -11,12 +11,12 @@ jobs:
     steps:
       - uses: actions/checkout@master
       - uses: actions/setup-node@v2
-      - run: npm install
       - uses: ruby/setup-ruby@v1
         with:
           ruby-version: '3.0'
           bundler-cache: true
-      - run: bundle exec jekyll build
+      - run: npm install
+      - run: NODE_ENV=production bundle exec jekyll build
       - run: |
           git clone "https://${GITHUB_PAT}@github.com/${GITHUB_REPOSITORY}.git"
           cd $(basename "${GITHUB_REPOSITORY}")
