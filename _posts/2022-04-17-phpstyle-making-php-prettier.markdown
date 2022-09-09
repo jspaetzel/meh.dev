@@ -2,7 +2,7 @@
 layout: post
 title:  "PHPStyle: Making PHP Prettier"
 date: 2022-04-07T20:17:34.132211-07:00
-edited: 2022-04-07T20:17:34.132211-07:00
+edited: 2022-09-08T20:30:02.729376-06:00
 ---
 
 Why doesn't PHP have more uniform, opinionated, styles? We see it with so many other languages...
@@ -64,6 +64,7 @@ PHPStyle is easy to use, opinionated, and configured with a Neon/Yaml file (not 
 ## How to use PHPStyle
 
 1. Require the package
+
 ```bash
 composer require jspaetzel/phpstyle --dev
 ```
@@ -91,6 +92,7 @@ parameters:
 ```
 
 4. Run php-cs-fixer to fix your code
+
 ```bash
 ./vendor/bin/php-cs-fixer fix
 ```

@@ -1,25 +1,4 @@
 /**
- * Reset some basic elements
- */
-body, h1, h2, h3, h4, h5, h6,
-p, blockquote, pre, hr,
-dl, dd, ol, ul, figure {
-    margin: 0;
-    padding: 0;
-    text-rendering: optimizeLegibility;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-}
-
-p {
-    margin: 0 0 20px 0;
-}
-
-ul li, ol li {
-    line-height: 26px;
-}
-
-/**
  * Basic styling
  */
 html {
@@ -43,20 +22,6 @@ body {
     height: 100%;
 }
 
-
-
-/**
- * Set `margin-bottom` to maintain vertical rhythm
- */
-h1, h2, h3, h4, h5, h6,
-p, blockquote, pre,
-ul, ol, dl, figure,
-%vertical-rhythm {
-    margin-bottom: $spacing-unit / 3;
-}
-
-
-
 /**
  * Images
  */
@@ -64,21 +29,6 @@ img {
     max-width: 100%;
     vertical-align: middle;
 }
-
-
-
-/**
- * Figures
- */
-figure > img {
-    display: block;
-}
-
-figcaption {
-    font-size: $small-font-size;
-}
-
-
 
 /**
  * Lists
@@ -93,27 +43,6 @@ li {
          margin-bottom: 0;
     }
 }
-
-
-
-/**
- * Headings
- */
-h1, h2, h3, h4, h5, h6 {
-    font-family: 'Josefin Sans', sans-serif;
-    font-weight: $base-font-weight;
-    letter-spacing: 1px;
-    font-weight: bold;
-    line-height: 1.5;
-    margin: 20px 0 15px;
-}
-
-h1 { font-size: 1.5em; }
-h2 { font-size: 1.375em; }
-h3 { font-size: 1.25em; }
-h4 { font-size: 1.125em; }
-h5 { font-size: 1em; }
-h6 { font-size: 0.875em; }
 
 /**
  * Links
@@ -136,8 +65,6 @@ a, a:visited {
     }
 }
 
-
-
 /**
  * Blockquotes
  */
@@ -146,8 +73,8 @@ blockquote {
     background: #f7f7f7;
     border-left: 8px solid $green-300;
     margin: $spacing-unit / auto;
-    padding: $spacing-unit / 2;
-    font-size: 1.4em;
+    padding: $spacing-unit / 3;
+    font-size: 1em;
     font-style: italic;
     line-height: 1.6;
     position: relative;
@@ -160,72 +87,6 @@ blockquote {
   blockquote::after {
     content: '';
   }
-
-/**
- * Tables
- */
-
- table {
-    width: 100%;
-    overflow: auto;
-    display: block;
-    border-spacing: 0;
-    border-collapse: collapse; 
-    margin-top: $spacing-unit;
-    margin-bottom: $spacing-unit;
-
-    th {
-        font-weight: bold; 
-    }
-    
-    th, td {
-        border: 1px solid #ddd;
-        padding: 6px 13px; 
-    }
-    
-    tr {
-        border-top: 1px solid #ccc;
-        background-color: #fff; 
-    }
-    
-    tr:nth-child(2n) {
-        background-color: #f8f8f8; 
-    }
-}
-
-/**
- * Wrapper
- */
-
-.wrapper {
-    align-items: flex-start;
-    display: flex;
-    justify-content: space-between;
-    margin: 0 auto;
-    width: calc(100% - 20px);
-}
-
-@media (min-width: 1200px) {
-    .wrapper {
-        width: 1160px;
-    }
-}
-
-
-
-/**
- * Clearfix
- */
-%clearfix {
-
-    &:after {
-        content: "";
-        display: table;
-        clear: both;
-    }
-}
-
-
 
 /**
  * Icons

@@ -2,7 +2,7 @@
 layout: post
 title:  "The top PHP static code analysis tools of 2022"
 date:   2021-03-11T01:38:15.487804-08:00
-edited: 2022-01-04T19:56:50.345124-08:00
+edited: 2022-09-08T20:31:27.286592-06:00
 tags:
 - PHP
 - CI
@@ -16,7 +16,7 @@ This post separates these tools into one of two types depending on their purpose
 # Static Code Analysis Tools
 * [PHPStan](https://github.com/phpstan/phpstan) is the most commonly used tool and also one of the youngest. It has been rapidly adopted since it's release in 2016. It'll discover bugs in your code without running the code.
 
-* [Pslam](https://github.com/vimeo/psalm) was also released in 2016 and has grown in popularity a little more slowly. It claims more features out of the box and has a focus is on type-related bugs.
+* [Psalm](https://github.com/vimeo/psalm) was also released in 2016 and has grown in popularity a little more slowly. It claims more features out of the box and has a focus is on type-related bugs.
 
 * [Scrutinizer](https://scrutinizer-ci.com/) is the most popular commercial option in use by open-source projects and has been around longer then its open-source counterparts. It's free for open-source projects but is only available as a hosted solution.
 
@@ -24,7 +24,7 @@ This post separates these tools into one of two types depending on their purpose
 
 Let's look at what some popular open-source PHP project use. This table only includes repositories which have at least 1K GitHub stars, and which implement the static analysis tools as a component of their continuous integration systems.
 
-|                                                                   | ⭐     | [PHPStan](https://github.com/phpstan/phpstan) | [Pslam](https://github.com/vimeo/psalm) | [Scrutinizer](https://scrutinizer-ci.com/) | [Phan](https://github.com/phan/phan) |
+|                                                                   | ⭐     | [PHPStan](https://github.com/phpstan/phpstan) | [Psalm](https://github.com/vimeo/psalm) | [Scrutinizer](https://scrutinizer-ci.com/) | [Phan](https://github.com/phan/phan) |
 |-------------------------------------------------------------------|-------|-----------------------------------------------|-----------------------------------------|--------------------------------------------|--------------------------------------|
 | [Symfony](https://github.com/symfony/symfony)                     | 26.3K |                                               | ✔️                                      |                                            |                                      |
 | [Composer](https://github.com/composer/composer)                  | 26K   | ✔️                                            |                                         |                                            |                                      |
@@ -96,10 +96,10 @@ Here's a selection of some of the most popular packages using these today.
 # Conclusion
 The most popular tools to use overall appear to be PHPStan & PhpCsFixer. 
 
-However, it's not a one size fit all solution. Pslam appears to be gaining popularity among projects and is often used alongside PHPStan. And for enforcing code standards PhpCsFixer is the most popular but it's still often paired with PHPCS which has more complex configuration options.
+However, it's not a one size fit all solution. Psalm appears to be gaining popularity among projects and is often used alongside PHPStan. And for enforcing code standards PhpCsFixer is the most popular but it's still often paired with PHPCS which has more complex configuration options.
 
 The details in this post will probably not stay up to date for very long since the ecosystem is constantly evolving, but I found this analysis interesting when reviewing these tools for my own usage. If you have feedback or can correct me about any of the information in this post please leave me a comment.
 
 # Update Jan 2022
 
-Checked the status of all projects in these lists and updated stats. Pslam continues to grow in popularity, a couple projects added it since they were last checked. Otherwise, no major changes.
+Checked the status of all projects in these lists and updated stats. Psalm continues to grow in popularity, a couple projects added it since they were last checked. Otherwise, no major changes.

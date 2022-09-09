@@ -13,21 +13,20 @@ url: "https://meh.dev"
 
 plugins:
   - jekyll-sitemap
+  - jekyll-postcss
 
 excerpt_separator: <!--more-->
 
 # Build settings
 markdown: kramdown
-highlighter: rouge
+highlighter: none
 
 permalink: /:slug
 
 kramdown:
   input: GFM
-  syntax_highlighter: rouge
   syntax_highlighter_opts:
-    # Rouge Options › https://github.com/jneen/rouge#full-options
-    css_class: 'highlight'
-    block:
-      line_numbers: true
-      start_line: 1
+    disable: true
+
+postcss:
+  cache: false

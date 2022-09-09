@@ -1,38 +1,30 @@
 ---
-layout: default
+layout: page
 ---
 
-<article class="content-wrapper content-style-green">
-    <div class="page-content">
-        <div class="item">
-            <h2>About Me</h2>
-            <p><span id="hello">Hello</span>! I'm John Spaetzel. I'm a full stack software developer at <a href="https://www.hellosign.com/" target="_blank">HelloSign, a Dropbox Company</a> in San Francisco, CA. When im not programming, I am also an avid traveler, investor, gamer, foodie, runner, and lifelong eagle scout.</p>
+<h2>About Me</h2>
+<p><span id="hello">Hello</span>! I'm John Spaetzel. I'm a full stack software developer at <a href="https://www.hellosign.com/" target="_blank">HelloSign, a Dropbox Company</a> in San Francisco, CA. When im not programming, I am also an avid traveler, investor, gamer, foodie, runner, and lifelong eagle scout.</p>
 
-            <br/>
-            <h2>My Latest Posts & Projects</h2>
-            <ul class="post-list">
-                {% assign sortedPosts = site.posts | date: "%Y-%m-%d %H:%M" | sort: 'edited' | reverse %}
-                {% for post in sortedPosts limit:6 %}
-                <li>
-                    <div class="post-list-meta">{{ post.edited | date: "%b %-d, %Y" }}</div>
-                    <a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
-                </li>
-                {% endfor %}
-                <br>
-                <a href="/archive">Or see the full archive...</a>
-            </ul>
+<h2>My Latest Posts & Projects</h2>
+<ul class="post-list">
+    {% assign sortedPosts = site.posts | date: "%Y-%m-%d %H:%M" | sort: 'edited' | reverse %}
+    {% for post in sortedPosts limit:6 %}
+    <li>
+        <div class="post-list-meta">{{ post.edited | date: "%b %-d, %Y" }}</div>
+        <a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
+    </li>
+    {% endfor %}
+    <br>
+    <a href="/archive">Or see the full archive...</a>
+</ul>
 
-            <br/>
-            <h2>Contact</h2>
-            <p>If you'd like to chat please feel free to reach out to me via twitter <a href="https://twitter.com/johnspaetzel" target="_blank">@johnspaetzel</a> or leave a comment on a post and i'll do my best to respond.</p>
-            <div class="social">
-                <a href="https://github.com/jspaetzel"><i class="fab fa-github" aria-hidden="true"></i></a>
-                <a href="https://twitter.com/johnspaetzel"><i class="fab fa-twitter" aria-hidden="true"></i></a>
-                <a href="https://www.linkedin.com/in/johnspaetzel/"><i class="fab fa-linkedin" aria-hidden="true"></i></a>
-                <a href="https://meh.dev/feed.xml"><i class="fas fa-rss" aria-hidden="true"></i></a>
-            </div>
-        </div>
-    </div>
-</article>
+<h2>Contact</h2>
+<p>If you'd like to chat please feel free to reach out to me via twitter <a href="https://twitter.com/johnspaetzel" target="_blank">@johnspaetzel</a> or leave a comment on a post and i'll do my best to respond.</p>
+<div class="social">
+    <a href="https://github.com/jspaetzel"><i class="fab fa-github" aria-hidden="true"></i></a>
+    <a href="https://twitter.com/johnspaetzel"><i class="fab fa-twitter" aria-hidden="true"></i></a>
+    <a href="https://www.linkedin.com/in/johnspaetzel/"><i class="fab fa-linkedin" aria-hidden="true"></i></a>
+    <a href="https://meh.dev/feed.xml"><i class="fas fa-rss" aria-hidden="true"></i></a>
+</div>
 <script src="/js/cookie.util.js"></script>
 <script src="/js/hello.rotate.js"></script>
