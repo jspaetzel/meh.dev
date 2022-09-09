@@ -5,5 +5,8 @@
     "cssnano": "^5.1.13",
     "postcss": "^8.4.16",
     "tailwindcss": "^3.1.8"
+  },
+  "dependencies": {
+    "postcss-cli": "^10.0.0"
   }
 }
