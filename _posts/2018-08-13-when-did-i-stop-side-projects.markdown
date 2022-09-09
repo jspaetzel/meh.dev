@@ -2,7 +2,7 @@
 layout: post
 title:  "When did I stop side projects?"
 date:   2018-08-13 00:00:00 -0800
-edited:   2018-08-13 00:00:00 -0800
+last_modified_at:   2018-08-13 00:00:00 -0800
 tags:
 - Productivity
 ---

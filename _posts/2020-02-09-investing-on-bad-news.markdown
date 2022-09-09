@@ -2,7 +2,7 @@
 layout: post
 title:  "Bad news is good news?"
 date:   2020-02-09 00:00:00 -0800
-edited:   2020-02-09 00:00:00 -0800
+last_modified_at:   2020-02-09 00:00:00 -0800
 tags:
 - Money
 - Stocks

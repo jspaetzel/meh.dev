@@ -2,7 +2,7 @@
 layout: post
 title:  "Text expansion & clipboard management"
 date:   2018-04-24 00:00:00 -0800
-edited:   2018-04-24 00:00:00 -0800
+last_modified_at:   2018-04-24 00:00:00 -0800
 tags:
 - Productivity
 ---

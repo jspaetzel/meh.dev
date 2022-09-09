@@ -2,7 +2,7 @@
 layout: post
 title:  "Developing with PHPStorm and Laravel Homestead on Windows"
 date: 2021-12-27T17:47:45.210614-08:00
-edited: 2021-12-27T17:47:45.210614-08:00
+last_modified_at: 2021-12-27T17:47:45.210614-08:00
 ---
 
 It's the end of 2021, and we can finally port our development environments. You might be thinking, "just use docker" right? That's part of the solution, but the missing piece for a while has been a way to run the development environment directly along-side the application so that you can have a seamless experience when debugging.

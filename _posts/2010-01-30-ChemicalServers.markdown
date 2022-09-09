@@ -2,7 +2,7 @@
 layout: post
 title:  "Chemical Servers"
 date:   2010-01-30
-edited: 2010-01-30
+last_modified_at: 2010-01-30
 links:
 - Website: http://chemicalservers.com/
 tags:

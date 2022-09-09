@@ -2,7 +2,7 @@
 layout: post
 title:  "The Hosting Tool"
 date: 2010-01-01
-edited: 2010-01-01
+last_modified_at: 2010-01-01
 links:
 - The Hosting Tool Website: http://thehostingtool.com/
 tags:

@@ -2,7 +2,7 @@
 layout: post
 title:  "How to use a fork of a Composer Package"
 date: 2022-07-08T17:38:31.457571-07:00
-edited: 2022-07-08T17:38:31.457571-07:00
+last_modified_at: 2022-07-08T17:38:31.457571-07:00
 ---
 
 ## 1. Fork the Git Repository on Github

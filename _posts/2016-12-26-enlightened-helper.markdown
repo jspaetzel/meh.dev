@@ -2,7 +2,7 @@
 layout: post
 title:  "Enlightened Helper"
 date: 2016-12-26
-edited: 2016-12-26
+last_modified_at: 2016-12-26
 tags:
 - PHP
 - AWS

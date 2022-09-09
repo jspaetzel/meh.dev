@@ -2,7 +2,7 @@
 layout: post
 title:  "Beach App"
 date: 2018-09-02
-edited: 2018-09-02
+last_modified_at: 2018-09-02
 tags:
 - Android
 - Flutter

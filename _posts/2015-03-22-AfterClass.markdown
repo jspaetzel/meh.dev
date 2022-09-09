@@ -2,7 +2,7 @@
 layout: post
 title:  "After Class"
 date: 2015-03-22
-edited: 2015-03-22
+last_modified_at: 2015-03-22
 active: false
 tags:
 - Hackathon

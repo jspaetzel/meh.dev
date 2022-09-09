@@ -2,7 +2,7 @@
 layout: post
 title:  "A simple Ubiquity WiFi setup"
 date:   2019-10-02 00:00:00 -0800
-edited:   2019-10-02 00:00:00 -0800
+last_modified_at:   2019-10-02 00:00:00 -0800
 tags:
 - Networking
 ---

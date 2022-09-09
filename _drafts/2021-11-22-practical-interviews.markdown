@@ -2,7 +2,7 @@
 layout: post
 title:  "Practical Interviewing"
 date: 2021-11-22T17:59:45.210614-08:00
-edited: 2021-11-22T17:59:45.210614-08:00
+last_modified_at: 2021-11-22T17:59:45.210614-08:00
 ---
 
 There's two main styles of interviewing.

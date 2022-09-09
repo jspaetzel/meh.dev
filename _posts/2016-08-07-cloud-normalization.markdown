@@ -2,7 +2,7 @@
 layout: post
 title:  "Cloud Normalization"
 date:   2016-08-07 00:00:00 -0500
-edited:   2016-08-07 00:00:00 -0500
+last_modified_at:   2016-08-07 00:00:00 -0500
 tags:
 - Azure
 - AWS

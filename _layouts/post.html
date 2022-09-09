@@ -39,7 +39,7 @@ layout: default
             {{ page.date | date: "%b %-d, %Y" }}
           </time>
         </div>
-        {% assign editedDate = page.edited | date: '%s' %}
+        {% assign editedDate = page.last_modified_at | date: '%s' %}
         {% assign datePublished = page.date | date: '%s' %}
         {% if editedDate and editedDate != datePublished %}
           <div class="post-meta-text">
@@ -47,8 +47,8 @@ layout: default
               <i class="far fa-calendar-check"></i>
             </div>
             Edited on
-            <time datetime="{{ page.edited | date_to_xmlschema }}" itemprop="dateModified">
-              {{ page.edited | date: "%b %-d, %Y" }}
+            <time datetime="{{ page.last_modified_at | date_to_xmlschema }}" itemprop="dateModified">
+              {{ page.last_modified_at | date: "%b %-d, %Y" }}
             </time>
           </div>
 

@@ -7,10 +7,10 @@ layout: page
 
 <h2>My Latest Posts & Projects</h2>
 <ul class="post-list">
-    {% assign sortedPosts = site.posts | date: "%Y-%m-%d %H:%M" | sort: 'edited' | reverse %}
+    {% assign sortedPosts = site.posts | date: "%Y-%m-%d %H:%M" | sort: 'last_modified_at' | reverse %}
     {% for post in sortedPosts limit:6 %}
     <li>
-        <div class="post-list-meta">{{ post.edited | date: "%b %-d, %Y" }}</div>
+        <div class="post-list-meta">{{ post.last_modified_at | date: "%b %-d, %Y" }}</div>
         <a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
     </li>
     {% endfor %}

@@ -2,7 +2,7 @@
 layout: post
 title:  "The top PHP static code analysis tools of 2022"
 date:   2021-03-11T01:38:15.487804-08:00
-edited: 2022-09-08T20:31:27.286592-06:00
+last_modified_at: 2022-09-08T20:31:27.286592-06:00
 tags:
 - PHP
 - CI

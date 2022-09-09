@@ -2,7 +2,7 @@
 layout: post
 title:  "Money saving tricks for millennials"
 date:   2019-07-06 00:00:00 -0800
-edited:   2019-07-06 00:00:00 -0800
+last_modified_at:   2019-07-06 00:00:00 -0800
 tags:
 - Money
 ---

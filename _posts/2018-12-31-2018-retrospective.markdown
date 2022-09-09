@@ -2,7 +2,7 @@
 layout: post
 title:  "2018 Retrospective"
 date:   2018-12-31 00:00:00 -0800
-edited:   2018-12-31 00:00:00 -0800
+last_modified_at:   2018-12-31 00:00:00 -0800
 tags:
 - Year in Review
 ---

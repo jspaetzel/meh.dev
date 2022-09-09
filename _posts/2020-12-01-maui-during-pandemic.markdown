@@ -2,7 +2,7 @@
 layout: post
 title:  "I visited Maui during the pandemic"
 date:   2020-12-01T14:57:24.528141-08:00
-edited: 2020-12-08T19:53:14.265610-08:00
+last_modified_at: 2020-12-08T19:53:14.265610-08:00
 tags:
 - Travel
 ---

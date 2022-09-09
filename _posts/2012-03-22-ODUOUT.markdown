@@ -2,7 +2,7 @@
 layout: post
 title:  "ODU OUT"
 date:   2012-03-22
-edited: 2012-03-22
+last_modified_at: 2012-03-22
 tags:
 - OrgSync
 - Project
