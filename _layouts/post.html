@@ -30,29 +30,29 @@ layout: default
   <header class="post-header">
     
     <div class="post-meta">
-        <div class="post-meta-text">
-          <div class="post-meta-icon">
-            <i class="far fa-calendar"></i>
-          </div>
-          Posted on
-          <time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">
-            {{ page.date | date: "%b %-d, %Y" }}
-          </time>
+    {% assign editedDate = page.last_modified_at | date: '%s' %}
+    {% assign datePublished = page.date | date: '%s' %}
+    {% if editedDate and editedDate != datePublished %}
+    <div class="post-meta-text">
+      <div class="post-meta-icon">
+          <i class="far fa-calendar-check"></i>
         </div>
-        {% assign editedDate = page.last_modified_at | date: '%s' %}
-        {% assign datePublished = page.date | date: '%s' %}
-        {% if editedDate and editedDate != datePublished %}
-          <div class="post-meta-text">
-            <div class="post-meta-icon">
-              <i class="far fa-calendar-check"></i>
-            </div>
-            Edited on
-            <time datetime="{{ page.last_modified_at | date_to_xmlschema }}" itemprop="dateModified">
-              {{ page.last_modified_at | date: "%b %-d, %Y" }}
-            </time>
-          </div>
-
-        {% endif %}
+        Edited on
+        <time datetime="{{ page.last_modified_at | date_to_xmlschema }}" itemprop="dateModified">
+          {{ page.last_modified_at | date: "%b %-d, %Y" }}
+        </time>
+      </div>
+    {% else %}
+      <div class="post-meta-text">
+        <div class="post-meta-icon">
+          <i class="far fa-calendar"></i>
+        </div>
+        Posted on
+        <time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">
+          {{ page.date | date: "%b %-d, %Y" }}
+        </time>
+      </div>
+    {% endif %}
     </div>
 
     {% if page.tags.size > 0 %}
