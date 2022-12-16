@@ -9,7 +9,7 @@ permalink: /archive/
 <ul class="post-list">
   {% for post in site.posts %}
     <li>
-      <div class="post-list-meta">{{ post.date | date: "%b %-d, %Y" }}</div>
+      <div class="post-list-meta">{{ post.date | date: "%b %d, %Y" }}</div>
       <a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
     </li>
   {% endfor %}

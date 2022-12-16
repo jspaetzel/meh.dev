@@ -10,7 +10,7 @@ layout: page
     {% assign sortedPosts = site.posts | date: "%Y-%m-%d %H:%M" | sort: 'last_modified_at' | reverse %}
     {% for post in sortedPosts limit:6 %}
     <li>
-        <div class="post-list-meta">{{ post.last_modified_at | date: "%b %-d, %Y" }}</div>
+        <div class="post-list-meta">{{ post.last_modified_at | date: "%b %d, %Y" }}</div>
         <a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
     </li>
     {% endfor %}
