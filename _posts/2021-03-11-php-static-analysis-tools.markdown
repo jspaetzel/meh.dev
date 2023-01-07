@@ -1,8 +1,8 @@
 ---
 layout: post
-title:  "The top PHP static code analysis tools of 2022"
+title:  "The top PHP static code analysis tools of 2023"
 date:   2021-03-11T01:38:15.487804-08:00
-last_modified_at: 2022-09-08T20:31:27.286592-06:00
+last_modified_at: 2023-01-06T20:46:45.380623-08:00
 tags:
 - PHP
 - CI
@@ -11,7 +11,7 @@ tags:
 
 The PHP community has a diverse ecosystem of static analysis tools which can make it somewhat difficult to decide which tools to use. Hopefully this post helps you decide which of these tools you'll use.
 
-This post separates these tools into one of two types depending on their purpose. The first section is static analysis for the purpose of identifying bugs. The later section is for maintenance of code style.
+This post separates these tools into one of two types depending on their purpose. The first section is static analysis for the purpose of identifying bugs. The later section is for maintenance of code style/formatting.
 
 # Static Code Analysis Tools
 * [PHPStan](https://github.com/phpstan/phpstan) is the most commonly used tool and also one of the youngest. It has been rapidly adopted since it's release in 2016. It'll discover bugs in your code without running the code.
@@ -26,26 +26,27 @@ Let's look at what some popular open-source PHP project use. This table only inc
 
 |                                                                   | ⭐     | [PHPStan](https://github.com/phpstan/phpstan) | [Psalm](https://github.com/vimeo/psalm) | [Scrutinizer](https://scrutinizer-ci.com/) | [Phan](https://github.com/phan/phan) |
 |-------------------------------------------------------------------|-------|-----------------------------------------------|-----------------------------------------|--------------------------------------------|--------------------------------------|
-| [Symfony](https://github.com/symfony/symfony)                     | 26.3K |                                               | ✔️                                      |                                            |                                      |
-| [Composer](https://github.com/composer/composer)                  | 26K   | ✔️                                            |                                         |                                            |                                      |
-| [Guzzle](https://github.com/guzzle/guzzle)                        | 21.4K | ✔️                                            | ✔️                                      |                                            |                                      |
-| [Monolog](https://github.com/Seldaek/monolog)                     | 19.4K | ✔️                                            |                                         |                                            |                                      |
-| [PHPUnit](https://github.com/sebastianbergmann/phpunit)           | 18.1K |                                               | ✔️                                      |                                            |                                      |
-| [NextCloud](https://github.com/nextcloud/server)                  | 17.9K |                                               | ✔️                                      | ✔️                                         |                                      |
-| [Yii2](https://github.com/yiisoft/yii2)                           | 13.9K |                                               |                                         | ✔️                                         |                                      |
-| [PHPDotEnv](https://github.com/vlucas/phpdotenv)                  | 11.7K | ✔️                                            | ✔️                                      |                                            |                                      |
-| [Slim](https://github.com/slimphp/Slim)                           | 11.2K | ✔️                                            |                                         |                                            |                                      |
-| [Phalcon](https://github.com/phalcon/phalcon)                     | 10.5K | ️                                             | ️✔                                      |                                            |                                      |
-| [Doctrine](https://github.com/doctrine/orm)                       | 9K    | ✔️                                            | ✔                                       |                                            |                                      |
-| [Assert](https://github.com/webmozarts/assert)                    | 7K    |                                               | ✔️                                      |                                            |                                      |
-| [AWS SDK](https://github.com/aws/aws-sdk-php)                     | 5.4K  | ✔️                                            |                                         |                                            |                                      |
-| [Elasticsearch SDK](https://github.com/elastic/elasticsearch-php) | 4.8K  | ✔️                                            |                                         |                                            |                                      |
-| [php-amqplib](https://github.com/php-amqplib/php-amqplib)         | 4K    |                                               |                                         | ✔️                                         |                                      |
-| [Stripe SDK](https://github.com/stripe/stripe-php)                | 3K    | ✔️                                            |                                         |                                            |                                      |
-| [Mediawiki](https://github.com/wikimedia/mediawiki)               | 2.8K* |                                               |                                         |                                            | ✔️                                   |
-| [Maxmind GeoIP2](https://github.com/maxmind/GeoIP2-php)           | 2K    | ✔️                                            |                                         |                                            |                                      |
-| [Paratest](https://github.com/paratestphp/paratest)               | 1.9K  | ✔️                                            | ✔️                                      |                                            |                                      |
-| [Sentry SDK](https://github.com/getsentry/sentry-php)             | 1.6K  | ✔️                                            | ✔️                                      |                                            |                                      |
+| [Symfony](https://github.com/symfony/symfony)                     | 27.8K |                                               | ✔️                                      |                                            |                                      |
+| [Composer](https://github.com/composer/composer)                  | 27.2K | ✔️                                            |                                         |                                            |                                      |
+| [Guzzle](https://github.com/guzzle/guzzle)                        | 22.3K | ✔️                                            | ✔️                                      |                                            |                                      |
+| [NextCloud](https://github.com/nextcloud/server)                  | 21.1K |                                               | ✔️                                      | ✔️                                         |                                      |
+| [Monolog](https://github.com/Seldaek/monolog)                     | 20.1K | ✔️                                            |                                         |                                            |                                      |
+| [PHPUnit](https://github.com/sebastianbergmann/phpunit)           | 18.8K |                                               | ✔️                                      |                                            |                                      |
+| [Yii2](https://github.com/yiisoft/yii2)                           | 14K   |                                               |                                         | ✔️                                         |                                      |
+| [PHPDotEnv](https://github.com/vlucas/phpdotenv)                  | 12.3K | ✔️                                            | ✔️                                      |                                            |                                      |
+| [Slim](https://github.com/slimphp/Slim)                           | 11.5K | ✔️                                            |                                         |                                            |                                      |
+| [Phalcon](https://github.com/phalcon/phalcon)                     | 10.7K | ️                                             | ✔️                                      | ✔️                                         |                                      |
+| [Doctrine](https://github.com/doctrine/orm)                       | 9.5K  | ✔️                                            | ✔️                                      |                                            |                                      |
+| [php-jwt](https://github.com/firebase/php-jwt)                    | 8.6K  | ✔️                                            | ️                                       |                                            |                                      |
+| [Assert](https://github.com/webmozarts/assert)                    | 7.2K  |                                               | ✔️                                      |                                            |                                      |
+| [AWS SDK](https://github.com/aws/aws-sdk-php)                     | 5.7K  | ✔️                                            |                                         |                                            |                                      |
+| [Elasticsearch SDK](https://github.com/elastic/elasticsearch-php) | 5K    | ✔️                                            |                                         |                                            |                                      |
+| [php-amqplib](https://github.com/php-amqplib/php-amqplib)         | 4.2K  |                                               |                                         | ✔️                                         |                                      |
+| [Stripe SDK](https://github.com/stripe/stripe-php)                | 3.3K  | ✔️                                            |                                         |                                            |                                      |
+| [Mediawiki](https://github.com/wikimedia/mediawiki)               | 3.3K* |                                               |                                         |                                            | ✔️                                   |
+| [Maxmind GeoIP2](https://github.com/maxmind/GeoIP2-php)           | 2.1K  | ✔️                                            |                                         |                                            |                                      |
+| [Paratest](https://github.com/paratestphp/paratest)               | 2K    |                                               | ✔️                                      |                                            |                                      |
+| [Sentry SDK](https://github.com/getsentry/sentry-php)             | 1.7K  | ✔️                                            | ✔️                                      |                                            |                                      |
 
 There's a few other fairly popular tools worth mentioning but which were not used by the projects above during CI.
 * [PHP Mess Detector](https://github.com/phpmd/phpmd): This is an older static analysis tool which offers some different functionality. Besides identifying potential bugs it also can help identifying generally poor code. It's very mature and may be more useful for targeted project analysis.
@@ -68,38 +69,53 @@ Here's a selection of some of the most popular packages using these today.
 
 |                                                                   | ⭐      | [PHPCS](https://github.com/squizlabs/PHP_CodeSniffer) | [PhpCsFixer](https://github.com/FriendsOfPHP/PHP-CS-Fixer) | [Style CI](https://styleci.io/) |
 |-------------------------------------------------------------------|--------|-------------------------------------------------------|------------------------------------------------------------|---------------------------------|
-| [Laravel](https://github.com/laravel/laravel)                     | 67.8K  |                                                       |                                                            | ✔️                              |
-| [Symfony](https://github.com/symfony/symfony)                     | 26.3K  |                                                       | ✔️                                                         |                                 |
-| [Composer](https://github.com/composer/composer)                  | 26K    |                                                       | ✔️                                                         |                                 |
-| [Guzzle](https://github.com/guzzle/guzzle)                        | 21.4K  |                                                       | ✔️                                                         |                                 |
-| [Monolog](https://github.com/Seldaek/monolog)                     | 19.4K  |                                                       | ✔️                                                         |                                 |
-| [PHPUnit](https://github.com/sebastianbergmann/phpunit)           | 18.1K  |                                                       | ✔️                                                         |                                 |
-| [NextCloud](https://github.com/nextcloud/server)                  | 17.9K  |                                                       | ✔️                                                         |                                 |
+| [Laravel](https://github.com/laravel/laravel)                     | 71.9K  |                                                       |                                                            | ✔️                              |
+| [Symfony](https://github.com/symfony/symfony)                     | 27.8K  |                                                       | ✔️                                                         |                                 |
+| [Composer](https://github.com/composer/composer)                  | 27.2K  |                                                       | ✔️                                                         |                                 |
+| [Guzzle](https://github.com/guzzle/guzzle)                        | 22.3K  |                                                       | ✔️                                                         |                                 |
+| [NextCloud](https://github.com/nextcloud/server)                  | 21.1K  |                                                       | ✔️                                                         |                                 |
+| [Monolog](https://github.com/Seldaek/monolog)                     | 20.1K  |                                                       | ✔️                                                         |                                 |
+| [PHPUnit](https://github.com/sebastianbergmann/phpunit)           | 18.8K  |                                                       | ✔️                                                         |                                 |
 | [Wordpress](https://github.com/WordPress/WordPress)               | 15.8K* | ✔️                                                    |                                                            |                                 |
-| [Yii2](https://github.com/yiisoft/yii2)                           | 13.9K  |                                                       | ✔️                                                         |                                 |
-| [Slim](https://github.com/slimphp/Slim)                           | 11.2K  | ✔️                                                    |                                                            |                                 |
-| [Phalcon](https://github.com/phalcon/phalcon)                     | 10.5K  | ✔️                                                    | ✔️                                                         |                                 |
-| [Doctrine](https://github.com/doctrine/orm)                       | 9K     | ✔️                                                    |                                                            |                                 |
-| [php-jwt](https://github.com/firebase/php-jwt)                    | 7.9K   |                                                       | ✔️                                                         |                                 |
-| [Twig](https://github.com/twigphp/Twig)                           | 7.4K   |                                                       | ✔️                                                         |                                 |
-| [Assert](https://github.com/webmozarts/assert)                    | 7K     |                                                       | ✔️                                                         |                                 |
-| [Predis](https://github.com/predis/predis)                        | 7K     |                                                       | ✔️                                                         |                                 |
-| [Elasticsearch SDK](https://github.com/elastic/elasticsearch-php) | 4.8K   | ✔️                                                    | ✔️                                                         |                                 |
-| [php-amqplib](https://github.com/php-amqplib/php-amqplib)         | 4K     | ✔️                                                    |                                                            |                                 |
+| [Yii2](https://github.com/yiisoft/yii2)                           | 14K    |                                                       | ✔️                                                         |                                 |
+| [Slim](https://github.com/slimphp/Slim)                           | 11.5K  | ✔️                                                    |                                                            |                                 |
+| [Phalcon](https://github.com/phalcon/phalcon)                     | 10.7K  | ✔️                                                    | ️                                                          |                                 |
+| [Doctrine](https://github.com/doctrine/orm)                       | 9.5K   | ✔️                                                    |                                                            |                                 |
+| [php-jwt](https://github.com/firebase/php-jwt)                    | 8.6K   |                                                       | ✔️                                                         |                                 |
+| [Twig](https://github.com/twigphp/Twig)                           | 7.7K   |                                                       | ✔️                                                         |                                 |
+| [Assert](https://github.com/webmozarts/assert)                    | 7.2K   |                                                       | ✔️                                                         |                                 |
+| [Predis](https://github.com/predis/predis)                        | 7.3K   |                                                       | ✔️                                                         |                                 |
+| [Elasticsearch SDK](https://github.com/elastic/elasticsearch-php) | 5K     | ✔️                                                    | ✔️                                                         |                                 |
+| [php-amqplib](https://github.com/php-amqplib/php-amqplib)         | 4.2K   | ✔️                                                    |                                                            |                                 |
 | [Stripe SDK](https://github.com/stripe/stripe-php)                | 3.6K   |                                                       | ✔️                                                         |                                 |
-| [Drupal](https://github.com/drupal/drupal)                        | 3.5K*  | ✔️                                                    |                                                            |                                 |
-| [Mediawiki](https://github.com/wikimedia/mediawiki)               | 2.8K*  | ✔️                                                    |                                                            |                                 |
-| [Maxmind GeoIP2](https://github.com/maxmind/GeoIP2-php)           | 2K     | ✔️                                                    | ✔️                                                         |                                 |
-| [Paratest](https://github.com/paratestphp/paratest)               | 1.9K   | ✔️                                                    |                                                            |                                 |
-| [Sentry SDK](https://github.com/getsentry/sentry-php)             | 1.6K   |                                                       | ✔️                                                         |                                 |
+| [Drupal](https://github.com/drupal/drupal)                        | 3.8K*  | ✔️                                                    |                                                            |                                 |
+| [Mediawiki](https://github.com/wikimedia/mediawiki)               | 3.3K*  | ✔️                                                    |                                                            |                                 |
+| [Maxmind GeoIP2](https://github.com/maxmind/GeoIP2-php)           | 2.1K   | ✔️                                                    | ✔️                                                         |                                 |
+| [Paratest](https://github.com/paratestphp/paratest)               | 2K     | ✔️                                                    |                                                            |                                 |
+| [Sentry SDK](https://github.com/getsentry/sentry-php)             | 1.7K   |                                                       | ✔️                                                         |                                 |
+
+## PhpCsFixer Utilities
+PhpCsFixer isn't the most opinionated tool. A couple of projects have cropped up that ship opinionated configurations for this tool.
+* [Pint](https://laravel.com/docs/9.x/pint) by the Laravel team.
+* [PHPStyle](https://php.style/) my own opinionated configuration.
 
 # Conclusion
-The most popular tools to use overall appear to be PHPStan & PhpCsFixer. 
+The most popular tools to use overall appear are PHPStan & PhpCsFixer.
 
-However, it's not a one size fit all solution. Psalm appears to be gaining popularity among projects and is often used alongside PHPStan. And for enforcing code standards PhpCsFixer is the most popular but it's still often paired with PHPCS which has more complex configuration options.
+However, it's not a one size fit all solution. Psalm has some popularity and is often used alongside PHPStan. And for enforcing code standards, PhpCsFixer is the most popular, but it's still often paired with PHPCS which has more complex configuration options.
 
 The details in this post will probably not stay up to date for very long since the ecosystem is constantly evolving, but I found this analysis interesting when reviewing these tools for my own usage. If you have feedback or can correct me about any of the information in this post please leave me a comment.
 
-# Update Jan 2022
+# Changelog
+This post is periodically updated to keep up with the latest trends. See a list of it's changes below.
 
+## Jan 2023
+* Updated the status of all projects on this page. Most projects gained some popularity but order stayed roughly the same.
+* PHPStan, PHP-CS-Fixer, and Scrutinizer grew in popularity.
+* Add section about php-cs-fixer utilities.
+
+## Jan 2022
 Checked the status of all projects in these lists and updated stats. Psalm continues to grow in popularity, a couple projects added it since they were last checked. Otherwise, no major changes.
+
+## March 2021
+First version of this released
