@@ -1,6 +1,6 @@
 # meh.dev
 
-* `sudo apt install ruby ruby-bundler`
+* `sudo apt install ruby ruby-dev ruby-bundler libffi-dev gcc g++`
 * `bundle install`
 * `npm install`
 * `./run.sh`

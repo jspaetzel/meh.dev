@@ -73,7 +73,7 @@ blockquote {
     background: #f7f7f7;
     border-left: 8px solid $green-300;
     margin: $spacing-unit / auto;
-    padding: $spacing-unit / 3;
+    padding: calc($spacing-unit / 3);
     font-size: 1em;
     font-style: italic;
     line-height: 1.6;
