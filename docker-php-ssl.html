@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width"/>
+  
+  <title>Development with Docker, Apache, PHP, and SSL via Traefik</title>
+  <meta name="description" content="I recently converted one of my projects from a Vagrant VM to Docker and during this conversion I learned about Traefik Proxy. It’s a handy proxy that when co...">
+
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="/css/prism.css">
+
+  <link rel="canonical" href="https://meh.dev/docker-php-ssl">
+  <link rel="alternate" type="application/rss+xml" title="meh.dev" href="https://meh.dev/feed.xml">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5647176622308419"
+          crossorigin="anonymous"></script>
+</head>
+
+
+  <body class="line-numbers">
+
+    <header class="site-header">
+  <div class="px-4 py-8 max-w-7xl sm:px-6 md:px-12 lg:px-24 lg:py-8">
+    <a class="site-title" href="/">
+      <img src="https://0.gravatar.com/avatar/ccf00de89ec54577fb9fd612358a9808?s=56">
+      meh.dev
+    </a>
+    <nav class="site-nav">
+      <a class="page-link" href="/cv">CV</a>
+      <a class="page-link" href="/archive">Archive</a>
+    </nav>
+  </div>
+</header>
+
+
+    <div class="px-4 py-8 max-w-7xl md:px-12 lg:px-24 lg:py-8 content-style-green">
+      
+
+<article class="prose lg:prose-lg prose-img:rounded-xl" itemscope itemtype="http://schema.org/BlogPosting">
+  <h1 class="post-title" itemprop="name headline">Development with Docker, Apache, PHP, and SSL via Traefik</h2>
+  <header class="post-header">
+    
+    <div class="post-meta">
+    
+    
+    
+      <div class="post-meta-text">
+        <div class="post-meta-icon">
+          <i class="far fa-calendar"></i>
+        </div>
+        Posted on
+        <time datetime="2022-12-16T01:32:50+00:00" itemprop="datePublished">
+          Dec 16, 2022
+        </time>
+      </div>
+    
+    </div>
+
+    
+    <ul class="tag-list">
+      
+      <li class="inline"><a class="tag-list-link" href="/tag/Docker">Docker</a></li>
+      
+      <li class="inline"><a class="tag-list-link" href="/tag/Traefik">Traefik</a></li>
+      
+      <li class="inline"><a class="tag-list-link" href="/tag/PHP">PHP</a></li>
+      
+      <li class="inline"><a class="tag-list-link" href="/tag/Apache">Apache</a></li>
+      
+    </ul>
+    
+  </header>
+
+  <div class="p-4" itemprop="articleBody">
+    <p>I recently converted one of my projects from a Vagrant VM to Docker and during this conversion I learned about Traefik Proxy. It’s a handy proxy that when configured to do so is capable of abstracting away the TLS/SSL concerns of your application.</p>
+
+<p>This post goes through a sample project I built that shows this off using docker, apache, php, xdebug, and Traefik for local development.</p>
+
+<p>Want to skip straight to the <a href="https://github.com/jspaetzel/docker-php">complete sample project? Click here!</a></p>
+
+<p><strong>Project Overview</strong></p>
+<ul>
+  <li>docker/configs/apache/            – apache configs for example.test site</li>
+  <li>docker/configs/php/               – php configs (for xdebug with docker)</li>
+  <li>docker/web/Dockerfile             – customized php8.0-apache Dockerfile</li>
+  <li>docker/traefik/certificates/       – gitignored folder for holding your dev certs</li>
+  <li>docker/traefik/traefik-certs.yml  – configuration for traefik</li>
+  <li>docker/traefik/traefik.yml        – configuration for traefik</li>
+  <li>docker/web/Dockerfile             – web container</li>
+  <li>public/                           – your application index</li>
+</ul>
+
+<h2 id="configuring-php81-apache">Configuring php:8.1-apache</h2>
+<p>The default php:8.1-apache docker image isn’t ready for development out of the box. Here’s some of the changes I recommend making.</p>
+
+<p><strong>Installing PHP Extensions</strong></p>
+<pre><code class="language-Dockerfile">COPY --from=mlocati/php-extension-installer /usr/bin/install-php-extensions /usr/local/bin/
+RUN set -eux; \
+    install-php-extensions \
+        xdebug \
+    ;
+</code></pre>
+
+<p><strong>Customizing PHP</strong></p>
+<pre><code class="language-Dockerfile">COPY docker/configs/php/*.ini $PHP_INI_DIR/conf.d/
+</code></pre>
+<p>This example only includes a xdebug.ini config, but you can add additional ini files here to make other changes.</p>
+
+<p><strong>Configure Apache sites and enabling mods</strong></p>
+<pre><code class="language-Dockerfile">COPY ./docker/configs/apache/sites-enabled/* /etc/apache2/sites-enabled/
+RUN a2enmod allowmethods \
+    &amp;&amp; a2enmod headers \
+    &amp;&amp; a2enmod mime \
+    &amp;&amp; a2enmod rewrite
+</code></pre>
+
+<p>That’s the bare minimum, here’s a few more things you might want to do
+<strong>Install Composer</strong></p>
+<pre><code class="language-Dockerfile">COPY --from=composer/composer:2-bin /composer /usr/bin/composer
+</code></pre>
+
+<p><strong>Change the document root</strong></p>
+<pre><code class="language-Dockerfile">ENV APACHE_DOCUMENT_ROOT /var/www/html/
+RUN sed -ri -e 's!/var/www/html!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/sites-available/*.conf
+RUN sed -ri -e 's!/var/www/!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/apache2.conf /etc/apache2/conf-available/*.conf
+</code></pre>
+
+<p>View the <a href="https://github.com/jspaetzel/docker-php/blob/main/docker/web/Dockerfile">complete Dockerfile here</a>.</p>
+
+<h2 id="configuring-traefik">Configuring Traefik</h2>
+<p>In this configuration Apache is never exposed to your host directly, Traefik will proxy HTTPS requests on port 443 to the Apache server running on port 80. With this configuration Apache and your application is completely decoupled from TLS/SSL negotiation.</p>
+
+<p>You’ll need some self-signed certificates in order to configure SSL. I’ve used <a href="https://mkcert.dev/">mkcert</a> to create and trust them on my localhost. Before you proceed, <a href="https://github.com/FiloSottile/mkcert#installation">install mkcert</a>.</p>
+<pre><code class="language-bash">mkcert -install
+mkcert example.test
+mv example.*.pem docker/traefik/certificates/
+</code></pre>
+
+<p>Copy the <a href="https://github.com/jspaetzel/docker-php/tree/main/docker/traefik">Traefik configs</a> and adjust them for your application.</p>
+
+<p>A few notes about these configs.</p>
+<ul>
+  <li>The “network” in the <code>traefik.yml</code> file should match the network from your <code>docker-compose.yml</code> file.</li>
+  <li>Update the <code>traefik-certs.yml</code> file for the certificates you generated with mkcert.</li>
+</ul>
+
+<p>Traefik uses docker labels in order to configure it’s routing. The container you are using as a web server should have labels somewhat like the following:</p>
+<pre><code class="language-docker-compose.yml">labels:
+    - "traefik.enable=true"
+    - "traefik.backend=web"
+    - "traefik.http.routers.web.rule=Host(`example.test`)"
+    - "traefik.http.routers.web.entrypoints=websecure"
+    - "traefik.http.routers.web.tls=true"
+    - "traefik.http.services.web.loadbalancer.server.port=80"
+    - "traefik.http.services.web.loadbalancer.server.scheme=http"
+</code></pre>
+<p>These labels tell Traefik to take TLS traffic on the websecure entrypoint, check that the host matches example.test, and then load balance that traffic to port 80 on this container.</p>
+
+<h2 id="using-xdebug">Using xDebug</h2>
+<p>With this configuration xDebug should be ready to go. The only thing I needed to do in PHPStorm is enable listening for connections and configure the path mapping.</p>
+
+<p><img src="./assets/phpstorm/xdebug-example.test.png" alt="example.test" title="XDebug Config for example.test" /></p>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>There’s only a few more things left to do.</p>
+
+<p><strong>Add an entry for the site to your hosts file</strong></p>
+<pre><code>127.0.0.1 example.test
+</code></pre>
+
+<p><strong>Start the containers</strong></p>
+<pre><code>docker compose up
+</code></pre>
+
+<p>You should now be able to access and debug the <code>public/index.php</code> file by going to <a href="https://example.test/">https://example.test/</a> in any browser on your host.</p>
+
+
+    
+
+    
+    
+  </div>
+
+  
+
+  <div id="disqus_thread"></div>
+  <script>
+  var disqus_config = function () {
+    this.page.url = "https://meh.dev/docker-php-ssl";
+    this.page.identifier = '/docker-php-ssl';
+  };
+  (function() {
+  var d = document, s = d.createElement('script');
+  s.src = 'https://jspaetzel.disqus.com/embed.js';
+  s.setAttribute('data-timestamp', +new Date());
+  (d.head || d.body).appendChild(s);
+  })();
+  </script>
+  <noscript>Please enable JavaScript to view comments</noscript>
+  <script id="dsq-count-scr" src="//jspaetzel.disqus.com/count.js" async></script>
+</article>
+
+
+    </div>
+
+    <footer class="footer">
+    <div class="copyright">© 2022  <i class="fas fa-heart"></i>  John Spaetzel</div>
+</footer>
+
+<script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js"></script>
+<script>
+  WebFont.load({
+    google: {
+      families: ['Josefin Sans', 'Noto Sans', 'Roboto Mono', 'Material Icons']
+    }
+  });
+</script>
+<script src="https://kit.fontawesome.com/ea17bff308.js"></script>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-W3G88JG6ZH"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-W3G88JG6ZH');
+</script>
+<script src="/js/prism.js"></script>
+
+
+  </body>
+
+</html>
