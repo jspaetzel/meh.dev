@@ -1,8 +1,6 @@
 # meh.dev
 
-* `sudo apt install ruby ruby-dev ruby-bundler libffi-dev gcc g++`
-* `bundle install`
-* `npm install`
-* `./run.sh`
+Install Docker, Docker Compose
+* `docker compose up`
 
 ![Build Status](https://github.com/jspaetzel/meh.dev/workflows/CI/badge.svg?branch=master)
