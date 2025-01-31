@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  
+  <title>A simple Ubiquity WiFi setup</title>
+  <meta name="description" content="My apartment has a really simple Ubiquity configuration which is easily the best wireless setup ive had to date and only cost about $250.The biggest differen...">
+
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="/css/prism.css">
+
+  <link rel="canonical" href="https://meh.dev/a-simple-ubiquity-wifi-setup">
+  <link rel="alternate" type="application/rss+xml" title="meh.dev" href="https://meh.dev/feed.xml">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5647176622308419"
+          crossorigin="anonymous"></script>
+</head>
+
+  <body class="place-items-center min-h-screen">
+    <div class="mx-2 xl:max-w-7xl grid">
+      <nav class="flex items-center justify-between py-3">
+        <div class="flex items-center space-x-3">
+  <a class="site-title flex items-center space-x-2" href="/">
+    <img src="https://0.gravatar.com/avatar/ccf00de89ec54577fb9fd612358a9808?s=56" class="h-10 w-auto">
+    <span>meh.dev</span>
+  </a>
+</div>
+<div class="flex space-x-6">
+  <a class="page-link" href="/cv">CV</a>
+  <a class="page-link" href="/archive">Archive</a>
+</div>
+
+      </nav>
+      <div class="content-style-green prose prose-sm sm:prose-base md:prose-md prose-img:rounded-xl xl:max-w-5xl md:max-w-3xl mx-auto">
+        
+
+<article itemscope itemtype="http://schema.org/BlogPosting">
+  <h1 class="p-2 xs:p-1" itemprop="name headline">A simple Ubiquity WiFi setup</h1>
+  <header class="post-header">
+    
+    <div class="post-meta shadow-md">
+    
+    
+    
+      <div class="post-meta-text">
+        <div class="post-meta-icon">
+          <i class="far fa-calendar"></i>
+        </div>
+        Posted on
+        <time datetime="2019-10-02T08:00:00+00:00" itemprop="datePublished">
+          Oct 02, 2019
+        </time>
+      </div>
+    
+    </div>
+
+    
+    <ul class="tag-list">
+      
+      <li class="inline"><a class="tag-list-link shadow-md" href="/tag/Networking">Networking</a></li>
+      
+    </ul>
+    
+  </header>
+
+  <div class="p-4" itemprop="articleBody">
+    <p>My apartment has a really simple Ubiquity configuration which is easily the best wireless setup ive had to date and only cost about $250.</p>
+
+<p>The biggest difference between Ubiquity’s Unifi hardware and other standard consumer hardware is the number of devices.</p>
+
+<p>Most of the time in the consumer hardware space everything is bundled into a single device. For example when I had Verizon I had something they called a Quantum Gateway which does everything. This worked alright when I had it, but we can do better.</p>
+
+<p><img src="./assets/ubiquity/quantum-gateway.png" alt="Quantum Gateway" /></p>
+
+<p>Sounds great, right?</p>
+
+<h3 id="issues-i-had">Issues I had</h3>
+
+<ul>
+  <li>Poor configuration options, very few advanced options</li>
+  <li>Few if any software updates</li>
+  <li>Poor monitoring and no alerting</li>
+  <li>Regularly overheated and unexpectedly restarted</li>
+  <li>Difficult to expand network with more access points</li>
+  <li>Typically failed anytime I had a party with a lot of friends</li>
+</ul>
+
+<h2 id="my-current-configuration">My current configuration</h2>
+
+<p>I now have four devices which each serve a pretty specific function.</p>
+
+<ul>
+  <li>
+    <p>Coax Modem: By another manufacturer, this is now the weakest link in my network and is mostly mandated by my service provider. I’m hoping to replace it with a fiber modem at some point, but until then im alright.</p>
+  </li>
+  <li>
+    <p>Ubiquiti Unifi Security Gateway (USG): This device handles routing and security for the network.</p>
+  </li>
+  <li>
+    <p>Ubiquiti Networks Unifi 802.11ac Dual-Radio PRO Access Point (UAP-AC-PRO-US): A radio which is managed by the gateway.</p>
+  </li>
+  <li>
+    <p>Unifi Network Controller hosted in AWS: This is not a physical device but a server hosted in AWS which communicates with the Security Gateway and the Access Point to configure them and stores long term stats, logs, etc about traffic on the network.</p>
+  </li>
+</ul>
+
+<h2 id="hows-all-this-worked-out">How’s all this worked out?</h2>
+
+<p>Overall great! I can happily say that I have largely forgotten about my wifi network worries.</p>
+
+<p>Separating the devices means none of them overheat anymore. I’ve been able to have lots of people over and all of them have been able to connect to the wireless without any issues.</p>
+
+<p>I also have more features then ill ever use and I have some interesting data about how my network performs.</p>
+
+<p>For example, just this week I noticed that my ISP randomly increased my maximum download speed from 70 Mbps to almost 90 Mbps. And it’s also kinda interesting to see just how… unstable that speed is more generally.</p>
+
+<p><img src="./assets/ubiquity/unifi-speed-stats.png" alt="Speed Stats" /></p>
+
+<h2 id="looking-forward">Looking forward</h2>
+
+<p>I have no reason to expand or change my current network, its great currently. It’s nice to know that if I move to a larger home this hardware can easily adapt, it’s as simple as plugging in a second or third access point to expand the coverage area.</p>
+
+<p>Long term support seems great, the security gateway is still the latest thing being sold and the access point has seen a newer version come out but uses the same form factor, mounting brackets, and software which makes it easy to replace if I wanted to upgrade or get a second which matches. The firmware software for both devices and the controller software is regularly updated so some new features have been added since I set things up.</p>
+
+<p><img src="./assets/ubiquity/unifi-great.png" alt="Unifi Great" /></p>
+
+
+    
+
+    
+    
+  </div>
+
+  
+
+  <div id="disqus_thread"></div>
+  <script>
+  var disqus_config = function () {
+    this.page.url = "https://meh.dev/a-simple-ubiquity-wifi-setup";
+    this.page.identifier = '/a-simple-ubiquity-wifi-setup';
+  };
+  (function() {
+  var d = document, s = d.createElement('script');
+  s.src = 'https://jspaetzel.disqus.com/embed.js';
+  s.setAttribute('data-timestamp', +new Date());
+  (d.head || d.body).appendChild(s);
+  })();
+  </script>
+  <noscript>Please enable JavaScript to view comments</noscript>
+  <script id="dsq-count-scr" src="//jspaetzel.disqus.com/count.js" async></script>
+</article>
+
+
+      </div>
+      <footer class="footer">
+        <div class="copyright">© 2025  <i class="fas fa-heart"></i>  John Spaetzel</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js"></script>
+<script>
+  WebFont.load({
+    google: {
+      families: ['Josefin Sans', 'Noto Sans', 'Roboto Mono', 'Material Icons']
+    }
+  });
+</script>
+<script src="https://kit.fontawesome.com/ea17bff308.js" crossorigin="anonymous"></script>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-W3G88JG6ZH"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-W3G88JG6ZH');
+</script>
+<script src="/js/prism.js"></script>
+
+      </footer>
+    </div>
+  </body>
+</html>

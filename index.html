@@ -1,19 +1,76 @@
----
-layout: page
----
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  
+  <title>meh.dev</title>
+  <meta name="description" content="">
 
-<h2>About Me</h2>
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="/css/prism.css">
+
+  <link rel="canonical" href="https://meh.dev/">
+  <link rel="alternate" type="application/rss+xml" title="meh.dev" href="https://meh.dev/feed.xml">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5647176622308419"
+          crossorigin="anonymous"></script>
+</head>
+
+  <body class="place-items-center min-h-screen">
+    <div class="mx-2 xl:max-w-7xl grid">
+      <nav class="flex items-center justify-between py-3">
+        <div class="flex items-center space-x-3">
+  <a class="site-title flex items-center space-x-2" href="/">
+    <img src="https://0.gravatar.com/avatar/ccf00de89ec54577fb9fd612358a9808?s=56" class="h-10 w-auto">
+    <span>meh.dev</span>
+  </a>
+</div>
+<div class="flex space-x-6">
+  <a class="page-link" href="/cv">CV</a>
+  <a class="page-link" href="/archive">Archive</a>
+</div>
+
+      </nav>
+      <div class="content-style-green prose prose-sm sm:prose-base md:prose-md prose-img:rounded-xl xl:max-w-5xl md:max-w-3xl mx-auto">
+        <article>
+    <h2>About Me</h2>
 <p><span id="hello">Hello</span>! I'm John Spaetzel. I'm a full stack software developer at <a href="https://dropbox.com/" target="_blank">Dropbox</a> in San Francisco, CA. When im not programming, I am also an avid traveler, investor, gamer, foodie, runner, and lifelong eagle scout.</p>
 
 <h2>My Latest Posts & Projects</h2>
 <ul class="post-list">
-    {% assign sortedPosts = site.posts | date: "%Y-%m-%d %H:%M" | sort: 'last_modified_at' | reverse %}
-    {% for post in sortedPosts limit:6 %}
+    
+    
     <li>
-        <div class="post-list-meta">{{ post.last_modified_at | date: "%b %d, %Y" }}</div>
-        <a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
+        <div class="post-list-meta">Jan 30, 2025</div>
+        <a href="/php-static-analysis-tools">The top PHP static code analysis tools of 2025</a>
     </li>
-    {% endfor %}
+    
+    <li>
+        <div class="post-list-meta">May 18, 2024</div>
+        <a href="/docker-php-ssl">Development with Docker, Apache, PHP, and SSL</a>
+    </li>
+    
+    <li>
+        <div class="post-list-meta">Mar 31, 2024</div>
+        <a href="/render-react-component-twig">Rendering React via a Symfony Twig Extension</a>
+    </li>
+    
+    <li>
+        <div class="post-list-meta">Sep 08, 2022</div>
+        <a href="/phpstyle-making-php-prettier">PHPStyle: Making PHP Prettier</a>
+    </li>
+    
+    <li>
+        <div class="post-list-meta">Jul 08, 2022</div>
+        <a href="/package-fork-with-composer">How to use a fork of a Composer Package</a>
+    </li>
+    
+    <li>
+        <div class="post-list-meta">Dec 27, 2021</div>
+        <a href="/laravel-homestead-with-phpstorm-remote-dev">Developing with PHPStorm and Laravel Homestead on Windows</a>
+    </li>
+    
     <br>
     <a href="/archive">Or see the full archive...</a>
 </ul>
@@ -28,3 +85,33 @@ layout: page
 </div>
 <script src="/js/cookie.util.js"></script>
 <script src="/js/hello.rotate.js"></script>
+</article>
+
+      </div>
+      <footer class="footer">
+        <div class="copyright">© 2025  <i class="fas fa-heart"></i>  John Spaetzel</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js"></script>
+<script>
+  WebFont.load({
+    google: {
+      families: ['Josefin Sans', 'Noto Sans', 'Roboto Mono', 'Material Icons']
+    }
+  });
+</script>
+<script src="https://kit.fontawesome.com/ea17bff308.js" crossorigin="anonymous"></script>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-W3G88JG6ZH"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-W3G88JG6ZH');
+</script>
+<script src="/js/prism.js"></script>
+
+      </footer>
+    </div>
+  </body>
+</html>

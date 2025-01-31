@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  
+  <title>Responsive Tables with CSS</title>
+  <meta name="description" content="Vertical alignment in CSS can be difficult, one of the strategies for doing this is to use vertical-align which allows vertical alignment with an inline or t...">
+
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="/css/prism.css">
+
+  <link rel="canonical" href="https://meh.dev/responsive-table">
+  <link rel="alternate" type="application/rss+xml" title="meh.dev" href="https://meh.dev/feed.xml">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5647176622308419"
+          crossorigin="anonymous"></script>
+</head>
+
+  <body class="place-items-center min-h-screen">
+    <div class="mx-2 xl:max-w-7xl grid">
+      <nav class="flex items-center justify-between py-3">
+        <div class="flex items-center space-x-3">
+  <a class="site-title flex items-center space-x-2" href="/">
+    <img src="https://0.gravatar.com/avatar/ccf00de89ec54577fb9fd612358a9808?s=56" class="h-10 w-auto">
+    <span>meh.dev</span>
+  </a>
+</div>
+<div class="flex space-x-6">
+  <a class="page-link" href="/cv">CV</a>
+  <a class="page-link" href="/archive">Archive</a>
+</div>
+
+      </nav>
+      <div class="content-style-green prose prose-sm sm:prose-base md:prose-md prose-img:rounded-xl xl:max-w-5xl md:max-w-3xl mx-auto">
+        
+
+<article itemscope itemtype="http://schema.org/BlogPosting">
+  <h1 class="p-2 xs:p-1" itemprop="name headline">Responsive Tables with CSS</h1>
+  <header class="post-header">
+    
+    <div class="post-meta shadow-md">
+    
+    
+    
+      <div class="post-meta-text">
+        <div class="post-meta-icon">
+          <i class="far fa-calendar"></i>
+        </div>
+        Posted on
+        <time datetime="2019-10-13T08:00:00+00:00" itemprop="datePublished">
+          Oct 13, 2019
+        </time>
+      </div>
+    
+    </div>
+
+    
+    <ul class="tag-list">
+      
+      <li class="inline"><a class="tag-list-link shadow-md" href="/tag/Frontend">Frontend</a></li>
+      
+      <li class="inline"><a class="tag-list-link shadow-md" href="/tag/Web">Web</a></li>
+      
+      <li class="inline"><a class="tag-list-link shadow-md" href="/tag/CSS">CSS</a></li>
+      
+    </ul>
+    
+  </header>
+
+  <div class="p-4" itemprop="articleBody">
+    <p>Vertical alignment in CSS can be difficult, one of the strategies for doing this is to use <code>vertical-align</code> which allows vertical alignment with an inline or table-cell box.</p>
+
+<p>This can be used with media queries to create a responsive layout which switches between a horizontal and vertical layout depending on the size of the page.</p>
+
+<p>A responsive layout like this is nice for mobile devices because it’ll rearrange between portrait and landscape mode, additionally it adjusts nicely when resizing windows on desktop.</p>
+
+<h1 id="demo">Demo</h1>
+<p><img src="./assets/responsive-table.webp" alt="Example animation" /></p>
+
+<h1 id="horizontal-layout">Horizontal Layout</h1>
+
+<p>A horizontal layout is pretty easy with tables, we just create a div styled as a table</p>
+
+<pre><code class="language-css">.table {
+    display: table;
+    table-layout:fixed;
+    width: 100%;
+    height: 100%;
+}
+</code></pre>
+
+<p>add a row</p>
+<pre><code class="language-css">.row {
+    display: table-row;
+}
+</code></pre>
+
+<p>and add a few cells to the row using <code>vertical-align</code> to center our content in each cell</p>
+<pre><code class="language-css">.cell {
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+    overflow: hidden;
+}
+</code></pre>
+
+<h1 id="changing-to-a-vertical-layout">Changing to a vertical layout</h1>
+
+<p>To change from a row with cells to a single column with rows we just need to do a basic pivot. In CSS we’ll change our row into a sub-table, each cell into a new row, and a new object for the new cells.</p>
+
+<ul>
+  <li>table &gt; row   &gt; cells</li>
+  <li>table &gt; table &gt; rows  &gt; cells</li>
+</ul>
+
+<h1 id="full-code-sample">Full Code Sample</h1>
+<pre><code class="language-html">&lt;html&gt;
+&lt;head&gt;
+    &lt;style type="text/css"&gt;
+        html, body {
+            height: 100%;
+            margin: 0;
+        }
+        .container {
+            display: table;
+            table-layout:fixed;
+            width: 100%;
+            height: 100%;
+        }
+        .pivot {
+            display: table-row;
+        }
+        .column-child {
+            display: table-cell;
+            vertical-align: middle;
+            text-align: center;
+            overflow: hidden;
+        }
+        @media (max-width: 500px) {
+            .pivot {
+                display: table;
+                table-layout: fixed;
+                width: 100%;
+                height: 100%;
+            }
+            .column-child {
+                display: table-row;
+            }
+            .row-child {
+                display: table-cell;
+                vertical-align: middle;
+                text-align: center;
+                overflow: hidden;
+            }
+        }
+        .circle {
+            height: 100px;
+            width: 100px;
+            margin: 0 auto;
+            border-radius: 50%;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;div class="container"&gt;
+        &lt;div class="pivot"&gt;
+            &lt;div class="column-child"&gt;
+                &lt;div class="row-child"&gt;
+                    &lt;div class="circle" style="background: red;"&gt;&lt;/div&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class="column-child"&gt;
+                &lt;div class="row-child"&gt;
+                    &lt;div class="circle" style="background: blue;"&gt;&lt;/div&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+
+    
+
+    
+    
+  </div>
+
+  
+
+  <div id="disqus_thread"></div>
+  <script>
+  var disqus_config = function () {
+    this.page.url = "https://meh.dev/responsive-table";
+    this.page.identifier = '/responsive-table';
+  };
+  (function() {
+  var d = document, s = d.createElement('script');
+  s.src = 'https://jspaetzel.disqus.com/embed.js';
+  s.setAttribute('data-timestamp', +new Date());
+  (d.head || d.body).appendChild(s);
+  })();
+  </script>
+  <noscript>Please enable JavaScript to view comments</noscript>
+  <script id="dsq-count-scr" src="//jspaetzel.disqus.com/count.js" async></script>
+</article>
+
+
+      </div>
+      <footer class="footer">
+        <div class="copyright">© 2025  <i class="fas fa-heart"></i>  John Spaetzel</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js"></script>
+<script>
+  WebFont.load({
+    google: {
+      families: ['Josefin Sans', 'Noto Sans', 'Roboto Mono', 'Material Icons']
+    }
+  });
+</script>
+<script src="https://kit.fontawesome.com/ea17bff308.js" crossorigin="anonymous"></script>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-W3G88JG6ZH"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-W3G88JG6ZH');
+</script>
+<script src="/js/prism.js"></script>
+
+      </footer>
+    </div>
+  </body>
+</html>

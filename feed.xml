@@ -1,27 +1,1232 @@
----
-layout: null
----
 <?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>{{ site.title | xml_escape }}</title>
-    <description>{{ site.description | xml_escape }}</description>
-    <link>{{ site.url }}{{ site.baseurl }}/</link>
-    <atom:link href="{{ "/feed.xml" | prepend: site.baseurl | prepend: site.url }}" rel="self" type="application/rss+xml"/>
-    <pubDate>{{ site.time | date_to_rfc822 }}</pubDate>
-    <lastBuildDate>{{ site.time | date_to_rfc822 }}</lastBuildDate>
-    <generator>Jekyll v{{ jekyll.version }}</generator>
-    {% for post in site.posts limit:10 %}
+    <title>meh.dev</title>
+    <description></description>
+    <link>https://meh.dev/</link>
+    <atom:link href="https://meh.dev/feed.xml" rel="self" type="application/rss+xml"/>
+    <pubDate>Fri, 31 Jan 2025 08:16:24 +0000</pubDate>
+    <lastBuildDate>Fri, 31 Jan 2025 08:16:24 +0000</lastBuildDate>
+    <generator>Jekyll v4.4.1</generator>
+    
       <item>
-        <title>{{ post.title | xml_escape }}</title>
-        <description>{{ post.content | xml_escape }}</description>
-        <pubDate>{{ post.date | date_to_rfc822 }}</pubDate>
-        <link>{{ post.url | prepend: site.baseurl | prepend: site.url }}</link>
-        <guid isPermaLink="true">{{ post.url | prepend: site.baseurl | prepend: site.url }}</guid>
-        {% for tag in post.tags %}
-        <category>{{ tag | xml_escape }}</category>
-        {% endfor %}
+        <title>Rendering React via a Symfony Twig Extension</title>
+        <description>&lt;p&gt;Looking for an easier way to render individual React components from Twig? Here’s what I came up with on a recent project using a Twig Extension.&lt;/p&gt;
+
+&lt;p&gt;The project &amp;amp; samples were written using Symfony 6 with Encore and Webpack.&lt;/p&gt;
+
+&lt;h1 id=&quot;configure-an-entrypoint-in-webpack--encore&quot;&gt;Configure an Entrypoint in Webpack &amp;amp; Encore&lt;/h1&gt;
+&lt;p&gt;The entry script must be loaded on any page you want to render a component. You can create a single bundle and reuse it across many components and pages, or create multiple bundles.&lt;/p&gt;
+
+&lt;p&gt;In my application and this example I use a shared &lt;code&gt;components&lt;/code&gt; bundle which can be accessed on any page.&lt;/p&gt;
+
+&lt;p&gt;Add an entrypoint to your &lt;code&gt;webpack.config.js&lt;/code&gt;.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;.addEntry(&apos;components&apos;, &apos;./assets/components.tsx&apos;)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Load the bundle on a page (or entire layout). This uses Encore inside a Twig file.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-php&quot; data-lang=&quot;php&quot;&gt;{{ encore_entry_script_tags(&amp;#39;components&amp;#39;) }}&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;h1 id=&quot;create-componentstsx&quot;&gt;Create components.tsx&lt;/h1&gt;
+&lt;p&gt;Create the components.tsx and add each component you want to load to the &lt;code&gt;componentMap&lt;/code&gt; variable.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;import React from &apos;react&apos;;
+import ReactDOM from &apos;react-dom&apos;;
+
+import EmbedModal from &quot;./components/EmbedModal&quot;;
+
+const componentMap = {
+    &apos;EmbedModal&apos;: EmbedModal,
+};
+
+function getComponentByName(componentName: string) {
+    const Component = componentMap[componentName];
+    if (Component) {
+        return Component;
+    } else {
+        console.error(`Unknown component: ${componentName}`);
+    }
+}
+
+document.querySelectorAll(&apos;.react-container&apos;).forEach(container =&amp;gt; {
+    // @ts-ignore
+    const componentName = container.dataset.component;
+    // @ts-ignore
+    const props = JSON.parse(container.dataset.props);
+
+    const Component = getComponentByName(componentName);
+    ReactDOM.render(&amp;lt;React.StrictMode&amp;gt;&amp;lt;Component {...props} /&amp;gt;&amp;lt;/React.StrictMode&amp;gt;, container);
+});
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;This example is fairly naive, you could make the componentMap more magical if you’d like, but for a small number of components it’s easy to manage them manually.&lt;/p&gt;
+
+&lt;h1 id=&quot;create-the-twigextension&quot;&gt;Create the TwigExtension&lt;/h1&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-php&quot;&gt;&amp;lt;?php
+
+namespace App\Twig;
+
+use Twig\Extension\AbstractExtension;
+use Twig\TwigFunction;
+
+class TwigExtension extends AbstractExtension
+{
+    public function getFunctions()
+    {
+        return [
+            new TwigFunction(&apos;renderReactComponent&apos;, [$this, &apos;renderReactComponent&apos;], [&apos;is_safe&apos; =&amp;gt; [&apos;html&apos;]]),
+        ];
+    }
+
+    public function renderReactComponent($componentName, $props = null): string
+    {
+        if (is_null($props)) {
+            $props = [];
+        }
+        $prop_str = json_encode($props);
+        $prop_str = htmlspecialchars($prop_str, ENT_QUOTES, &apos;UTF-8&apos;);
+
+        return &amp;lt;&amp;lt;&amp;lt;HTML
+                &amp;lt;div class=&quot;react-container inline&quot; data-component=&quot;{$componentName}&quot; data-props=&quot;{$prop_str}&quot;&amp;gt;&amp;lt;/div&amp;gt;
+            HTML;
+    }
+}
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Make sure your extension is loaded by Symfony, this might happen automatically or you may have to add the service manually.&lt;/p&gt;
+
+&lt;h1 id=&quot;render-a-component&quot;&gt;Render a Component&lt;/h1&gt;
+&lt;p&gt;Now you’re ready to render! Call the Twig extension anywhere in your twig files where you want a react component to appear.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-php&quot; data-lang=&quot;php&quot;&gt;{{ renderReactComponent(&amp;#39;EmbedModal&amp;#39;, {
+        &amp;#39;name&amp;#39;: event.name,
+        &amp;#39;embed_url&amp;#39;: event.getEmbedUrl(),
+}) }}&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+</description>
+        <pubDate>Mon, 01 Apr 2024 02:16:40 +0000</pubDate>
+        <link>https://meh.dev/render-react-component-twig</link>
+        <guid isPermaLink="true">https://meh.dev/render-react-component-twig</guid>
+        
+        <category>PHP</category>
+        
+        <category>Symfony</category>
+        
+        <category>Twig</category>
+        
+        <category>React</category>
+        
       </item>
-    {% endfor %}
+    
+      <item>
+        <title>Development with Docker, Apache, PHP, and SSL</title>
+        <description>&lt;p&gt;This post goes through a sample project I built that shows this off using docker, apache, php, and xdebug for local development.&lt;/p&gt;
+
+&lt;p&gt;Want to skip straight to the &lt;a href=&quot;https://github.com/jspaetzel/docker-php&quot;&gt;complete sample project? Click here!&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Project Overview&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;docker/certificates/              – gitignored folder for holding your dev certs&lt;/li&gt;
+  &lt;li&gt;docker/web/Dockerfile             – web container&lt;/li&gt;
+  &lt;li&gt;docker/web/configs/apache/        – apache configs for example.test site&lt;/li&gt;
+  &lt;li&gt;docker/web/configs/php/           - php configs (for xdebug with docker)&lt;/li&gt;
+  &lt;li&gt;public/                           – your application index&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;configuring-php81-apache&quot;&gt;Configuring php:8.1-apache&lt;/h2&gt;
+&lt;p&gt;The default php:8.1-apache docker image isn’t ready for development out of the box. Here’s some of the changes I recommend making.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Installing PHP Extensions&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-Dockerfile&quot;&gt;COPY --from=mlocati/php-extension-installer /usr/bin/install-php-extensions /usr/local/bin/
+RUN set -eux; \
+    install-php-extensions \
+        xdebug \
+    ;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;strong&gt;Customizing PHP&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-Dockerfile&quot;&gt;COPY docker/web/configs/php/*.ini $PHP_INI_DIR/conf.d/
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;This example only includes a xdebug.ini config, but you can add additional ini files here to make other changes.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Configure Apache sites and enabling mods&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-Dockerfile&quot;&gt;COPY ./docker/web/configs/apache/sites-enabled/* /etc/apache2/sites-enabled/
+RUN a2enmod ssl \
+    &amp;amp;&amp;amp; a2enmod allowmethods \
+    &amp;amp;&amp;amp; a2enmod headers \
+    &amp;amp;&amp;amp; a2enmod mime \
+    &amp;amp;&amp;amp; a2enmod rewrite
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;That’s the bare minimum, here’s a few more things you might want to do
+&lt;strong&gt;Install Composer&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-Dockerfile&quot;&gt;COPY --from=composer/composer:2-bin /composer /usr/bin/composer
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;strong&gt;Change the document root&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-Dockerfile&quot;&gt;ENV APACHE_DOCUMENT_ROOT /var/www/html/
+RUN sed -ri -e &apos;s!/var/www/html!${APACHE_DOCUMENT_ROOT}!g&apos; /etc/apache2/sites-available/*.conf
+RUN sed -ri -e &apos;s!/var/www/!${APACHE_DOCUMENT_ROOT}!g&apos; /etc/apache2/apache2.conf /etc/apache2/conf-available/*.conf
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;View the &lt;a href=&quot;https://github.com/jspaetzel/docker-php/blob/main/docker/web/Dockerfile&quot;&gt;complete Dockerfile here&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;configuring-ssl&quot;&gt;Configuring SSL&lt;/h2&gt;
+
+&lt;p&gt;You’ll need some self-signed certificates in order to configure SSL. I’ve used &lt;a href=&quot;https://mkcert.dev/&quot;&gt;mkcert&lt;/a&gt; to create and trust them on my localhost. Before you proceed, &lt;a href=&quot;https://github.com/FiloSottile/mkcert#installation&quot;&gt;install mkcert&lt;/a&gt;.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-bash&quot;&gt;mkcert -install
+mkcert example.test
+mv example.*.pem docker/certificates/
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&quot;using-xdebug&quot;&gt;Using xDebug&lt;/h2&gt;
+&lt;p&gt;With this configuration xDebug should be ready to go. The only thing I needed to do in PHPStorm is enable listening for connections and configure the path mapping.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;./assets/phpstorm/xdebug-example.test.png&quot; alt=&quot;example.test&quot; title=&quot;XDebug Config for example.test&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h2&gt;
+
+&lt;p&gt;There’s only a few more things left to do.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Add an entry for the site to your hosts file&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;127.0.0.1 example.test
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;strong&gt;Start the containers&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;docker compose up
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;You should now be able to access and debug the &lt;code&gt;public/index.php&lt;/code&gt; file by going to &lt;a href=&quot;https://example.test/&quot;&gt;https://example.test/&lt;/a&gt; in any browser on your host.&lt;/p&gt;
+</description>
+        <pubDate>Fri, 16 Dec 2022 01:32:50 +0000</pubDate>
+        <link>https://meh.dev/docker-php-ssl</link>
+        <guid isPermaLink="true">https://meh.dev/docker-php-ssl</guid>
+        
+        <category>Docker</category>
+        
+        <category>PHP</category>
+        
+        <category>Apache</category>
+        
+      </item>
+    
+      <item>
+        <title>How to use a fork of a Composer Package</title>
+        <description>&lt;h2 id=&quot;1-fork-the-git-repository-on-github&quot;&gt;1. Fork the Git Repository on Github&lt;/h2&gt;
+
+&lt;h2 id=&quot;2-make-changes-in-a-branch&quot;&gt;2. Make changes in a branch&lt;/h2&gt;
+
+&lt;p&gt;For this example I’ll use the branch will be named &lt;code&gt;mybranch&lt;/code&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;3-add-repositories-entry-in-composerjson&quot;&gt;3. Add repositories entry in composer.json&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-bash&quot;&gt;&quot;repositories&quot;: [
+    {
+        &quot;type&quot;: &quot;vcs&quot;,
+        &quot;url&quot;: &quot;https://github.com/yourgithubuser/packagename&quot;,
+        &quot;no-api&quot;: true
+    }
+],
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;⚠️ If you get an error like “GitHub API limit (0 calls/hr) is exhausted, could not fetch”? make sure you have the &lt;code&gt;&quot;no-api&quot;: true&lt;/code&gt; configuration specified.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;4-require-custom-version-in-composer&quot;&gt;4. Require custom version in Composer&lt;/h2&gt;
+
+&lt;p&gt;Require the package with&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-bash&quot;&gt;composer require vendor/packagename:dev-mybranch
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;ℹ To avoid conflicts with other packages, you can alias your branch as a specific version
+&lt;code&gt;composer require &quot;vendor/packagename:dev-mybranch as 1.0.0&quot;&lt;/code&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+</description>
+        <pubDate>Sat, 09 Jul 2022 00:38:31 +0000</pubDate>
+        <link>https://meh.dev/package-fork-with-composer</link>
+        <guid isPermaLink="true">https://meh.dev/package-fork-with-composer</guid>
+        
+      </item>
+    
+      <item>
+        <title>PHPStyle: Making PHP Prettier</title>
+        <description>&lt;p&gt;Why doesn’t PHP have more uniform, opinionated, styles? We see it with so many other languages…&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Go: &lt;a href=&quot;https://go.dev/blog/gofmt&quot;&gt;gofmt&lt;/a&gt; automatically formats Go source code. According to go.dev, 70% of Go packages in the wild are formatted with gofmt.&lt;/li&gt;
+  &lt;li&gt;JavaScript: &lt;a href=&quot;https://prettier.io/&quot;&gt;Prettier&lt;/a&gt; is an opinionated code formatted used by many packages.&lt;/li&gt;
+  &lt;li&gt;Python: &lt;a href=&quot;https://pypi.org/project/black/&quot;&gt;Black&lt;/a&gt;, the uncompromising Python code formatter.&lt;/li&gt;
+  &lt;li&gt;C#: A decent formatter is built into Visual Studio, nothing additional required. Or you can go with a more opinionated option like &lt;a href=&quot;https://github.com/belav/csharpier&quot;&gt;CSharpier&lt;/a&gt;.&lt;/li&gt;
+  &lt;li&gt;Java: There’s lots of options for Java. For instance, a popular option is &lt;a href=&quot;https://github.com/google/google-java-format&quot;&gt;Google’s standard formatter&lt;/a&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;what-options-do-php-developers-have&quot;&gt;What options do PHP developers have?&lt;/h2&gt;
+
+&lt;p&gt;In typical PHP fashion, we have a lot choices… This is a blessing and a curse working in such a mature language. I uncovered while &lt;a href=&quot;php-static-analysis-tools&quot;&gt;researching static analysis tools&lt;/a&gt; that there are two dominate tools for styling php, neither very opinionated out of the box.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;a href=&quot;https://github.com/squizlabs/PHP_CodeSniffer&quot;&gt;PHP_CodeSniffer&lt;/a&gt; &amp;amp; &lt;a href=&quot;https://cs.symfony.com/&quot;&gt;PHP-CS-Fixer&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;The main difference between these two is that PHP-CS-Fixer is fully automated. Once it’s configured any issues it finds it will always fix.&lt;/p&gt;
+
+&lt;p&gt;PHP_CodeSniffer is more likely to tell you what’s wrong and may not be able to fix issues. You can have it try to fix issues by running it’s alt command, phpcbf, but this only works half of the time.&lt;/p&gt;
+
+&lt;p&gt;I won’t get into specific details about how to install or run these tools, the documentation is great if you want to check that out. But I will briefly explain how these are configured to give more context.&lt;/p&gt;
+
+&lt;h3 id=&quot;php_codesniffer-configuration&quot;&gt;PHP_CodeSniffer Configuration&lt;/h3&gt;
+
+&lt;p&gt;PHP_CodeSniffer is the original style tool for PHP, it’s been around since 2009!&lt;/p&gt;
+
+&lt;p&gt;Configured with a &lt;code&gt;phpcs.xml&lt;/code&gt; file or a &lt;code&gt;phpcs.xml.dist&lt;/code&gt; file, this project is highly un-opinionated. The most standardized configs are the PSR styles included with the package, however many projects override these defaults and in general projects that use phpcs do not share a common style.&lt;/p&gt;
+
+&lt;p&gt;Given it’s age it’s not surprising that it uses XML for configuration. Back in 2009, everything was configured with XML. &lt;a href=&quot;https://github.com/squizlabs/PHP_CodeSniffer/blob/ed83c67a1dc21096a8b31c5426a541eb2b42f176/phpcs.xml.dist&quot;&gt;Checkout the config used by the PHP_CodeSniffer project itself as an example.&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Checkout some configs of a few large projects&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/WordPress/wordpress-develop/blob/2e5de394c7ce31700c722ebe42e7011a4c293b33/phpcs.xml.dist&quot;&gt;Wordpress&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/doctrine/orm/blob/1ffb9152f76bd3d332d5275bd2272d3984bcf3d6/phpcs.xml.dist&quot;&gt;Doctrine&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/wikimedia/mediawiki/blob/master/.phpcs.xml&quot;&gt;MediaWiki&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/drupal/core/blob/807eaa93fd4a1df145d656bad75641b1e2396849/phpcs.xml.dist&quot;&gt;Drupal&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;configuring-php-cs-fixer&quot;&gt;Configuring PHP-CS-Fixer&lt;/h3&gt;
+
+&lt;p&gt;PHP-CS-Fixer is the new kid on the block. It was release in 2015 and is developed by Sensio Labs who also develops Symfony, one of the most popular PHP frameworks. It’s also fairly un-opinionated, and again, most projects write their own configs.&lt;/p&gt;
+
+&lt;p&gt;It’s configured with a PHP file, sometimes as &lt;code&gt;.php_cs&lt;/code&gt;, or &lt;code&gt;.php-cs-fixer.dist.php&lt;/code&gt;, or &lt;code&gt;.php-cs-fixer.php&lt;/code&gt;. &lt;a href=&quot;https://github.com/FriendsOfPHP/PHP-CS-Fixer/blob/aa805a8a4d8384c71a1367fceb57a081a4d969e4/.php-cs-fixer.dist.php&quot;&gt;Checkout the config used by the PHP-CS-Fixer project itself as an example.&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;When I first looked at one of these configurations it looked confusing enough that I didn’t even &lt;em&gt;try&lt;/em&gt; to use this tool. The setup also isn’t straightforward. However, it’s not as scary as it looks, and this tool does work very well once configured.&lt;/p&gt;
+
+&lt;p&gt;Checkout some configs of a few large projects&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/symfony/symfony/blob/86e87a2ded42cfcd3e25b62fa858baadf1e2ff75/.php-cs-fixer.dist.php&quot;&gt;Symfony&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/composer/composer/blob/54063964a7eba4fac568894e39a0df3a0a27fa50/.php-cs-fixer.php&quot;&gt;Composer&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/guzzle/guzzle/blob/82ca75f0b1f130f018febdda29af13086da5dbac/.php-cs-fixer.dist.php&quot;&gt;Guzzle&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/Seldaek/monolog/blob/248673e85824f9f910738d870e73eafc7654213f/.php_cs&quot;&gt;Monolog&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&quot;introducing-phpstyle-&quot;&gt;Introducing PHPStyle ✨&lt;/h1&gt;
+
+&lt;p&gt;Confused yet? In my quest for quickly applying styles to my projects I instead discovered that there’s not a single right answer. &lt;strong&gt;PHP developers develop new standards for every project.&lt;/strong&gt; Sometimes using the same tools, and sometimes giving up and not using any automated tools at all. 🙁&lt;/p&gt;
+
+&lt;p&gt;So I’ve created yet another project to make this journey easier for my own projects, and maybe yours too.&lt;/p&gt;
+
+&lt;p&gt;PHPStyle is easy to use, opinionated, and configured with a Neon/Yaml file (not PHP or XML). It uses PHP-CS-Fixer under the hood so as that project improves this one will as well.&lt;/p&gt;
+
+&lt;h2 id=&quot;how-to-use-phpstyle&quot;&gt;How to use PHPStyle&lt;/h2&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Require the package&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-bash&quot;&gt;composer require jspaetzel/phpstyle --dev
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Run the &lt;a href=&quot;https://github.com/jspaetzel/phpstyle/blob/main/phpstyle-setup&quot;&gt;setup script&lt;/a&gt;:&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-bash&quot;&gt;./vendor/bin/phpstyle-setup
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;🗒 Note: This script is for convenience, you can alternatively do the same steps manually by &lt;a href=&quot;https://cs.symfony.com/#installation&quot;&gt;installing php-cs-fixer&lt;/a&gt; and copying &lt;a href=&quot;https://github.com/jspaetzel/phpstyle/blob/main/.php-cs-fixer.dist.php&quot;&gt;this .php-cs-fixer.dist.php file&lt;/a&gt; to your project root.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Create/review the &lt;code&gt;phpstyle.neon&lt;/code&gt; configuration file. Feel free to make changes to this file again at any time.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-yaml&quot;&gt;parameters:
+    php: 7.4
+    risky: false
+    paths:
+        - src
+        - tests
+    excludePaths:
+        - src/path/you/want/to/skip
+        - src/or/a/file-to-skip.php
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Run php-cs-fixer to fix your code&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-bash&quot;&gt;./vendor/bin/php-cs-fixer fix
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;🗒 Note: php-cs-fixer is integrated with PHPStorm and other editors and so PHPStyle should work with them as well.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;That’s it, your code is styled!&lt;/p&gt;
+</description>
+        <pubDate>Fri, 08 Apr 2022 03:17:34 +0000</pubDate>
+        <link>https://meh.dev/phpstyle-making-php-prettier</link>
+        <guid isPermaLink="true">https://meh.dev/phpstyle-making-php-prettier</guid>
+        
+      </item>
+    
+      <item>
+        <title>Developing with PHPStorm and Laravel Homestead on Windows</title>
+        <description>&lt;p&gt;It’s the end of 2021, and we can finally port our development environments. You might be thinking, “just use docker” right? That’s part of the solution, but the missing piece for a while has been a way to run the development environment directly along-side the application so that you can have a seamless experience when debugging.&lt;/p&gt;
+
+&lt;p&gt;You’ve been able to do this for some time using VSCode, via it’s &lt;a href=&quot;https://code.visualstudio.com/docs/remote/remote-overview&quot;&gt;Remote Development&lt;/a&gt; feature. Recently Jetbrains &lt;a href=&quot;https://blog.jetbrains.com/blog/2021/11/29/introducing-remote-development-for-jetbrains-ides/&quot;&gt;announced similar functionality&lt;/a&gt;. Let’s see what this feature can do!&lt;/p&gt;
+
+&lt;p&gt;I want to be able to develop on Linux, Mac, or Windows, so I’ll need a workflow that works for all of those.&lt;/p&gt;
+
+&lt;p&gt;The project im testing this with I started development on my Linux machine about a year ago.&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;PHP 7.4&lt;/li&gt;
+  &lt;li&gt;Symfony 5&lt;/li&gt;
+  &lt;li&gt;MySQL&lt;/li&gt;
+  &lt;li&gt;Nginx&lt;/li&gt;
+  &lt;li&gt;xDebug&lt;/li&gt;
+  &lt;li&gt;PHPUnit&lt;/li&gt;
+  &lt;li&gt;NPM &amp;amp; Webpack Dev Server&lt;/li&gt;
+  &lt;li&gt;React&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;In order to support another developer I switched the project over to &lt;a href=&quot;https://laravel.com/docs/8.x/homestead&quot;&gt;Homestead&lt;/a&gt;. I chose Homestead over Docker containers mainly because Homestead comes pre-baked with all the dependencies I need, and it was easy to set up.&lt;/p&gt;
+
+&lt;p&gt;The only interesting part of the Homestead.yaml is the &lt;code&gt;folders&lt;/code&gt; section which I optimized for filesystem performance reasons. I’m only allowing syncing of files which I intend to commit since all other operations will happen within the VM.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-yaml&quot;&gt;folders:
+  -
+    map: ./
+    to: /home/vagrant/code
+    type: &quot;rsync&quot;
+    options:
+      :type: &quot;rsync&quot;
+      :rsync__exclude: [
+          &quot;.git/&quot;,
+          &quot;vendor/&quot;,
+          &quot;node_modules/&quot;,
+          &quot;var/&quot;,
+          &quot;public/build/&quot;,
+          &quot;public/uploads/&quot;
+      ]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h1 id=&quot;running-the-development-environment&quot;&gt;Running the Development Environment&lt;/h1&gt;
+&lt;p&gt;First we run vagrant like normal. &lt;code&gt;vagrant up&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Then we set up the IDE. This is a little different from what we’re used to in PHPStorm.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;./assets/remote-dev/welcome.png&quot; alt=&quot;New Welcome Screen&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;./assets/remote-dev/connection.png&quot; alt=&quot;Connection Settings&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;./assets/remote-dev/downloadstart.png&quot; alt=&quot;Download &amp;amp; Start&quot; /&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;⚠ When I first started running this I had to increase the resources available. A minimum of 4G is recommended for memory. I increased my Homestead.yaml to have &lt;code&gt;memory: 4096&lt;/code&gt; and &lt;code&gt;cpus: 4&lt;/code&gt; which works well for my application.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Once started we can use the IDE pretty much like normal except it’s running INSIDE the VM. This means everything we see is “local” to the VM where the IDE is also running. The editor you see is just a dumb pane of glass.&lt;/p&gt;
+
+&lt;p&gt;Some advantages come from this. The most obvious is that the PHP interpreter is local, so you don’t have to create a new tunnel when debugging. This makes everything a little faster. The other obvious advantage I’ve found is that dependencies are “real”. What I mean by this is the files you see in the IDE are the ones being used by the project, and they don’t have to be synchronized to the host machine. This results in more accurate and more performant analysis by the IDE since there’s no file synchronization needed for large directories like the node_modules and vendor folders. It also prevents weird behavior between Vagrant host machines. For instance, the node_modules folder often causes bugs on Windows machines due to directory depth. That’s no longer a potential problem.&lt;/p&gt;
+
+&lt;p&gt;You also run the npm dev server within the VM, everyone uses the same npm version from the VM and setup of Javascript debugging is easier too since it’s running locally too.&lt;/p&gt;
+
+&lt;p&gt;This feature is still in “Beta” but I’m really liking what im seeing here. So far it feels really polished and solves a huge gap in functionality for the fullstack multi-platform development that I like to do. The thing I like most about this particular solution is that it all can run locally. Sure, you can also connect it to a cloud provider, but I like having the option to run everything without an internet connection.&lt;/p&gt;
+</description>
+        <pubDate>Tue, 28 Dec 2021 01:47:45 +0000</pubDate>
+        <link>https://meh.dev/laravel-homestead-with-phpstorm-remote-dev</link>
+        <guid isPermaLink="true">https://meh.dev/laravel-homestead-with-phpstorm-remote-dev</guid>
+        
+      </item>
+    
+      <item>
+        <title>The top PHP static code analysis tools of 2025</title>
+        <description>&lt;p&gt;The PHP community has a diverse ecosystem of static analysis tools which can make it somewhat difficult to decide which tools to use. Hopefully this post helps you decide which of these tools you’ll use.&lt;/p&gt;
+
+&lt;p&gt;This post separates these tools into one of two types depending on their purpose. The first section is static analysis for the purpose of identifying bugs. The later section is for maintenance of code style/formatting.&lt;/p&gt;
+
+&lt;h2 id=&quot;static-code-analysis-tools&quot;&gt;Static Code Analysis Tools&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;https://github.com/phpstan/phpstan&quot;&gt;PHPStan&lt;/a&gt; is the most commonly used tool and also one of the youngest. It has been rapidly adopted since it’s release in 2016. It’ll discover bugs in your code without running the code.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;https://github.com/vimeo/psalm&quot;&gt;Psalm&lt;/a&gt; was also released in 2016 and has grown in popularity a little more slowly. It claims more features out of the box and has a focus is on type-related bugs.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;https://scrutinizer-ci.com/&quot;&gt;Scrutinizer&lt;/a&gt; is the most popular commercial option in use by open-source projects and has been around longer then its open-source counterparts. It’s free for open-source projects but is only available as a hosted solution.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Let’s look at what some popular open-source PHP project use. This table only includes repositories which have at least 1K GitHub stars, and which implement the static analysis tools as a component of their continuous integration systems.&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt; &lt;/th&gt;
+      &lt;th&gt;⭐&lt;/th&gt;
+      &lt;th&gt;&lt;a href=&quot;https://github.com/phpstan/phpstan&quot;&gt;PHPStan&lt;/a&gt;&lt;/th&gt;
+      &lt;th&gt;&lt;a href=&quot;https://github.com/vimeo/psalm&quot;&gt;Psalm&lt;/a&gt;&lt;/th&gt;
+      &lt;th&gt;&lt;a href=&quot;https://scrutinizer-ci.com/&quot;&gt;Scrutinizer&lt;/a&gt;&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;a href=&quot;https://github.com/laravel/framework&quot;&gt;Laravel&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;33K&lt;/td&gt;
+      &lt;td&gt;✔️&lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;a href=&quot;https://github.com/symfony/symfony&quot;&gt;Symfony&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;29.9K&lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+      &lt;td&gt;✔️&lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;a href=&quot;https://github.com/composer/composer&quot;&gt;Composer&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;28.8K&lt;/td&gt;
+      &lt;td&gt;✔️&lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;a href=&quot;https://github.com/nextcloud/server&quot;&gt;NextCloud&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;28.5K&lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+      &lt;td&gt;✔️&lt;/td&gt;
+      &lt;td&gt;✔️&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;a href=&quot;https://github.com/guzzle/guzzle&quot;&gt;Guzzle&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;23.3K&lt;/td&gt;
+      &lt;td&gt;✔️&lt;/td&gt;
+      &lt;td&gt;✔️&lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;a href=&quot;https://github.com/Seldaek/monolog&quot;&gt;Monolog&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;21.1K&lt;/td&gt;
+      &lt;td&gt;✔️&lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;a href=&quot;https://github.com/sebastianbergmann/phpunit&quot;&gt;PHPUnit&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;19.8K&lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+      &lt;td&gt;✔️&lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;a href=&quot;https://github.com/nikic/PHP-Parser&quot;&gt;PHP-Parser&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;17.1K&lt;/td&gt;
+      &lt;td&gt;✔️&lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;a href=&quot;https://github.com/CarbonPHP/carbon&quot;&gt;Carbon&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;16.6K&lt;/td&gt;
+      &lt;td&gt;✔️&lt;/td&gt;
+      &lt;td&gt;✔️&lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;a href=&quot;https://github.com/yiisoft/yii2&quot;&gt;Yii2&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;14.3K&lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+      &lt;td&gt;✔️&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;a href=&quot;https://github.com/PHPOffice/PhpSpreadsheet&quot;&gt;PhpSpreadsheet&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;13.5K&lt;/td&gt;
+      &lt;td&gt;✔️&lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;a href=&quot;https://github.com/thephpleague/flysystem&quot;&gt;Flysystem&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;13.4K&lt;/td&gt;
+      &lt;td&gt;✔️&lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+      &lt;td&gt;✔️&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;a href=&quot;https://github.com/vlucas/phpdotenv&quot;&gt;PHPDotEnv&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;13.3K&lt;/td&gt;
+      &lt;td&gt;✔️&lt;/td&gt;
+      &lt;td&gt;✔️&lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;a href=&quot;https://github.com/slimphp/Slim&quot;&gt;Slim&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;12K&lt;/td&gt;
+      &lt;td&gt;✔️&lt;/td&gt;
+      &lt;td&gt;✔️&lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;a href=&quot;https://github.com/egulias/EmailValidator/&quot;&gt;EmailValidator&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;11.5K&lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+      &lt;td&gt;✔️&lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;a href=&quot;https://github.com/phalcon/cphalcon&quot;&gt;Phalcon&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;10.8K&lt;/td&gt;
+      &lt;td&gt;️&lt;/td&gt;
+      &lt;td&gt;✔️&lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;a href=&quot;https://github.com/doctrine/orm&quot;&gt;Doctrine&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;10K&lt;/td&gt;
+      &lt;td&gt;✔️&lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;a href=&quot;https://github.com/pestphp/pest&quot;&gt;Pest&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;9.9K&lt;/td&gt;
+      &lt;td&gt;✔️&lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;a href=&quot;https://github.com/firebase/php-jwt&quot;&gt;php-jwt&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;9.5K&lt;/td&gt;
+      &lt;td&gt;✔️&lt;/td&gt;
+      &lt;td&gt;️&lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;a href=&quot;https://github.com/cakephp/cakephp&quot;&gt;CakePHP&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;8.7K&lt;/td&gt;
+      &lt;td&gt;✔️&lt;/td&gt;
+      &lt;td&gt;✔️&lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;a href=&quot;https://github.com/twigphp/Twig&quot;&gt;Twig&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;8.2K&lt;/td&gt;
+      &lt;td&gt;✔️&lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;a href=&quot;https://github.com/predis/predis&quot;&gt;Predis&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;7.6K&lt;/td&gt;
+      &lt;td&gt;✔️&lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;a href=&quot;https://github.com/aws/aws-sdk-php&quot;&gt;AWS SDK&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;6.1K&lt;/td&gt;
+      &lt;td&gt;✔️&lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;a href=&quot;https://github.com/elastic/elasticsearch-php&quot;&gt;Elasticsearch SDK&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;5.3K&lt;/td&gt;
+      &lt;td&gt;✔️&lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;a href=&quot;https://github.com/php-amqplib/php-amqplib&quot;&gt;php-amqplib&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;4.5K&lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+      &lt;td&gt;✔️&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;a href=&quot;https://github.com/stripe/stripe-php&quot;&gt;Stripe SDK&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;3.8K&lt;/td&gt;
+      &lt;td&gt;✔️&lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;a href=&quot;https://github.com/wikimedia/mediawiki&quot;&gt;Mediawiki&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;4.4K+&lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;a href=&quot;https://github.com/maxmind/GeoIP2-php&quot;&gt;Maxmind GeoIP2&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;2.4K&lt;/td&gt;
+      &lt;td&gt;✔️&lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;a href=&quot;https://github.com/paratestphp/paratest&quot;&gt;Paratest&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;2.3K&lt;/td&gt;
+      &lt;td&gt;✔️&lt;/td&gt;
+      &lt;td&gt;️&lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;a href=&quot;https://github.com/getsentry/sentry-php&quot;&gt;Sentry SDK&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;1.8K&lt;/td&gt;
+      &lt;td&gt;✔️&lt;/td&gt;
+      &lt;td&gt;✔️&lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;a href=&quot;https://github.com/open-telemetry/opentelemetry-php&quot;&gt;OpenTelemetry PHP&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;776&lt;/td&gt;
+      &lt;td&gt;✔️&lt;/td&gt;
+      &lt;td&gt;✔️&lt;/td&gt;
+      &lt;td&gt;✔️&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;a href=&quot;https://github.com/opensearch-project/opensearch-php&quot;&gt;OpenSearch PHP&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;115&lt;/td&gt;
+      &lt;td&gt;✔️&lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;There are some other fairly popular tools worth mentioning but which were not used by enough projects to be included in the table above.&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;https://github.com/phan/phan&quot;&gt;Phan&lt;/a&gt; isn’t used by any of the projects here besides MediaWiki that I could find. It was created originally at Etsy and appears to be the primary tool used by Wikipedia’s MediaWiki project. The advertised upside of using Phan is that it has a focus on minimizing false-positives. This makes it trivial to use, but it might catch fewer issues compared to others.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;https://www.jetbrains.com/help/phpstorm/code-inspection.html&quot;&gt;PHPStorm Code Inspections&lt;/a&gt;: The inspection tools built into PHPStorm are impressive and can identify many potential issues without any additional tooling.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;https://github.com/phpmd/phpmd&quot;&gt;PHP Mess Detector&lt;/a&gt;: This is an older static analysis tool which offers some different functionality. Besides identifying potential bugs it also can help identifying generally poor code. It’s very mature and may be more useful for targeted project analysis.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;https://www.sonarqube.org/&quot;&gt;Sonarqube&lt;/a&gt;: Sonarqube is a commercial static analysis product. It’s community edition is good at detecting bugs, vulnerabilities, and generally for improving code quality. They also provides an &lt;a href=&quot;https://www.sonarlint.org/&quot;&gt;IDE extension, Sonarlint&lt;/a&gt; which works well to supplement the CI offerings.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;https://github.com/kalessil/phpinspectionsea&quot;&gt;PHP Inspections (EA Extended)&lt;/a&gt;: This is a plugin for IntelliJ/PHPStorm which supplements the inspections built into PHPStorm.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;https://www.jetbrains.com/qodana/&quot;&gt;Qodana&lt;/a&gt;: This is a newer commercial product from JetBrains which is still in early access. It’s a hosted solution which can be used to analyze code and identify bugs and vulnerabilities.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;style-tools&quot;&gt;Style Tools&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;https://github.com/squizlabs/PHP_CodeSniffer&quot;&gt;PHPCS&lt;/a&gt; is the original code standards tool for PHP and dates back to 2006. It’s primary use is to establish standards and identify violations. It does however also provide a package &lt;code&gt;phpcbf&lt;/code&gt; which can sometimes automatically fix violations. PHPCS is extremely mature and very flexible and comes with a massive selection of pre-written “Sniffs” available to use.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;https://github.com/FriendsOfPHP/PHP-CS-Fixer&quot;&gt;PhpCsFixer&lt;/a&gt; is supported by the popular Symfony framework. This tool automatically applies any defined code styles to code when it’s run. e.g. &lt;code&gt;php-cs-fixer fix src&lt;/code&gt;. This seems to be the leading choice for a majority of projects.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Some other interesting style tools I found that weren’t heavily in use while reviewing these projects&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/marketplace/actions/composer-normalize-action&quot;&gt;Composer Normalize Action&lt;/a&gt; Tool to keep your composer file formatted consistently&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Here’s a selection of some popular packages today.&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt; &lt;/th&gt;
+      &lt;th&gt;⭐&lt;/th&gt;
+      &lt;th&gt;&lt;a href=&quot;https://github.com/FriendsOfPHP/PHP-CS-Fixer&quot;&gt;PhpCsFixer&lt;/a&gt;&lt;/th&gt;
+      &lt;th&gt;&lt;a href=&quot;https://github.com/squizlabs/PHP_CodeSniffer&quot;&gt;PHPCS&lt;/a&gt;&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;a href=&quot;https://github.com/laravel/framework&quot;&gt;Laravel&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;33K&lt;/td&gt;
+      &lt;td&gt;✔️&lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;a href=&quot;https://github.com/symfony/symfony&quot;&gt;Symfony&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;29.9K&lt;/td&gt;
+      &lt;td&gt;✔️&lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;a href=&quot;https://github.com/composer/composer&quot;&gt;Composer&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;28.8K&lt;/td&gt;
+      &lt;td&gt;✔️&lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;a href=&quot;https://github.com/nextcloud/server&quot;&gt;NextCloud&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;28.5K&lt;/td&gt;
+      &lt;td&gt;✔️&lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;a href=&quot;https://github.com/guzzle/guzzle&quot;&gt;Guzzle&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;23.3K&lt;/td&gt;
+      &lt;td&gt;✔️&lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;a href=&quot;https://github.com/Seldaek/monolog&quot;&gt;Monolog&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;21.1K&lt;/td&gt;
+      &lt;td&gt;✔️&lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;a href=&quot;https://github.com/sebastianbergmann/phpunit&quot;&gt;PHPUnit&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;19.8K&lt;/td&gt;
+      &lt;td&gt;✔️&lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;a href=&quot;https://github.com/WordPress/WordPress&quot;&gt;Wordpress&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;18.4K+&lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+      &lt;td&gt;✔️&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;a href=&quot;https://github.com/nikic/PHP-Parser&quot;&gt;PHP-Parser&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;17.1K&lt;/td&gt;
+      &lt;td&gt;✔️&lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;a href=&quot;https://github.com/CarbonPHP/carbon&quot;&gt;Carbon&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;16.6K&lt;/td&gt;
+      &lt;td&gt;✔️&lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;a href=&quot;https://github.com/yiisoft/yii2&quot;&gt;Yii2&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;14.3K&lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+      &lt;td&gt;✔️&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;a href=&quot;https://github.com/PHPOffice/PhpSpreadsheet&quot;&gt;PhpSpreadsheet&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;13.5K&lt;/td&gt;
+      &lt;td&gt;✔️&lt;/td&gt;
+      &lt;td&gt;✔️&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;a href=&quot;https://github.com/thephpleague/flysystem&quot;&gt;Flysystem&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;13.4K&lt;/td&gt;
+      &lt;td&gt;✔️&lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;a href=&quot;https://github.com/slimphp/Slim&quot;&gt;Slim&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;12K&lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+      &lt;td&gt;✔️&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;a href=&quot;https://github.com/phalcon/cphalcon&quot;&gt;Phalcon&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;10.8K&lt;/td&gt;
+      &lt;td&gt;✔️&lt;/td&gt;
+      &lt;td&gt;✔️&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;a href=&quot;https://github.com/doctrine/orm&quot;&gt;Doctrine&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;10K&lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+      &lt;td&gt;✔️&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;a href=&quot;https://github.com/firebase/php-jwt&quot;&gt;php-jwt&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;9.5K&lt;/td&gt;
+      &lt;td&gt;✔️&lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;a href=&quot;https://github.com/cakephp/cakephp&quot;&gt;CakePHP&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;8.7K&lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+      &lt;td&gt;✔️&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;a href=&quot;https://github.com/twigphp/Twig&quot;&gt;Twig&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;8K&lt;/td&gt;
+      &lt;td&gt;✔️&lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;a href=&quot;https://github.com/predis/predis&quot;&gt;Predis&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;7.6K&lt;/td&gt;
+      &lt;td&gt;✔️&lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;a href=&quot;https://github.com/php-amqplib/php-amqplib&quot;&gt;php-amqplib&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;4.5K&lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+      &lt;td&gt;✔️&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;a href=&quot;https://github.com/stripe/stripe-php&quot;&gt;Stripe SDK&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;3.8K&lt;/td&gt;
+      &lt;td&gt;✔️&lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;a href=&quot;https://github.com/drupal/drupal&quot;&gt;Drupal&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;4.1K+&lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+      &lt;td&gt;✔️&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;a href=&quot;https://github.com/wikimedia/mediawiki&quot;&gt;Mediawiki&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;4.4K+&lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+      &lt;td&gt;✔️&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;a href=&quot;https://github.com/maxmind/GeoIP2-php&quot;&gt;Maxmind GeoIP2&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;2.4K&lt;/td&gt;
+      &lt;td&gt;✔️&lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;a href=&quot;https://github.com/paratestphp/paratest&quot;&gt;Paratest&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;2.2K&lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+      &lt;td&gt;✔️&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;a href=&quot;https://github.com/getsentry/sentry-php&quot;&gt;Sentry SDK&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;1.8K&lt;/td&gt;
+      &lt;td&gt;✔️&lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;a href=&quot;https://github.com/open-telemetry/opentelemetry-php&quot;&gt;OpenTelemetry PHP&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;776&lt;/td&gt;
+      &lt;td&gt;✔️&lt;/td&gt;
+      &lt;td&gt;✔️&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;a href=&quot;https://github.com/opensearch-project/opensearch-php&quot;&gt;OpenSearch PHP&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;115&lt;/td&gt;
+      &lt;td&gt;✔️&lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h3 id=&quot;phpcsfixer-utilities&quot;&gt;PhpCsFixer Utilities&lt;/h3&gt;
+&lt;p&gt;PhpCsFixer isn’t the most opinionated tool. A couple of projects have cropped up that ship opinionated configurations for this tool.&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/laravel/pint&quot;&gt;Pint&lt;/a&gt; opinionated php-sc-fixer by the Laravel team.&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://styleci.io/&quot;&gt;Styleci&lt;/a&gt; a hosted version fixer by the Laravel team. It fixes styles quietly in the background as developers make changes by pulling the code, restyling it, and pushing it back to the main repository.&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://php.style/&quot;&gt;PHP.Style&lt;/a&gt; my own opinionated configuration.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h2&gt;
+&lt;p&gt;The most popular tools to use overall appear are PHPStan &amp;amp; PhpCsFixer.&lt;/p&gt;
+
+&lt;p&gt;However, it’s not a one size fit all solution. Psalm has strong popularity and is often used alongside PHPStan. And for enforcing code standards, PhpCsFixer is the most popular, but it’s still often paired with PHPCS which has more complex configuration options.&lt;/p&gt;
+
+&lt;p&gt;I found this analysis interesting when reviewing these tools for my own usage. If you have feedback or can correct me about any of the information in this post please leave me a comment.&lt;/p&gt;
+
+&lt;h2 id=&quot;news--changelog&quot;&gt;News &amp;amp; Changelog&lt;/h2&gt;
+&lt;p&gt;This post is periodically updated to keep up with the latest trends.&lt;/p&gt;
+
+&lt;h3 id=&quot;jan-2025&quot;&gt;Jan 2025&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;Audited the status of all projects&lt;/li&gt;
+  &lt;li&gt;Removed style ci from style tools table&lt;/li&gt;
+  &lt;li&gt;PHPStan picked up a few new projects this year and continues growing in popularity&lt;/li&gt;
+  &lt;li&gt;PHPStan released &lt;a href=&quot;https://phpstan.org/blog/phpstan-2-0-released-level-10-elephpants&quot;&gt;2.0 version&lt;/a&gt; in november. First major release in a while.&lt;/li&gt;
+  &lt;li&gt;PHPCS picked up a few new projects from this sample group and is still going strong though PhpCsFixer remains the more popular choice overall.&lt;/li&gt;
+  &lt;li&gt;Added a few popular projects.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;jan-2024&quot;&gt;Jan 2024&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;Updated the status of all projects on this page. Added a few newer notable projects.&lt;/li&gt;
+  &lt;li&gt;PHPStan is up one and Psalm is down on the same project. Removed Phan from the table which is still only used by MediaWiki.&lt;/li&gt;
+  &lt;li&gt;Jetbrains is previewing a new code analysis tool, Qodana, which is now included in the list. Only one project I checked is using it so far.&lt;/li&gt;
+  &lt;li&gt;Things to look forward to this year: PHPStan 2.0 &amp;amp; expanded coding style standards w/ PERCS 2.0: https://www.php-fig.org/per/coding-style/&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;jan-2023&quot;&gt;Jan 2023&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;Updated the status of all projects on this page. Most projects gained some popularity but order stayed roughly the same.&lt;/li&gt;
+  &lt;li&gt;PHPStan, PHP-CS-Fixer, and Scrutinizer grew in popularity.&lt;/li&gt;
+  &lt;li&gt;Add section about php-cs-fixer utilities.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;jan-2022&quot;&gt;Jan 2022&lt;/h3&gt;
+&lt;p&gt;Checked the status of all projects in these lists and updated stats. Psalm continues to grow in popularity, a couple projects added it since they were last checked. Otherwise, no major changes.&lt;/p&gt;
+
+&lt;h3 id=&quot;march-2021&quot;&gt;March 2021&lt;/h3&gt;
+&lt;p&gt;First version of this post&lt;/p&gt;
+</description>
+        <pubDate>Thu, 11 Mar 2021 09:38:15 +0000</pubDate>
+        <link>https://meh.dev/php-static-analysis-tools</link>
+        <guid isPermaLink="true">https://meh.dev/php-static-analysis-tools</guid>
+        
+        <category>PHP</category>
+        
+        <category>CI</category>
+        
+        <category>Static Analysis</category>
+        
+      </item>
+    
+      <item>
+        <title>2020 Retrospective</title>
+        <description>&lt;p&gt;It’s 2021 and time to reflect on 2020. Sometimes I start these posts early in December but this year I was so busy throughout December that I didn’t even think about it until mid-January.&lt;/p&gt;
+
+&lt;p&gt;This post is part of a series, want to look back further? Checkout my previous years:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;2019-reflection&quot;&gt;2019 Reflection&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;2018-retrospective&quot;&gt;2018 Retrospective&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;2017-wear-flowers-in-your-hair&quot;&gt;2017 Wear some flowers in your hair&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;2016-a-full-stack-year&quot;&gt;2016 A Full Stack Year&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;what-happened-in-2020&quot;&gt;What happened in 2020?&lt;/h2&gt;
+&lt;p&gt;Overall 2020 was not bad for me!&lt;/p&gt;
+
+&lt;p&gt;I spent a lot of time at home, I walked around and truly enjoyed my neighborhood. It’s quirky and beautiful!&lt;/p&gt;
+
+&lt;div class=&quot;quoted-image&quot; style=&quot;width:px;&quot;&gt;
+    &lt;img src=&quot;/assets/2020-retro/collage-neighborhood.jpg&quot; alt=&quot;A few shots from around Castro&quot; /&gt;
+    &lt;span&gt;A few shots from around Castro&lt;/span&gt;
+&lt;/div&gt;
+
+&lt;p&gt;I still traveled some. I &lt;a href=&quot;maui-during-pandemic&quot;&gt;made it Maui&lt;/a&gt; with my roommate. I also did a fair bit of domestic travel which included LOTS of driving. I went with my sister on our first cross country road-trip from D.C. to San Francisco.&lt;/p&gt;
+
+&lt;div class=&quot;quoted-image&quot; style=&quot;width:px;&quot;&gt;
+    &lt;img src=&quot;/assets/2020-retro/2020-map.png&quot; alt=&quot;A map of all of my 2020 Travel&quot; /&gt;
+    &lt;span&gt;A map of all of my 2020 Travel&lt;/span&gt;
+&lt;/div&gt;
+
+&lt;p&gt;I shutdown a long term &lt;a href=&quot;era-of-hosting&quot;&gt;side project&lt;/a&gt;. Closing it down was hard but worthwhile. I’ve got &lt;a href=&quot;enlio&quot;&gt;one more long-term project&lt;/a&gt; that I’m shuttering before the end of 2021. I’m hopeful that having fewer ongoing projects will give me more time to start some a new one.&lt;/p&gt;
+
+&lt;p&gt;I increased my open-source contributions in 2020 and &lt;a href=&quot;https://github.com/federico-terzi/modulo&quot;&gt;contributed&lt;/a&gt; &lt;a href=&quot;https://github.com/lightSAML/lightSAML&quot;&gt;to&lt;/a&gt; &lt;a href=&quot;https://github.com/symfony/symfony-docs&quot;&gt;several&lt;/a&gt; &lt;a href=&quot;https://github.com/autokey/autokey&quot;&gt;projects&lt;/a&gt; that aren’t my own. This is the first year where I have felt truly confident when contributing to other open-source projects and I want to continue this in 2021 with more substantial contributions.&lt;/p&gt;
+
+&lt;p&gt;My goals for 2020 were pretty slim, which is fortunate since 2020 went off the rails. Here’s how I did..&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Promoted to Senior Software Engineer at work. ✔️&lt;/li&gt;
+  &lt;li&gt;Health-wise I failed, I stopped biking to work when we started working from home and I haven’t been to the gym. I have been running occasionally but less then previously. ❌&lt;/li&gt;
+  &lt;li&gt;I re-modeled my personal website some, there’s still room for improvement but there always will be. I cheated a little and switched domains while writing this post so johnspaetzel.com is now meh.dev. ✔️&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;whats-next-for-2021&quot;&gt;What’s next for 2021?&lt;/h2&gt;
+
+&lt;p&gt;I don’t really know, the pandemic is still raging, and although a vaccine is now being distributed it’ll be a while before things return fully to normal. As I write this the bay area is just coming down from it’s highest case surge.&lt;/p&gt;
+
+&lt;div class=&quot;quoted-image&quot; style=&quot;width:px;&quot;&gt;
+    &lt;img src=&quot;/assets/2020-retro/covid-cases.png&quot; alt=&quot;Graph of new COVID-19 Cases in the Bay Area as of January 25th, 2021&quot; /&gt;
+    &lt;span&gt;Graph of new COVID-19 Cases in the Bay Area as of January 25th, 2021&lt;/span&gt;
+&lt;/div&gt;
+
+&lt;p&gt;I’m hoping to travel more internationally but probably not until the later half of the year. I’m looking forward to visiting my family again in Florida hopefully at some point as well, though I’ll probably wait to be vaccinated before visiting.&lt;/p&gt;
+
+&lt;p&gt;In December I worked on some new investments, consolidated work &amp;amp; personal cell phones, and I switched health insurance providers to a lower cost more convenient option. Basically I decided it’s a good time to stop procrastinating. Continuing this trend in January I want to spend time spring cleaning and sell or donate anything that I haven’t used in the last few years. I also want to do do some upgrades to my home office such as get a new webcam, mic, and maybe new desk.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;I decided it’s a good time to stop procrastinating.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;I want to &lt;strong&gt;simplify my life&lt;/strong&gt; and switch operating systems so that I use them same one for personal and work. Context switching between MacOS, Windows, and Ubuntu has made life more difficult then I like to admit. Even for simple things like writing this post, &lt;strong&gt;fragmentation made things more difficult&lt;/strong&gt; since my build tool-chain wasn’t readily available in Windows.&lt;/p&gt;
+
+&lt;p&gt;I’ve been working from home for the last 9 months since our offices closed. I still haven’t quite settled into a work routine that works well. This isn’t ideal and I need to make more of an effort to &lt;strong&gt;create separate space for work&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;I still want to exercise more regularly and develop some good habits, one of these that I think I’ll need to make an effort on is to &lt;strong&gt;do regular meal planning&lt;/strong&gt;. Since im working from home every day it would be quite a bit better if I cooked at home regularly and ordered less take-out.&lt;/p&gt;
+
+&lt;h1 id=&quot;in-conclusion&quot;&gt;In… Conclusion?&lt;/h1&gt;
+
+&lt;p&gt;2021 feels like a continuation of 2020 which was put on hold by the pandemic. I think 2021 will be an optimization cycle without really specific goals. I want to upgrade all the little things in my life that could be better so that when opportunity or inspiration strikes I’ll be at my best.&lt;/p&gt;
+</description>
+        <pubDate>Mon, 25 Jan 2021 22:05:40 +0000</pubDate>
+        <link>https://meh.dev/2020-retro</link>
+        <guid isPermaLink="true">https://meh.dev/2020-retro</guid>
+        
+        <category>Year in Review</category>
+        
+      </item>
+    
+      <item>
+        <title>I visited Maui during the pandemic</title>
+        <description>&lt;p&gt;I’d never been to Hawaii or Maui before this year even though it’s a meer 5 hour flight and since I hadn’t done very much travel otherwise this year I jumped at the opportunity when my roommate suggested we go.&lt;/p&gt;
+
+&lt;p&gt;Because of the COVID-19 pandemic it was particularly cheap to travel and staying on the island was also cheaper then usual. Hawaii has been particularly cautious about trying to prevent the spread of the virus, and their efforts have been effective. Most of the Hawaiian islands have a dramatically lower infection-rate then the rest of the United States.&lt;/p&gt;
+
+&lt;p&gt;Hawaii should be extra cautious. They’re isolated and have much more control over who comes in and out of the islands compared to most states. They also have extra incentive to protect residents. Hawaii’s population is steadily aging at a faster rate then most of the United States. &lt;a href=&quot;https://web.archive.org/web/20201017121959/https://census.hawaii.gov/wp-content/uploads/2020/06/Hawaii-Population-Characteristics-2019.pdf&quot;&gt;From 2010 to 2019 the elderly population (65+) of Hawaii grew by 62.3%&lt;/a&gt;. This older population is also disproportionately affected by the pandemic which are &lt;a href=&quot;https://web.archive.org/web/20201201020338/https://www.cdc.gov/coronavirus/2019-ncov/need-extra-precautions/older-adults.html&quot;&gt;90x more at risk of dying from COVID-19&lt;/a&gt; compared to young adults.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;./assets/maui/covid_jeep.jpg&quot; alt=&quot;COVID Jeep&quot; /&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;getting-there-safely&quot;&gt;Getting there safely&lt;/h1&gt;
+
+&lt;p&gt;As the pandemic as worn on they’ve found ways of letting individuals visit safely. The way we traveled required us to “Arrive Healthy” and prove that by having a test within 72 hours of traveling. Once the results were received we then had to submit the test results on the Hawaii state “Safe Travels” website and await review.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Arrive Healthy: Mandatory pre-departure test submitted 72 hours prior to departing for Maui County.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;When our flight landed we were still awaiting test results so we took a Lyft directly to where we were staying.&lt;/p&gt;
+
+&lt;p&gt;The Hawaiian governor has been writing a series of supplementary &lt;a href=&quot;https://web.archive.org/web/20201115120318/https://governor.hawaii.gov/wp-content/uploads/2020/03/2003109-ATG_COVID-19-Supplementary-Proclamation-signed.pdf&quot;&gt;emergency proclamations&lt;/a&gt; which change policies throughout the islands. One of the policies the Hawaiian government set was to prevent car rentals for anyone who’s not exempt from quarantine. We weren’t aware of this before traveling so were surprised we weren’t able to get a car initially and had to take a fairly expensive Lyft to where we were staying while we waited for test results.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;./assets/maui/quarantine.jpg&quot; alt=&quot;Maui Quarantining&quot; /&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;quaratining&quot;&gt;Quaratining&lt;/h1&gt;
+
+&lt;p&gt;We wound up having to Quarantine for about 2 days.&lt;/p&gt;
+
+&lt;p&gt;Test results can vary in how long they take to be returned, in our case we were expecting them to come through within 24 - 72 hours so we took the tests about 48 hours before traveling. My results wound up taking about 72 hours and my roommate’s took almost a day longer then that. Apparently some results can take as long as 14 days though so there’s some risk of getting stuck waiting.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Some test results can take as long as 14 days to be processed by labs&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;While Quarantining you’re not allowed to leave to buy groceries or food. Delivery services on the islands can be lacking but there are a few services that provide delivery of most items. I wish I knew about &lt;a href=&quot;https://www.fooddeliverymaui.com/&quot;&gt;808 PickUps&lt;/a&gt; sooner which is a local business like DoorDash but with a larger local selection. Other services like Instacart also work fine for larger grocery deliveries.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;./assets/maui/quarantine_2.jpg&quot; alt=&quot;Maui Quarantining 2&quot; /&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;exploring-the-island&quot;&gt;Exploring the island&lt;/h1&gt;
+
+&lt;p&gt;Once we left quarantine the island was fabulous. We only got stuck in traffic once where there was a construction closure and otherwise much of the island felt like a private paradise. Although it wasn’t busy anywhere many parking lots were still filling up pretty well. I was surprised when locals told us they were only at about 5% of the tourism capacity. I imagine with a full load of visitors it must be hell driving around so I understand some of the local disdain for tourists.&lt;/p&gt;
+
+&lt;p&gt;We didn’t have any negative experiences on the island but you could tell there was some tension in the air at some venues. Some locals were cautious but most were going about their business like it was any other year. Before we arrived many businesses had only just reopened within the last several weeks, or were still in the process of opening, and just as many were still closed.&lt;/p&gt;
+
+&lt;p&gt;In the more remote parts of the island and on the beaches we didn’t see many masks at all. This is about what we’d expected but I was still a little surprising considering the otherwise severe rules for entry to the island. At one bar it looked like business as usual, a packed house with no social distancing.&lt;/p&gt;
+
+&lt;p&gt;I wish I planned for a longer stay, but im back home now and brought COVID back with me. (Just this cute plushie!)&lt;/p&gt;
+
+</description>
+        <pubDate>Tue, 01 Dec 2020 22:57:24 +0000</pubDate>
+        <link>https://meh.dev/maui-during-pandemic</link>
+        <guid isPermaLink="true">https://meh.dev/maui-during-pandemic</guid>
+        
+        <category>Travel</category>
+        
+      </item>
+    
+      <item>
+        <title>Linuxisms</title>
+        <description>&lt;p&gt;This is a living post about linux topics which inhibit linux distros from reaching the masses and my take on them. In no particular order…&lt;/p&gt;
+
+&lt;h1 id=&quot;packaging&quot;&gt;Packaging&lt;/h1&gt;
+&lt;p&gt;Having access to quality packages is my favorite things about using linux. But it comes with some issues.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;A big issue is the support between distributions. Ubuntu is pretty ubiquitously supported but most distros are not.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;For Ubuntu users their distro is most likely supported but the way to install an application is not universal. This is actually getting somewhat worse currently. Many applications are now distributed via snap, apt, AppImages, or a plain old binary.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Another drawback is for maintainers, it’s super complex for a popular package to support every potential distro which takes time away from their project. This makes development less popular and harder for the ones willing to do it.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&quot;updates&quot;&gt;Updates&lt;/h1&gt;
+&lt;p&gt;Linux makes updates scarier then they need to be by displaying too much information.&lt;/p&gt;
+
+&lt;p&gt;Information overload is a real thing and it can scare people away from upgrading or scare people away entirely.&lt;/p&gt;
+
+&lt;p&gt;One nuisance I have with distribution updates (at least on Ubuntu) is that custom sources added to apt get disabled with each update. Then I have to manually inspect and re-enable each one.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;./assets/linuxisms/ubuntu-install.png&quot; alt=&quot;Ubuntu Updater&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;I actually kinda enjoy seeing what’s being updated, but this is somewhat a regression for Google Chrome which receives updates so regularly. On Windows and Linux it just updates itself and occasionally prompts to be restarted. On linux having to wait for me to trigger it’s update besides being inconvenient is also a security hazard. 👎&lt;/p&gt;
+
+&lt;h1 id=&quot;graphics-drivers&quot;&gt;Graphics drivers&lt;/h1&gt;
+&lt;p&gt;The graphics drivers on linux are getting pretty great and I think this is almost a solved problem as of 2020.&lt;/p&gt;
+
+&lt;p&gt;The main hurdle is for proprietary drivers which don’t typically come preinstalled. Some distros are now including these drivers though or have easy way to install them which mostly resolves this issue.&lt;/p&gt;
+
+&lt;p&gt;Information overload is still an issue with this too. Custom drivers still require the user to click some things to install them, it’s not quite plug &amp;amp; play.&lt;/p&gt;
+
+&lt;h1 id=&quot;enterprise&quot;&gt;Enterprise&lt;/h1&gt;
+&lt;p&gt;Enterprise support is pretty lacking still, a lot of the host management that IT departments want doesn’t work well or isn’t sufficient especially for power users who cant have a totally locked down environment.&lt;/p&gt;
+</description>
+        <pubDate>Sat, 14 Nov 2020 19:01:47 +0000</pubDate>
+        <link>https://meh.dev/linuxisms</link>
+        <guid isPermaLink="true">https://meh.dev/linuxisms</guid>
+        
+        <category>Linux</category>
+        
+      </item>
+    
+      <item>
+        <title>What i use</title>
+        <description>&lt;p&gt;This is a living post for what I use frequently, probably everyday. I’ll update this periodically and welcome suggestions for improvements.&lt;/p&gt;
+
+&lt;h2 id=&quot;systems&quot;&gt;Systems&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;Lenovo Thinkpad X1 Carbon with Ubuntu 20.10 ❤️&lt;/li&gt;
+  &lt;li&gt;Macbook Pro with Ubuntu 20.10, Windows 10&lt;/li&gt;
+  &lt;li&gt;Pixel 3 ❤️&lt;/li&gt;
+  &lt;li&gt;iPhone 8&lt;/li&gt;
+  &lt;li&gt;Ubiquity UniFi ❤️&lt;/li&gt;
+  &lt;li&gt;Sonnet Breakaway box with Nvidia 1070 ❤️&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;I prefer to work in Ubuntu but my personal laptop is a Macbook Pro which I got in 2017. It runs Ubuntu pretty well so I’ve kept it around. I also use it for gaming which is why I have a tri-boot configuration.&lt;/p&gt;
+
+&lt;p&gt;I have an iPhone from work but my main device is the Pixel 3. I’ve kept the iPhone because I like to compare functionality side-by-side and it’s also handy to have a backup device on a different network provider.&lt;/p&gt;
+
+&lt;h2 id=&quot;developer-tools&quot;&gt;Developer Tools&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;IDE: PHPStorm 💲❤️&lt;/li&gt;
+  &lt;li&gt;Editor: VS Code&lt;/li&gt;
+  &lt;li&gt;Terminal: Terminator&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;software&quot;&gt;Software&lt;/h2&gt;
+&lt;p&gt;The software listed here are the essentials that are I use everyday that I want to endorse.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Firefox mobile and desktop for my browser&lt;/li&gt;
+  &lt;li&gt;AutoKey for autocomplete ❤️&lt;/li&gt;
+  &lt;li&gt;CopyQ for clipboard management&lt;/li&gt;
+  &lt;li&gt;Dropbox for file storage&lt;/li&gt;
+  &lt;li&gt;Dropbox Paper for shared notes ❤️&lt;/li&gt;
+  &lt;li&gt;Flameshot for screenshots&lt;/li&gt;
+  &lt;li&gt;Authy for 2FA ❤️&lt;/li&gt;
+  &lt;li&gt;Spotify for music 💲❤️&lt;/li&gt;
+  &lt;li&gt;1Password for passwords 💲&lt;/li&gt;
+  &lt;li&gt;Standard Notes for taking notes 💲❤️&lt;/li&gt;
+  &lt;li&gt;Google Keep for notes with reminders&lt;/li&gt;
+  &lt;li&gt;Google Calendar ❤️&lt;/li&gt;
+  &lt;li&gt;Google Photos ❤️&lt;/li&gt;
+  &lt;li&gt;Gmail for email&lt;/li&gt;
+  &lt;li&gt;Pocket Casts&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;legend&quot;&gt;Legend&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;💲 are monthly or annual subscriptions&lt;/li&gt;
+  &lt;li&gt;❤️ are things that I love&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        <pubDate>Fri, 26 Jun 2020 07:49:38 +0000</pubDate>
+        <link>https://meh.dev/what-i-use</link>
+        <guid isPermaLink="true">https://meh.dev/what-i-use</guid>
+        
+        <category>Software Stack</category>
+        
+      </item>
+    
   </channel>
 </rss>

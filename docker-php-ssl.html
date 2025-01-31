@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  
+  <title>Development with Docker, Apache, PHP, and SSL</title>
+  <meta name="description" content="This post goes through a sample project I built that shows this off using docker, apache, php, and xdebug for local development.Want to skip straight to the ...">
+
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="/css/prism.css">
+
+  <link rel="canonical" href="https://meh.dev/docker-php-ssl">
+  <link rel="alternate" type="application/rss+xml" title="meh.dev" href="https://meh.dev/feed.xml">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5647176622308419"
+          crossorigin="anonymous"></script>
+</head>
+
+  <body class="place-items-center min-h-screen">
+    <div class="mx-2 xl:max-w-7xl grid">
+      <nav class="flex items-center justify-between py-3">
+        <div class="flex items-center space-x-3">
+  <a class="site-title flex items-center space-x-2" href="/">
+    <img src="https://0.gravatar.com/avatar/ccf00de89ec54577fb9fd612358a9808?s=56" class="h-10 w-auto">
+    <span>meh.dev</span>
+  </a>
+</div>
+<div class="flex space-x-6">
+  <a class="page-link" href="/cv">CV</a>
+  <a class="page-link" href="/archive">Archive</a>
+</div>
+
+      </nav>
+      <div class="content-style-green prose prose-sm sm:prose-base md:prose-md prose-img:rounded-xl xl:max-w-5xl md:max-w-3xl mx-auto">
+        
+
+<article itemscope itemtype="http://schema.org/BlogPosting">
+  <h1 class="p-2 xs:p-1" itemprop="name headline">Development with Docker, Apache, PHP, and SSL</h1>
+  <header class="post-header">
+    
+    <div class="post-meta shadow-md">
+    
+    
+    
+    <div class="post-meta-text">
+      <div class="post-meta-icon">
+          <i class="far fa-calendar-check"></i>
+        </div>
+        Edited on
+        <time datetime="2024-05-18T19:32:05+00:00" itemprop="dateModified">
+          May 18, 2024
+        </time>
+      </div>
+    
+    </div>
+
+    
+    <ul class="tag-list">
+      
+      <li class="inline"><a class="tag-list-link shadow-md" href="/tag/Docker">Docker</a></li>
+      
+      <li class="inline"><a class="tag-list-link shadow-md" href="/tag/PHP">PHP</a></li>
+      
+      <li class="inline"><a class="tag-list-link shadow-md" href="/tag/Apache">Apache</a></li>
+      
+    </ul>
+    
+  </header>
+
+  <div class="p-4" itemprop="articleBody">
+    <p>This post goes through a sample project I built that shows this off using docker, apache, php, and xdebug for local development.</p>
+
+<p>Want to skip straight to the <a href="https://github.com/jspaetzel/docker-php">complete sample project? Click here!</a></p>
+
+<p><strong>Project Overview</strong></p>
+<ul>
+  <li>docker/certificates/              – gitignored folder for holding your dev certs</li>
+  <li>docker/web/Dockerfile             – web container</li>
+  <li>docker/web/configs/apache/        – apache configs for example.test site</li>
+  <li>docker/web/configs/php/           - php configs (for xdebug with docker)</li>
+  <li>public/                           – your application index</li>
+</ul>
+
+<h2 id="configuring-php81-apache">Configuring php:8.1-apache</h2>
+<p>The default php:8.1-apache docker image isn’t ready for development out of the box. Here’s some of the changes I recommend making.</p>
+
+<p><strong>Installing PHP Extensions</strong></p>
+<pre><code class="language-Dockerfile">COPY --from=mlocati/php-extension-installer /usr/bin/install-php-extensions /usr/local/bin/
+RUN set -eux; \
+    install-php-extensions \
+        xdebug \
+    ;
+</code></pre>
+
+<p><strong>Customizing PHP</strong></p>
+<pre><code class="language-Dockerfile">COPY docker/web/configs/php/*.ini $PHP_INI_DIR/conf.d/
+</code></pre>
+<p>This example only includes a xdebug.ini config, but you can add additional ini files here to make other changes.</p>
+
+<p><strong>Configure Apache sites and enabling mods</strong></p>
+<pre><code class="language-Dockerfile">COPY ./docker/web/configs/apache/sites-enabled/* /etc/apache2/sites-enabled/
+RUN a2enmod ssl \
+    &amp;&amp; a2enmod allowmethods \
+    &amp;&amp; a2enmod headers \
+    &amp;&amp; a2enmod mime \
+    &amp;&amp; a2enmod rewrite
+</code></pre>
+
+<p>That’s the bare minimum, here’s a few more things you might want to do
+<strong>Install Composer</strong></p>
+<pre><code class="language-Dockerfile">COPY --from=composer/composer:2-bin /composer /usr/bin/composer
+</code></pre>
+
+<p><strong>Change the document root</strong></p>
+<pre><code class="language-Dockerfile">ENV APACHE_DOCUMENT_ROOT /var/www/html/
+RUN sed -ri -e 's!/var/www/html!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/sites-available/*.conf
+RUN sed -ri -e 's!/var/www/!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/apache2.conf /etc/apache2/conf-available/*.conf
+</code></pre>
+
+<p>View the <a href="https://github.com/jspaetzel/docker-php/blob/main/docker/web/Dockerfile">complete Dockerfile here</a>.</p>
+
+<h2 id="configuring-ssl">Configuring SSL</h2>
+
+<p>You’ll need some self-signed certificates in order to configure SSL. I’ve used <a href="https://mkcert.dev/">mkcert</a> to create and trust them on my localhost. Before you proceed, <a href="https://github.com/FiloSottile/mkcert#installation">install mkcert</a>.</p>
+<pre><code class="language-bash">mkcert -install
+mkcert example.test
+mv example.*.pem docker/certificates/
+</code></pre>
+
+<h2 id="using-xdebug">Using xDebug</h2>
+<p>With this configuration xDebug should be ready to go. The only thing I needed to do in PHPStorm is enable listening for connections and configure the path mapping.</p>
+
+<p><img src="./assets/phpstorm/xdebug-example.test.png" alt="example.test" title="XDebug Config for example.test" /></p>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>There’s only a few more things left to do.</p>
+
+<p><strong>Add an entry for the site to your hosts file</strong></p>
+<pre><code>127.0.0.1 example.test
+</code></pre>
+
+<p><strong>Start the containers</strong></p>
+<pre><code>docker compose up
+</code></pre>
+
+<p>You should now be able to access and debug the <code>public/index.php</code> file by going to <a href="https://example.test/">https://example.test/</a> in any browser on your host.</p>
+
+
+    
+
+    
+    
+  </div>
+
+  
+
+  <div id="disqus_thread"></div>
+  <script>
+  var disqus_config = function () {
+    this.page.url = "https://meh.dev/docker-php-ssl";
+    this.page.identifier = '/docker-php-ssl';
+  };
+  (function() {
+  var d = document, s = d.createElement('script');
+  s.src = 'https://jspaetzel.disqus.com/embed.js';
+  s.setAttribute('data-timestamp', +new Date());
+  (d.head || d.body).appendChild(s);
+  })();
+  </script>
+  <noscript>Please enable JavaScript to view comments</noscript>
+  <script id="dsq-count-scr" src="//jspaetzel.disqus.com/count.js" async></script>
+</article>
+
+
+      </div>
+      <footer class="footer">
+        <div class="copyright">© 2025  <i class="fas fa-heart"></i>  John Spaetzel</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js"></script>
+<script>
+  WebFont.load({
+    google: {
+      families: ['Josefin Sans', 'Noto Sans', 'Roboto Mono', 'Material Icons']
+    }
+  });
+</script>
+<script src="https://kit.fontawesome.com/ea17bff308.js" crossorigin="anonymous"></script>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-W3G88JG6ZH"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-W3G88JG6ZH');
+</script>
+<script src="/js/prism.js"></script>
+
+      </footer>
+    </div>
+  </body>
+</html>

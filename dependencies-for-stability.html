@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  
+  <title>Dependencies for stability</title>
+  <meta name="description" content="How to choose dependencies for stabilityModern applications are built up of dozens or even hundreds of building blocks created by other programmers. Welcome ...">
+
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="/css/prism.css">
+
+  <link rel="canonical" href="https://meh.dev/dependencies-for-stability">
+  <link rel="alternate" type="application/rss+xml" title="meh.dev" href="https://meh.dev/feed.xml">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5647176622308419"
+          crossorigin="anonymous"></script>
+</head>
+
+  <body class="place-items-center min-h-screen">
+    <div class="mx-2 xl:max-w-7xl grid">
+      <nav class="flex items-center justify-between py-3">
+        <div class="flex items-center space-x-3">
+  <a class="site-title flex items-center space-x-2" href="/">
+    <img src="https://0.gravatar.com/avatar/ccf00de89ec54577fb9fd612358a9808?s=56" class="h-10 w-auto">
+    <span>meh.dev</span>
+  </a>
+</div>
+<div class="flex space-x-6">
+  <a class="page-link" href="/cv">CV</a>
+  <a class="page-link" href="/archive">Archive</a>
+</div>
+
+      </nav>
+      <div class="content-style-green prose prose-sm sm:prose-base md:prose-md prose-img:rounded-xl xl:max-w-5xl md:max-w-3xl mx-auto">
+        
+
+<article itemscope itemtype="http://schema.org/BlogPosting">
+  <h1 class="p-2 xs:p-1" itemprop="name headline">Dependencies for stability</h1>
+  <header class="post-header">
+    
+    <div class="post-meta shadow-md">
+    
+    
+    
+      <div class="post-meta-text">
+        <div class="post-meta-icon">
+          <i class="far fa-calendar"></i>
+        </div>
+        Posted on
+        <time datetime="2016-07-24T05:00:00+00:00" itemprop="datePublished">
+          Jul 24, 2016
+        </time>
+      </div>
+    
+    </div>
+
+    
+  </header>
+
+  <div class="p-4" itemprop="articleBody">
+    <h1 id="how-to-choose-dependencies-for-stability">How to choose dependencies for stability</h1>
+<p>Modern applications are built up of dozens or even hundreds of building blocks created by other programmers. Welcome to dependency hell! Now how do you get through?
+<!--more--></p>
+
+<h2 id="getting-started">Getting Started</h2>
+<p>First things first. Don’t get caught up on how many options there are or every single feature, you’ll lose valuable time that should be spent on new development. The only perfect choice will probably be the one you build yourself. But unfortunately if we always build everything ourselves we’ll never finish anything. So how do we choose?</p>
+
+<h2 id="choose-the-right-attributes">Choose the right attributes</h2>
+<p>These do not apply to every application but these are the things I value most building something sustainable. Depending on how vital the component is you should spend more or less time researching each of these.</p>
+
+<ul>
+  <li><a href="#ease">Ease of Development</a></li>
+  <li><a href="#maintenance">Lowering Maintenance Costs</a></li>
+  <li><a href="#license">Software Licensing</a></li>
+  <li><a href="#track">Track Record</a></li>
+</ul>
+
+<h2 id="ease-of-development"><a name="ease">Ease of Development</a></h2>
+<p>Read the docs, follow a tutorial for a sample application, the better a project is the easier this will be.</p>
+
+<p>You will encounter problems, it’s just part of programming. A good community will go a long way towards helping with this.</p>
+
+<ul>
+  <li>Is the projects responsive to bug reports? What’s the process?</li>
+  <li>Do users participate in live chat?</li>
+  <li>Are questions regularly answered and asked on Stack Overflow?</li>
+</ul>
+
+<h2 id="lowering-maintenance-costs"><a name="maintenance">Lowering Maintenance Costs</a></h2>
+<p>Don’t let your schedule be held back by your imports. For anything mission critical review anything that might cause unexpected maintenance.</p>
+
+<ul>
+  <li>Review the upgrade path between versions, the more documentation the better!</li>
+  <li>How is the backward compatibility between versions.</li>
+  <li>How frequent is the release cycle?</li>
+</ul>
+
+<h2 id="software-licensing"><a name="license">Software Licensing</a></h2>
+<p>In general anything FOSS will be alright to use but you should probably become familiar with the common ones so that you can quickly identify them. <a href="http://choosealicense.com/">Github published a handy website for learning more about the most common types</a>.</p>
+
+<h2 id="track-record"><a name="track">Track Record</a></h2>
+<p>Learning how to analyze a project’s track record can help you to predict where it’s going.</p>
+
+<h3 id="mature-projects-4-years">Mature Projects (4+ years)</h3>
+<p>Projects that are sponsored by an open source organization such as the Apache Foundation are usually very reliable, they’ve been accepted by a reputable organization and are likely being actively maintained by the community. You can likely expect a strong degree of stability, community support, and very often one or more companies providing support &amp; consulting services. Corporate sponsored projects are more hit and miss and should be reviewed individually based on the companies individual history.</p>
+
+<h3 id="young-projects-1-3-years">Young Projects (1-3 years)</h3>
+<p>Maturity comes with age, young projects even if they appear to be stable should be handled with care. I wouldn’t recommend them for anything that cant be easily replaced.</p>
+
+<p>Sometimes things get shutdown entirely like with <a href="https://techcrunch.com/2015/03/24/apple-acquires-durable-database-company-foundationdb/">FoundationDB</a> and sometimes not? See what happened to <a href="http://blog.parse.com/announcements/moving-on/">Parse</a></p>
+
+<h3 id="personal-projects-any-age">Personal Projects (any age)</h3>
+<p>Only use one of these if your comfortable contributing back or forking the entire thing. For small components this is probably fine but for essential pieces of your application you might want to choose something with a better record.</p>
+
+
+    
+
+    
+    
+  </div>
+
+  
+
+  <div id="disqus_thread"></div>
+  <script>
+  var disqus_config = function () {
+    this.page.url = "https://meh.dev/dependencies-for-stability";
+    this.page.identifier = '/dependencies-for-stability';
+  };
+  (function() {
+  var d = document, s = d.createElement('script');
+  s.src = 'https://jspaetzel.disqus.com/embed.js';
+  s.setAttribute('data-timestamp', +new Date());
+  (d.head || d.body).appendChild(s);
+  })();
+  </script>
+  <noscript>Please enable JavaScript to view comments</noscript>
+  <script id="dsq-count-scr" src="//jspaetzel.disqus.com/count.js" async></script>
+</article>
+
+
+      </div>
+      <footer class="footer">
+        <div class="copyright">© 2025  <i class="fas fa-heart"></i>  John Spaetzel</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js"></script>
+<script>
+  WebFont.load({
+    google: {
+      families: ['Josefin Sans', 'Noto Sans', 'Roboto Mono', 'Material Icons']
+    }
+  });
+</script>
+<script src="https://kit.fontawesome.com/ea17bff308.js" crossorigin="anonymous"></script>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-W3G88JG6ZH"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-W3G88JG6ZH');
+</script>
+<script src="/js/prism.js"></script>
+
+      </footer>
+    </div>
+  </body>
+</html>

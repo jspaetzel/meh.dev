@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  
+  <title>Publishing private composer packages to Artifactory with Jenkins</title>
+  <meta name="description" content="This is a quick guide for how to publish a custom Composer package to Artifactory with Jenkins in a way that behaves similarly to Packagist. The version will...">
+
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="/css/prism.css">
+
+  <link rel="canonical" href="https://meh.dev/publish-private-composer-package-to-artifactory-with-jenkins">
+  <link rel="alternate" type="application/rss+xml" title="meh.dev" href="https://meh.dev/feed.xml">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5647176622308419"
+          crossorigin="anonymous"></script>
+</head>
+
+  <body class="place-items-center min-h-screen">
+    <div class="mx-2 xl:max-w-7xl grid">
+      <nav class="flex items-center justify-between py-3">
+        <div class="flex items-center space-x-3">
+  <a class="site-title flex items-center space-x-2" href="/">
+    <img src="https://0.gravatar.com/avatar/ccf00de89ec54577fb9fd612358a9808?s=56" class="h-10 w-auto">
+    <span>meh.dev</span>
+  </a>
+</div>
+<div class="flex space-x-6">
+  <a class="page-link" href="/cv">CV</a>
+  <a class="page-link" href="/archive">Archive</a>
+</div>
+
+      </nav>
+      <div class="content-style-green prose prose-sm sm:prose-base md:prose-md prose-img:rounded-xl xl:max-w-5xl md:max-w-3xl mx-auto">
+        
+
+<article itemscope itemtype="http://schema.org/BlogPosting">
+  <h1 class="p-2 xs:p-1" itemprop="name headline">Publishing private composer packages to Artifactory with Jenkins</h1>
+  <header class="post-header">
+    
+    <div class="post-meta shadow-md">
+    
+    
+    
+      <div class="post-meta-text">
+        <div class="post-meta-icon">
+          <i class="far fa-calendar"></i>
+        </div>
+        Posted on
+        <time datetime="2020-04-22T08:00:00+00:00" itemprop="datePublished">
+          Apr 22, 2020
+        </time>
+      </div>
+    
+    </div>
+
+    
+    <ul class="tag-list">
+      
+      <li class="inline"><a class="tag-list-link shadow-md" href="/tag/CI">CI</a></li>
+      
+      <li class="inline"><a class="tag-list-link shadow-md" href="/tag/PHP">PHP</a></li>
+      
+      <li class="inline"><a class="tag-list-link shadow-md" href="/tag/Composer">Composer</a></li>
+      
+      <li class="inline"><a class="tag-list-link shadow-md" href="/tag/Artifactory">Artifactory</a></li>
+      
+      <li class="inline"><a class="tag-list-link shadow-md" href="/tag/Jenkins">Jenkins</a></li>
+      
+    </ul>
+    
+  </header>
+
+  <div class="p-4" itemprop="articleBody">
+    <p>This is a quick guide for how to publish a custom Composer package to Artifactory with Jenkins in a way that behaves similarly to Packagist. The version will come from a git tag without needing to update the composer.json file.</p>
+
+<h2 id="configuration">Configuration</h2>
+
+<ul>
+  <li>
+    <p>Setup the <a href="https://www.jfrog.com/confluence/display/JFROG/Jenkins+Artifactory+Plug-in">Jenkins Artifactory Plug-in</a>, this will make things easier since you wont need to manage credentials or make http requests directly from the pipeline.</p>
+  </li>
+  <li>
+    <p>Enable tags as a “Branch Source” in Jenkins. For Github this is under the folder or project settings. “Discover tags” should be an enabled behavior. If this isn’t set you may not see tags be built in Jenkins.</p>
+  </li>
+  <li>
+    <p>Create a local Composer repository in Artifactory. <a href="https://www.jfrog.com/confluence/display/JFROG/PHP+Composer+Repositories">See the JFrog documentation for how to create</a>.</p>
+  </li>
+</ul>
+
+<h2 id="composerjson">composer.json</h2>
+
+<ul>
+  <li>Do not specify a <code>"version"</code>, it will be populated by Jenkins via a git tag.</li>
+  <li>Include <code>"archive"</code> options since you probably do not want to push up the vendor folder or other things that shouldn’t be part of a package. For instance I exclude tests since consumers of my package wont be running tests, I only need them during CI and development.
+    <pre><code class="language-json">"archive": {
+   "exclude": ["/vendor", "/build", "**/Tests/*"]
+}
+</code></pre>
+  </li>
+</ul>
+
+<h2 id="archive-creation-in-jenkinsfile">Archive creation in Jenkinsfile</h2>
+<p>When creating an archive, we can use the <code>$TAG_NAME</code> which is supplied by Jenkins. You should change <code>example</code> to the name of your package.</p>
+<pre><code class="language-groovy">stage("Create Archive") {
+    when {
+        tag '*'
+    }
+    steps {
+        sh "php composer.phar archive --format=zip --dir=build --file=example-$TAG_NAME"
+        archiveArtifacts artifacts: 'build/*.zip'
+    }
+}
+</code></pre>
+
+<p>Note: <code>archiveArtifacts</code> only archives the artifact to Jenkins, this is optional and can be left out if you only want to push the archive to Artifactory.</p>
+
+<h2 id="publishing-to-artifactory-from-your-jenkinsfile">Publishing to Artifactory from your Jenkinsfile</h2>
+<p>When publishing it’s possible to set the version using a property. Since we are using the plugin and we’re providing a <a href="https://www.jfrog.com/confluence/display/JFROG/Using+File+Specs">file spec</a>  we’ll pass it in as a prop. <code>"props": "composer.version=$TAG_NAME"</code>. If we weren’t using the plugin it would be specified as a url query variable like this: <code>?properties=composer.version=$TAG_NAME</code>.</p>
+
+<p>In the target, <code>composer-local</code> is the name of my local Composer repository in Artifactory. Change that to what yours is named and change <code>example</code> to the name of your package or other path where you want the package published. Do not forget the trailing <code>/</code> in the target otherwise it will become the filename.</p>
+
+<p>Publishing stage</p>
+<pre><code class="language-groovy">stage("Publish") {
+    when {
+        tag '*'
+    }
+    steps {
+        script {
+            def server = Artifactory.server 'artifactory'
+            def buildInfo = server.upload spec: """{
+                "files": [
+                    {
+                        "pattern": "${env.WORKSPACE}/build/*.zip",
+                        "target": "composer-local/example/",
+                        "props": "composer.version=$TAG_NAME"
+                    }
+                ]
+            }"""
+            server.publishBuildInfo buildInfo
+        }
+    }
+}
+</code></pre>
+
+
+    
+
+    
+    
+  </div>
+
+  
+
+  <div id="disqus_thread"></div>
+  <script>
+  var disqus_config = function () {
+    this.page.url = "https://meh.dev/publish-private-composer-package-to-artifactory-with-jenkins";
+    this.page.identifier = '/publish-private-composer-package-to-artifactory-with-jenkins';
+  };
+  (function() {
+  var d = document, s = d.createElement('script');
+  s.src = 'https://jspaetzel.disqus.com/embed.js';
+  s.setAttribute('data-timestamp', +new Date());
+  (d.head || d.body).appendChild(s);
+  })();
+  </script>
+  <noscript>Please enable JavaScript to view comments</noscript>
+  <script id="dsq-count-scr" src="//jspaetzel.disqus.com/count.js" async></script>
+</article>
+
+
+      </div>
+      <footer class="footer">
+        <div class="copyright">© 2025  <i class="fas fa-heart"></i>  John Spaetzel</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js"></script>
+<script>
+  WebFont.load({
+    google: {
+      families: ['Josefin Sans', 'Noto Sans', 'Roboto Mono', 'Material Icons']
+    }
+  });
+</script>
+<script src="https://kit.fontawesome.com/ea17bff308.js" crossorigin="anonymous"></script>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-W3G88JG6ZH"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-W3G88JG6ZH');
+</script>
+<script src="/js/prism.js"></script>
+
+      </footer>
+    </div>
+  </body>
+</html>

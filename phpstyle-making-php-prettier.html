@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  
+  <title>PHPStyle: Making PHP Prettier</title>
+  <meta name="description" content="Why doesn’t PHP have more uniform, opinionated, styles? We see it with so many other languages…  Go: gofmt automatically formats Go source code. According to...">
+
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="/css/prism.css">
+
+  <link rel="canonical" href="https://meh.dev/phpstyle-making-php-prettier">
+  <link rel="alternate" type="application/rss+xml" title="meh.dev" href="https://meh.dev/feed.xml">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5647176622308419"
+          crossorigin="anonymous"></script>
+</head>
+
+  <body class="place-items-center min-h-screen">
+    <div class="mx-2 xl:max-w-7xl grid">
+      <nav class="flex items-center justify-between py-3">
+        <div class="flex items-center space-x-3">
+  <a class="site-title flex items-center space-x-2" href="/">
+    <img src="https://0.gravatar.com/avatar/ccf00de89ec54577fb9fd612358a9808?s=56" class="h-10 w-auto">
+    <span>meh.dev</span>
+  </a>
+</div>
+<div class="flex space-x-6">
+  <a class="page-link" href="/cv">CV</a>
+  <a class="page-link" href="/archive">Archive</a>
+</div>
+
+      </nav>
+      <div class="content-style-green prose prose-sm sm:prose-base md:prose-md prose-img:rounded-xl xl:max-w-5xl md:max-w-3xl mx-auto">
+        
+
+<article itemscope itemtype="http://schema.org/BlogPosting">
+  <h1 class="p-2 xs:p-1" itemprop="name headline">PHPStyle: Making PHP Prettier</h1>
+  <header class="post-header">
+    
+    <div class="post-meta shadow-md">
+    
+    
+    
+    <div class="post-meta-text">
+      <div class="post-meta-icon">
+          <i class="far fa-calendar-check"></i>
+        </div>
+        Edited on
+        <time datetime="2022-09-09T02:30:02+00:00" itemprop="dateModified">
+          Sep 08, 2022
+        </time>
+      </div>
+    
+    </div>
+
+    
+  </header>
+
+  <div class="p-4" itemprop="articleBody">
+    <p>Why doesn’t PHP have more uniform, opinionated, styles? We see it with so many other languages…</p>
+
+<ul>
+  <li>Go: <a href="https://go.dev/blog/gofmt">gofmt</a> automatically formats Go source code. According to go.dev, 70% of Go packages in the wild are formatted with gofmt.</li>
+  <li>JavaScript: <a href="https://prettier.io/">Prettier</a> is an opinionated code formatted used by many packages.</li>
+  <li>Python: <a href="https://pypi.org/project/black/">Black</a>, the uncompromising Python code formatter.</li>
+  <li>C#: A decent formatter is built into Visual Studio, nothing additional required. Or you can go with a more opinionated option like <a href="https://github.com/belav/csharpier">CSharpier</a>.</li>
+  <li>Java: There’s lots of options for Java. For instance, a popular option is <a href="https://github.com/google/google-java-format">Google’s standard formatter</a>.</li>
+</ul>
+
+<h2 id="what-options-do-php-developers-have">What options do PHP developers have?</h2>
+
+<p>In typical PHP fashion, we have a lot choices… This is a blessing and a curse working in such a mature language. I uncovered while <a href="php-static-analysis-tools">researching static analysis tools</a> that there are two dominate tools for styling php, neither very opinionated out of the box.</p>
+
+<p><strong><a href="https://github.com/squizlabs/PHP_CodeSniffer">PHP_CodeSniffer</a> &amp; <a href="https://cs.symfony.com/">PHP-CS-Fixer</a></strong></p>
+
+<p>The main difference between these two is that PHP-CS-Fixer is fully automated. Once it’s configured any issues it finds it will always fix.</p>
+
+<p>PHP_CodeSniffer is more likely to tell you what’s wrong and may not be able to fix issues. You can have it try to fix issues by running it’s alt command, phpcbf, but this only works half of the time.</p>
+
+<p>I won’t get into specific details about how to install or run these tools, the documentation is great if you want to check that out. But I will briefly explain how these are configured to give more context.</p>
+
+<h3 id="php_codesniffer-configuration">PHP_CodeSniffer Configuration</h3>
+
+<p>PHP_CodeSniffer is the original style tool for PHP, it’s been around since 2009!</p>
+
+<p>Configured with a <code>phpcs.xml</code> file or a <code>phpcs.xml.dist</code> file, this project is highly un-opinionated. The most standardized configs are the PSR styles included with the package, however many projects override these defaults and in general projects that use phpcs do not share a common style.</p>
+
+<p>Given it’s age it’s not surprising that it uses XML for configuration. Back in 2009, everything was configured with XML. <a href="https://github.com/squizlabs/PHP_CodeSniffer/blob/ed83c67a1dc21096a8b31c5426a541eb2b42f176/phpcs.xml.dist">Checkout the config used by the PHP_CodeSniffer project itself as an example.</a></p>
+
+<p>Checkout some configs of a few large projects</p>
+<ul>
+  <li><a href="https://github.com/WordPress/wordpress-develop/blob/2e5de394c7ce31700c722ebe42e7011a4c293b33/phpcs.xml.dist">Wordpress</a></li>
+  <li><a href="https://github.com/doctrine/orm/blob/1ffb9152f76bd3d332d5275bd2272d3984bcf3d6/phpcs.xml.dist">Doctrine</a></li>
+  <li><a href="https://github.com/wikimedia/mediawiki/blob/master/.phpcs.xml">MediaWiki</a></li>
+  <li><a href="https://github.com/drupal/core/blob/807eaa93fd4a1df145d656bad75641b1e2396849/phpcs.xml.dist">Drupal</a></li>
+</ul>
+
+<h3 id="configuring-php-cs-fixer">Configuring PHP-CS-Fixer</h3>
+
+<p>PHP-CS-Fixer is the new kid on the block. It was release in 2015 and is developed by Sensio Labs who also develops Symfony, one of the most popular PHP frameworks. It’s also fairly un-opinionated, and again, most projects write their own configs.</p>
+
+<p>It’s configured with a PHP file, sometimes as <code>.php_cs</code>, or <code>.php-cs-fixer.dist.php</code>, or <code>.php-cs-fixer.php</code>. <a href="https://github.com/FriendsOfPHP/PHP-CS-Fixer/blob/aa805a8a4d8384c71a1367fceb57a081a4d969e4/.php-cs-fixer.dist.php">Checkout the config used by the PHP-CS-Fixer project itself as an example.</a></p>
+
+<p>When I first looked at one of these configurations it looked confusing enough that I didn’t even <em>try</em> to use this tool. The setup also isn’t straightforward. However, it’s not as scary as it looks, and this tool does work very well once configured.</p>
+
+<p>Checkout some configs of a few large projects</p>
+<ul>
+  <li><a href="https://github.com/symfony/symfony/blob/86e87a2ded42cfcd3e25b62fa858baadf1e2ff75/.php-cs-fixer.dist.php">Symfony</a></li>
+  <li><a href="https://github.com/composer/composer/blob/54063964a7eba4fac568894e39a0df3a0a27fa50/.php-cs-fixer.php">Composer</a></li>
+  <li><a href="https://github.com/guzzle/guzzle/blob/82ca75f0b1f130f018febdda29af13086da5dbac/.php-cs-fixer.dist.php">Guzzle</a></li>
+  <li><a href="https://github.com/Seldaek/monolog/blob/248673e85824f9f910738d870e73eafc7654213f/.php_cs">Monolog</a></li>
+</ul>
+
+<h1 id="introducing-phpstyle-">Introducing PHPStyle ✨</h1>
+
+<p>Confused yet? In my quest for quickly applying styles to my projects I instead discovered that there’s not a single right answer. <strong>PHP developers develop new standards for every project.</strong> Sometimes using the same tools, and sometimes giving up and not using any automated tools at all. 🙁</p>
+
+<p>So I’ve created yet another project to make this journey easier for my own projects, and maybe yours too.</p>
+
+<p>PHPStyle is easy to use, opinionated, and configured with a Neon/Yaml file (not PHP or XML). It uses PHP-CS-Fixer under the hood so as that project improves this one will as well.</p>
+
+<h2 id="how-to-use-phpstyle">How to use PHPStyle</h2>
+
+<ol>
+  <li>Require the package</li>
+</ol>
+
+<pre><code class="language-bash">composer require jspaetzel/phpstyle --dev
+</code></pre>
+
+<ol>
+  <li>Run the <a href="https://github.com/jspaetzel/phpstyle/blob/main/phpstyle-setup">setup script</a>:</li>
+</ol>
+
+<pre><code class="language-bash">./vendor/bin/phpstyle-setup
+</code></pre>
+
+<blockquote>
+  <p>🗒 Note: This script is for convenience, you can alternatively do the same steps manually by <a href="https://cs.symfony.com/#installation">installing php-cs-fixer</a> and copying <a href="https://github.com/jspaetzel/phpstyle/blob/main/.php-cs-fixer.dist.php">this .php-cs-fixer.dist.php file</a> to your project root.</p>
+</blockquote>
+
+<ol>
+  <li>Create/review the <code>phpstyle.neon</code> configuration file. Feel free to make changes to this file again at any time.</li>
+</ol>
+
+<pre><code class="language-yaml">parameters:
+    php: 7.4
+    risky: false
+    paths:
+        - src
+        - tests
+    excludePaths:
+        - src/path/you/want/to/skip
+        - src/or/a/file-to-skip.php
+</code></pre>
+
+<ol>
+  <li>Run php-cs-fixer to fix your code</li>
+</ol>
+
+<pre><code class="language-bash">./vendor/bin/php-cs-fixer fix
+</code></pre>
+
+<blockquote>
+  <p>🗒 Note: php-cs-fixer is integrated with PHPStorm and other editors and so PHPStyle should work with them as well.</p>
+</blockquote>
+
+<p>That’s it, your code is styled!</p>
+
+
+    
+
+    
+    
+  </div>
+
+  
+
+  <div id="disqus_thread"></div>
+  <script>
+  var disqus_config = function () {
+    this.page.url = "https://meh.dev/phpstyle-making-php-prettier";
+    this.page.identifier = '/phpstyle-making-php-prettier';
+  };
+  (function() {
+  var d = document, s = d.createElement('script');
+  s.src = 'https://jspaetzel.disqus.com/embed.js';
+  s.setAttribute('data-timestamp', +new Date());
+  (d.head || d.body).appendChild(s);
+  })();
+  </script>
+  <noscript>Please enable JavaScript to view comments</noscript>
+  <script id="dsq-count-scr" src="//jspaetzel.disqus.com/count.js" async></script>
+</article>
+
+
+      </div>
+      <footer class="footer">
+        <div class="copyright">© 2025  <i class="fas fa-heart"></i>  John Spaetzel</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js"></script>
+<script>
+  WebFont.load({
+    google: {
+      families: ['Josefin Sans', 'Noto Sans', 'Roboto Mono', 'Material Icons']
+    }
+  });
+</script>
+<script src="https://kit.fontawesome.com/ea17bff308.js" crossorigin="anonymous"></script>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-W3G88JG6ZH"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-W3G88JG6ZH');
+</script>
+<script src="/js/prism.js"></script>
+
+      </footer>
+    </div>
+  </body>
+</html>

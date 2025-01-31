@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  
+  <title>AutoKey, GO!</title>
+  <meta name="description" content="AutoKey is a text expansion/replacement utility for Linux. In addition to text expansion capabilities it’s also able to be triggered by hotkeys and create cu...">
+
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="/css/prism.css">
+
+  <link rel="canonical" href="https://meh.dev/autokey-go">
+  <link rel="alternate" type="application/rss+xml" title="meh.dev" href="https://meh.dev/feed.xml">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5647176622308419"
+          crossorigin="anonymous"></script>
+</head>
+
+  <body class="place-items-center min-h-screen">
+    <div class="mx-2 xl:max-w-7xl grid">
+      <nav class="flex items-center justify-between py-3">
+        <div class="flex items-center space-x-3">
+  <a class="site-title flex items-center space-x-2" href="/">
+    <img src="https://0.gravatar.com/avatar/ccf00de89ec54577fb9fd612358a9808?s=56" class="h-10 w-auto">
+    <span>meh.dev</span>
+  </a>
+</div>
+<div class="flex space-x-6">
+  <a class="page-link" href="/cv">CV</a>
+  <a class="page-link" href="/archive">Archive</a>
+</div>
+
+      </nav>
+      <div class="content-style-green prose prose-sm sm:prose-base md:prose-md prose-img:rounded-xl xl:max-w-5xl md:max-w-3xl mx-auto">
+        
+
+<article itemscope itemtype="http://schema.org/BlogPosting">
+  <h1 class="p-2 xs:p-1" itemprop="name headline">AutoKey, GO!</h1>
+  <header class="post-header">
+    
+    <div class="post-meta shadow-md">
+    
+    
+    
+      <div class="post-meta-text">
+        <div class="post-meta-icon">
+          <i class="far fa-calendar"></i>
+        </div>
+        Posted on
+        <time datetime="2019-08-25T08:00:00+00:00" itemprop="datePublished">
+          Aug 25, 2019
+        </time>
+      </div>
+    
+    </div>
+
+    
+    <ul class="tag-list">
+      
+      <li class="inline"><a class="tag-list-link shadow-md" href="/tag/Productivity">Productivity</a></li>
+      
+    </ul>
+    
+  </header>
+
+  <div class="p-4" itemprop="articleBody">
+    <p>AutoKey is a text expansion/replacement utility for Linux. In addition to text expansion capabilities it’s also able to be triggered by hotkeys and create custom prompts for inputs.</p>
+
+<p>This script is a simple one I bind to Alt+Space which winds up functioning <em>kinda</em> like Spotlight from OSX but more programmable.</p>
+
+<p>Features:</p>
+<ul>
+  <li>Quick browser access to bookmarks</li>
+  <li>Opening of Jira tickets</li>
+  <li>Search for things faster</li>
+</ul>
+
+<pre><code class="language-python">import re
+import urllib
+import webbrowser
+
+retCode, command = dialog.input_dialog(title='Go',
+                                       message='Where to?',
+                                       default='')
+
+bookmarks = {
+    "gh": "https://github.com/jspaetzel",
+    "js": "https://meh.dev",
+    "groupmephp": "https://github.com/jspaetzel/GroupMePHP",
+}
+
+if re.search('\\w{2,3}-\\d{1,4}', command):
+    webbrowser.open("https://jira.atlassian.net/browse/" + command)
+elif command in bookmarks:
+    webbrowser.open(bookmarks.get(command))
+elif re.search('^google/.+$', command):
+    query = re.match('^google/(.+)$', command).group(1)
+    webbrowser.open('https://google.com/?q=' + urllib.parse.quote(command))
+elif len(command) &gt; 0:
+    webbrowser.open('https://duckduckgo.com/?q=' + urllib.parse.quote(command))
+</code></pre>
+
+<p><a href="text-expansion-clipboard-management">Checkout my other post about text expanders &amp; clipboard management</a>.</p>
+
+
+    
+
+    
+    
+  </div>
+
+  
+
+  <div id="disqus_thread"></div>
+  <script>
+  var disqus_config = function () {
+    this.page.url = "https://meh.dev/autokey-go";
+    this.page.identifier = '/autokey-go';
+  };
+  (function() {
+  var d = document, s = d.createElement('script');
+  s.src = 'https://jspaetzel.disqus.com/embed.js';
+  s.setAttribute('data-timestamp', +new Date());
+  (d.head || d.body).appendChild(s);
+  })();
+  </script>
+  <noscript>Please enable JavaScript to view comments</noscript>
+  <script id="dsq-count-scr" src="//jspaetzel.disqus.com/count.js" async></script>
+</article>
+
+
+      </div>
+      <footer class="footer">
+        <div class="copyright">© 2025  <i class="fas fa-heart"></i>  John Spaetzel</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js"></script>
+<script>
+  WebFont.load({
+    google: {
+      families: ['Josefin Sans', 'Noto Sans', 'Roboto Mono', 'Material Icons']
+    }
+  });
+</script>
+<script src="https://kit.fontawesome.com/ea17bff308.js" crossorigin="anonymous"></script>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-W3G88JG6ZH"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-W3G88JG6ZH');
+</script>
+<script src="/js/prism.js"></script>
+
+      </footer>
+    </div>
+  </body>
+</html>

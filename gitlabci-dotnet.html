@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  
+  <title>Building Dotnet with Gitlab CI</title>
+  <meta name="description" content="The vast majority of GitLab’s CI examples usually are centered around ruby development though it is an incredibly powerful tool for any language or framework...">
+
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="/css/prism.css">
+
+  <link rel="canonical" href="https://meh.dev/gitlabci-dotnet">
+  <link rel="alternate" type="application/rss+xml" title="meh.dev" href="https://meh.dev/feed.xml">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5647176622308419"
+          crossorigin="anonymous"></script>
+</head>
+
+  <body class="place-items-center min-h-screen">
+    <div class="mx-2 xl:max-w-7xl grid">
+      <nav class="flex items-center justify-between py-3">
+        <div class="flex items-center space-x-3">
+  <a class="site-title flex items-center space-x-2" href="/">
+    <img src="https://0.gravatar.com/avatar/ccf00de89ec54577fb9fd612358a9808?s=56" class="h-10 w-auto">
+    <span>meh.dev</span>
+  </a>
+</div>
+<div class="flex space-x-6">
+  <a class="page-link" href="/cv">CV</a>
+  <a class="page-link" href="/archive">Archive</a>
+</div>
+
+      </nav>
+      <div class="content-style-green prose prose-sm sm:prose-base md:prose-md prose-img:rounded-xl xl:max-w-5xl md:max-w-3xl mx-auto">
+        
+
+<article itemscope itemtype="http://schema.org/BlogPosting">
+  <h1 class="p-2 xs:p-1" itemprop="name headline">Building Dotnet with Gitlab CI</h1>
+  <header class="post-header">
+    
+    <div class="post-meta shadow-md">
+    
+    
+    
+      <div class="post-meta-text">
+        <div class="post-meta-icon">
+          <i class="far fa-calendar"></i>
+        </div>
+        Posted on
+        <time datetime="2016-04-26T05:00:00+00:00" itemprop="datePublished">
+          Apr 26, 2016
+        </time>
+      </div>
+    
+    </div>
+
+    
+    <ul class="tag-list">
+      
+      <li class="inline"><a class="tag-list-link shadow-md" href="/tag/Dotnet">Dotnet</a></li>
+      
+      <li class="inline"><a class="tag-list-link shadow-md" href="/tag/CI">CI</a></li>
+      
+    </ul>
+    
+  </header>
+
+  <div class="p-4" itemprop="articleBody">
+    <p>The vast majority of GitLab’s CI examples usually are centered around ruby development though it is an incredibly powerful tool for any language or framework.</p>
+
+<p>I’ll briefly demonstrate in this tutorial how to use GitLab.com to build, test, and publish any .NET application or nuget package quickly and easily.
+<!--more-->
+Requirements:</p>
+
+<ol>
+  <li>Any dependencies necessary to run your application locally.</li>
+  <li>GitLab.com account.</li>
+</ol>
+
+<h2 id="working-with-the-command-line">Working with the command line</h2>
+<p>A quick introduction to building asp.net projects with the command line using msbuild, nuget, nunit, and mstest. Anything you can do in the command line you will be able to do as a task with gitlab-ci.</p>
+
+<h4 id="building-from-the-cli">Building from the CLI</h4>
+
+<pre><code class="language-shell">cd your_project_dir
+nuget restore
+msbuild yoursolution.sln
+</code></pre>
+
+<h4 id="testing-your-build">Testing your build</h4>
+<p>I regularly use NUnit &amp; VS Test Tools, but any runner will work.</p>
+
+<p>MSTest aka Visual Studio Test Tools
+<code>mstest /testcontainer:testproject/bin/Debug/testproject.dll</code></p>
+
+<p>NUnit: <code>nunit-console testproject.csproj</code></p>
+
+<p>Nunit also lets you reference the DLL directly, whereas mstest does not
+<code>nunit-console testproject/bin/Debug/testproject.dll</code></p>
+
+<h4 id="creating--publishing-a-nuget-package">Creating &amp; publishing a nuget package</h4>
+<pre><code class="language-shell">nuget pack "my-project.csproj" -IncludeReferencedProjects -Build -Properties Configuration=Release -Version 1.0.0
+nuget push \*.nupkg %NugetAPIKey%
+</code></pre>
+<p>Want to publish to a private nuget server? Tack on: -Source %NugetSource%’</p>
+
+<h4 id="publishing-a-website">Publishing a website</h4>
+<p>Using a publishing profile this is really easy</p>
+<pre><code class="language-shell">msbuild my-project.csproj /p:Configuration=Release /t:ReBuild /p:PublishProfile="my-profile-name" /p:DeployOnBuild=True /p:password="MyDeploymentPassword"  /p:VisualStudioVersion=12.0
+</code></pre>
+
+<h2 id="setup-a-gitlab-runner">Setup a gitlab runner</h2>
+<p>Find the docs for this on the gitlab website, they’re good!
+https://gitlab.com/gitlab-org/gitlab-ci-multi-runner/blob/master/docs/install/windows.md</p>
+
+<h2 id="creating-your-ci-config-file">Creating your CI config file</h2>
+<p>Once you have a runner working on a machine you can add a config file to a project. This should be named <code>.gitlab-ci.yml</code> in order to be recognized by gitlab.</p>
+
+<p>Here’s a full example of one that works fine for a simple project that you want to continuously build, test, and deploy.</p>
+
+<pre><code class="language-yml">stages:
+  - build
+
+before_script:
+  - 'nuget restore my-solution.sln'
+
+build:
+ stage: build
+ script:
+  - 'msbuild my-solution.sln /t:Clean,ReBuild /p:Configuration=Debug;Platform="Any CPU"'
+  - 'nunit-console my-test-project/my-test-project.csproj'
+  - 'msbuild my-solution.sln /t:ReBuild /p:Configuration=Release;Platform="Any CPU"'
+  - 'nuget pack "my-project/my-project.csproj" -IncludeReferencedProjects -Build -Properties Configuration=Release -Version 0.0.1.%CI_BUILD_ID%'
+  - 'nuget push \*.nupkg %NugetAPIKey% -Source %NugetSource%'
+ only:
+   - master
+</code></pre>
+<p>Most of these are the familiar commands that we went over above, but there’s a couple things to point out.</p>
+<ul>
+  <li>%CI_BUILD_ID% : Automatic variable for the unique build number</li>
+  <li>%NugetAPIKey% : Custom project variable</li>
+  <li>%NugetSource% : Custom project variable</li>
+</ul>
+
+
+    
+
+    
+    
+  </div>
+
+  
+
+  <div id="disqus_thread"></div>
+  <script>
+  var disqus_config = function () {
+    this.page.url = "https://meh.dev/gitlabci-dotnet";
+    this.page.identifier = '/gitlabci-dotnet';
+  };
+  (function() {
+  var d = document, s = d.createElement('script');
+  s.src = 'https://jspaetzel.disqus.com/embed.js';
+  s.setAttribute('data-timestamp', +new Date());
+  (d.head || d.body).appendChild(s);
+  })();
+  </script>
+  <noscript>Please enable JavaScript to view comments</noscript>
+  <script id="dsq-count-scr" src="//jspaetzel.disqus.com/count.js" async></script>
+</article>
+
+
+      </div>
+      <footer class="footer">
+        <div class="copyright">© 2025  <i class="fas fa-heart"></i>  John Spaetzel</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js"></script>
+<script>
+  WebFont.load({
+    google: {
+      families: ['Josefin Sans', 'Noto Sans', 'Roboto Mono', 'Material Icons']
+    }
+  });
+</script>
+<script src="https://kit.fontawesome.com/ea17bff308.js" crossorigin="anonymous"></script>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-W3G88JG6ZH"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-W3G88JG6ZH');
+</script>
+<script src="/js/prism.js"></script>
+
+      </footer>
+    </div>
+  </body>
+</html>
