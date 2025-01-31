@@ -13,7 +13,7 @@ The PHP community has a diverse ecosystem of static analysis tools which can mak
 
 This post separates these tools into one of two types depending on their purpose. The first section is static analysis for the purpose of identifying bugs. The later section is for maintenance of code style/formatting.
 
-# Static Code Analysis Tools
+## Static Code Analysis Tools
 * [PHPStan](https://github.com/phpstan/phpstan) is the most commonly used tool and also one of the youngest. It has been rapidly adopted since it's release in 2016. It'll discover bugs in your code without running the code.
 
 * [Psalm](https://github.com/vimeo/psalm) was also released in 2016 and has grown in popularity a little more slowly. It claims more features out of the box and has a focus is on type-related bugs.
@@ -70,7 +70,7 @@ There are some other fairly popular tools worth mentioning but which were not us
 
 * [Qodana](https://www.jetbrains.com/qodana/): This is a newer commercial product from JetBrains which is still in early access. It's a hosted solution which can be used to analyze code and identify bugs and vulnerabilities.
 
-# Style Tools
+## Style Tools
 
 * [PHPCS](https://github.com/squizlabs/PHP_CodeSniffer) is the original code standards tool for PHP and dates back to 2006. It's primary use is to establish standards and identify violations. It does however also provide a package `phpcbf` which can sometimes automatically fix violations. PHPCS is extremely mature and very flexible and comes with a massive selection of pre-written "Sniffs" available to use.
 
@@ -113,23 +113,23 @@ Here's a selection of some popular packages today.
 | [OpenTelemetry PHP](https://github.com/open-telemetry/opentelemetry-php) | 776    | ✔️                                                         | ✔️                                                    |
 | [OpenSearch PHP](https://github.com/opensearch-project/opensearch-php)   | 115    | ✔️                                                         |                                                       |
 
-## PhpCsFixer Utilities
+### PhpCsFixer Utilities
 PhpCsFixer isn't the most opinionated tool. A couple of projects have cropped up that ship opinionated configurations for this tool.
 * [Pint](https://github.com/laravel/pint) opinionated php-sc-fixer by the Laravel team.
 * [Styleci](https://styleci.io/) a hosted version fixer by the Laravel team. It fixes styles quietly in the background as developers make changes by pulling the code, restyling it, and pushing it back to the main repository.
 * [PHP.Style](https://php.style/) my own opinionated configuration.
 
-# Conclusion
+## Conclusion
 The most popular tools to use overall appear are PHPStan & PhpCsFixer.
 
 However, it's not a one size fit all solution. Psalm has strong popularity and is often used alongside PHPStan. And for enforcing code standards, PhpCsFixer is the most popular, but it's still often paired with PHPCS which has more complex configuration options.
 
 I found this analysis interesting when reviewing these tools for my own usage. If you have feedback or can correct me about any of the information in this post please leave me a comment.
 
-# News & Changelog
+## News & Changelog
 This post is periodically updated to keep up with the latest trends.
 
-## Jan 2025
+### Jan 2025
 * Audited the status of all projects
 * Removed style ci from style tools table
 * PHPStan picked up a few new projects this year and continues growing in popularity
@@ -137,19 +137,19 @@ This post is periodically updated to keep up with the latest trends.
 * PHPCS picked up a few new projects from this sample group and is still going strong though PhpCsFixer remains the more popular choice overall.
 * Added a few popular projects.
 
-## Jan 2024
+### Jan 2024
 * Updated the status of all projects on this page. Added a few newer notable projects.
 * PHPStan is up one and Psalm is down on the same project. Removed Phan from the table which is still only used by MediaWiki.
 * Jetbrains is previewing a new code analysis tool, Qodana, which is now included in the list. Only one project I checked is using it so far.
 * Things to look forward to this year: PHPStan 2.0 & expanded coding style standards w/ PERCS 2.0: https://www.php-fig.org/per/coding-style/
 
-## Jan 2023
+### Jan 2023
 * Updated the status of all projects on this page. Most projects gained some popularity but order stayed roughly the same.
 * PHPStan, PHP-CS-Fixer, and Scrutinizer grew in popularity.
 * Add section about php-cs-fixer utilities.
 
-## Jan 2022
+### Jan 2022
 Checked the status of all projects in these lists and updated stats. Psalm continues to grow in popularity, a couple projects added it since they were last checked. Otherwise, no major changes.
 
-## March 2021
+### March 2021
 First version of this post

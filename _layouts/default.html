@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html>
   {% include head.html %}
-  <body class="line-numbers place-items-center min-h-screen">
-    <div class="max-w-7xl grid px-4 xl:px-0">
-      <nav class="flex items-center justify-between xl:px-0 py-3">
+  <body class="place-items-center min-h-screen">
+    <div class="mx-2 xl:max-w-7xl grid">
+      <nav class="flex items-center justify-between py-3">
         {% include header.html %}
       </nav>
-      <div class="py-8 content-style-green">
+      <div class="content-style-green prose prose-sm sm:prose-base md:prose-md prose-img:rounded-xl xl:max-w-5xl md:max-w-3xl mx-auto">
         {{ content }}
       </div>
       <footer class="footer">

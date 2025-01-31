@@ -71,7 +71,7 @@
 
 @media (max-width: 991px) {
   header {
-    padding: 0px;
+    padding: 0;
   }
 }
 
@@ -179,12 +179,6 @@ a.tag-list-link:hover {
 /**
  * Posts
  */
-
-.post-title {
-  line-height: 1;
-  padding: 8px;
-  margin: 0;
-}
 
 .content-style-green {
   .post-meta {
