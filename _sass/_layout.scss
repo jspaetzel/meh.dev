@@ -1,20 +1,11 @@
 /**
  * Site header
  */
-.site-header {
-  padding: 0px;
-  min-height: 65px;
-  margin-top: 20px;
-  margin-bottom: 20px;
-  position: relative; // Positioning context for the mobile navigation icon
-}
 
 .site-title {
   font-size: 26px;
   font-weight: 300;
   line-height: 56px;
-  margin-bottom: 0;
-  float: left;
 
   img {
     margin-right: 20px;
@@ -79,10 +70,6 @@
 }
 
 @media (max-width: 991px) {
-  .site-header {
-    padding-left: 0;
-    padding-right: 0;
-  }
   header {
     padding: 0px;
   }
@@ -105,10 +92,9 @@
   font-size: $small-font-size;
   color: #ffffff;
   list-style: none;
-  margin: 0;
   display: inline-block;
   line-height: 24px;
-  margin-top: 1.25em;
+  margin: 0.5em 0 0;
   padding: 0;
 }
 a.tag-list-link, a.tag-list-link:active, a.tag-list-link:visited {
@@ -116,6 +102,7 @@ a.tag-list-link, a.tag-list-link:active, a.tag-list-link:visited {
   background: lighten($grey-color, 20%);
   padding: 2px 7px;
   border-radius: 10px;
+  text-decoration: none;
 }
 a.tag-list-link:hover {
   background: darken($grey-color, 20%);
@@ -173,7 +160,7 @@ a.tag-list-link:hover {
       transition: .5s;
       > .post-meta {
         width: 100%;
-        padding: 0px;
+        padding: 0;
         border-radius: 2px 2px 0 0;
         padding-bottom: 8px;
         time {
@@ -197,33 +184,6 @@ a.tag-list-link:hover {
   line-height: 1;
   padding: 8px;
   margin: 0;
-}
-
-table {
-  border-collapse: collapse;
-  border-spacing: 0;
-}
-
-th {
-  background: #E6E6E6;
-  border-right: 1px solid #CCCCCC;
-  border-left: 1px solid #CCCCCC;
-  border-bottom: 1px solid #CCCCCC;
-  padding: 5px;
-}
-
-td {
-  border-right: 1px solid #CCCCCC;
-  border-left: 1px solid #CCCCCC;
-  padding: 5px;
-}
-
-tr:nth-child(even) {
-  background: #E6E6E6
-}
-
-tr:nth-child(odd) {
-  background: #FFFFFF
 }
 
 .content-style-green {

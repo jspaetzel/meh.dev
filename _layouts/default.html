@@ -1,18 +1,17 @@
 <!DOCTYPE html>
 <html>
-
   {% include head.html %}
-
-  <body class="line-numbers">
-
-    {% include header.html %}
-
-    <div class="px-4 py-8 max-w-7xl md:px-12 lg:px-24 lg:py-8 content-style-green">
-      {{ content }}
+  <body class="line-numbers place-items-center min-h-screen">
+    <div class="max-w-7xl grid px-4 xl:px-0">
+      <nav class="flex items-center justify-between xl:px-0 py-3">
+        {% include header.html %}
+      </nav>
+      <div class="py-8 content-style-green">
+        {{ content }}
+      </div>
+      <footer class="footer">
+        {% include footer.html %}
+      </footer>
     </div>
-
-    {% include footer.html %}
-
   </body>
-
 </html>

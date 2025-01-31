@@ -25,11 +25,11 @@ layout: default
 </style>
 {% endif %}
 
-<article class="prose lg:prose-lg prose-img:rounded-xl" itemscope itemtype="http://schema.org/BlogPosting">
-  <h1 class="post-title" itemprop="name headline">{{ page.title }}</h2>
+<article class="prose lg:prose-lg prose-img:rounded-xl max-w-5xl" itemscope itemtype="http://schema.org/BlogPosting">
+  <h1 class="post-title" itemprop="name headline">{{ page.title }}</h1>
   <header class="post-header">
     
-    <div class="post-meta">
+    <div class="post-meta shadow-md">
     {% assign editedDate = page.last_modified_at | date: '%s' %}
     {% assign datePublished = page.date | date: '%s' %}
     {% if editedDate and editedDate != datePublished %}
@@ -58,7 +58,7 @@ layout: default
     {% if page.tags.size > 0 %}
     <ul class="tag-list">
       {% for tag in page.tags %}
-      <li class="inline"><a class="tag-list-link" href="/tag/{{ tag }}">{{ tag }}</a></li>
+      <li class="inline"><a class="tag-list-link shadow-md" href="/tag/{{ tag }}">{{ tag }}</a></li>
       {% endfor %}
     </ul>
     {% endif %}
