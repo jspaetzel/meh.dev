@@ -129,6 +129,10 @@ I found this analysis interesting when reviewing these tools for my own usage. I
 ## News & Changelog
 This post is periodically updated to keep up with the latest trends.
 
+### Jan 2026
+* PER Coding Style 3.0 was released
+
+
 ### Jan 2025
 * Audited the status of all projects
 * Removed style ci from style tools table
