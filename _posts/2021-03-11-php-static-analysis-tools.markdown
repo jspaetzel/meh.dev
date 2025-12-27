@@ -42,6 +42,7 @@ Let's look at what some popular open-source PHP project use. This table only inc
 | [Pest](https://github.com/pestphp/pest)                                  | 11.2K | ✔️                                            |                                         |                                            |
 | [Phalcon](https://github.com/phalcon/cphalcon)                           | 10.8K | ️                                             | ✔️                                      |                                            |
 | [Doctrine](https://github.com/doctrine/orm)                              | 10.1K | ✔️                                            |                                         |                                            |
+| [php-jwt](https://github.com/firebase/php-jwt)                           | 9.5K  | ✔️                                            | ️                                       |                                            |
 | [CakePHP](https://github.com/cakephp/cakephp)                            | 8.8K  | ✔️                                            | ✔️                                      |                                            |
 | [Twig](https://github.com/twigphp/Twig)                                  | 8.3K  | ✔️                                            |                                         |                                            |
 | [Predis](https://github.com/predis/predis)                               | 7.7K  | ✔️                                            |                                         |                                            |
@@ -98,6 +99,7 @@ Here's a selection of some popular packages today.
 | [Slim](https://github.com/slimphp/Slim)                                  | 12.2K  |                                                            | ✔️                                                    |
 | [Phalcon](https://github.com/phalcon/cphalcon)                           | 10.8K  | ✔️                                                         | ✔️                                                    |
 | [Doctrine](https://github.com/doctrine/orm)                              | 10.1K  |                                                            | ✔️                                                    |
+| [php-jwt](https://github.com/firebase/php-jwt)                           | 9.5K   | ✔️                                                         |                                                       |
 | [CakePHP](https://github.com/cakephp/cakephp)                            | 8.8K   |                                                            | ✔️                                                    |
 | [Twig](https://github.com/twigphp/Twig)                                  | 8.3K   | ✔️                                                         |                                                       |
 | [Predis](https://github.com/predis/predis)                               | 7.7K   | ✔️                                                         |                                                       |
