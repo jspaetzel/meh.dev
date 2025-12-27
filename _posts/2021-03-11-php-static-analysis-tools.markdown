@@ -70,7 +70,7 @@ There are some other fairly popular tools worth mentioning but which were not us
 
 * [Qodana](https://www.jetbrains.com/qodana/): This is a newer commercial product from JetBrains which is still in early access. It's a hosted solution which can be used to analyze code and identify bugs and vulnerabilities.
 
-* [Mago](https://mago.carthage.software/): An extremely fast PHP linter, formatter, and static analyzer written in Rust. Inspired by the Rust ecosystem, Mago aims to provide speed, reliability, and an exceptional developer experience. It offers linting with customizable rules, deep static analysis, automated fixes, code formatting, and AST visualization. It's a newer tool that aims to unify the functionality of multiple PHP tools into a single, high-performance package.
+* [Mago](https://mago.carthage.software/): A newer tool written in Rust that combines static analysis, linting, and formatting into a single high-performance package. It aims to provide exceptional speed and a unified developer experience.
 
 ## Style Tools
 
