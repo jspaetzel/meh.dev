@@ -1,8 +1,8 @@
 ---
 layout: post
-title:  "The top PHP static code analysis tools of 2025"
+title:  "The top PHP static code analysis tools of 2026"
 date:   2021-03-11T01:38:15.487804-08:00
-last_modified_at: 2025-12-27
+last_modified_at: 2026-03-24
 tags:
 - PHP
 - CI
@@ -24,38 +24,38 @@ Let's look at what some popular open-source PHP project use. This table only inc
 
 |                                                                          | ⭐     | [PHPStan](https://github.com/phpstan/phpstan) | [Psalm](https://github.com/vimeo/psalm) | [Scrutinizer](https://scrutinizer-ci.com/) |
 |--------------------------------------------------------------------------|-------|-----------------------------------------------|-----------------------------------------|--------------------------------------------|
-| [Laravel](https://github.com/laravel/framework)                          | 34.4K | ✔️                                            |                                         |                                            |
-| [NextCloud](https://github.com/nextcloud/server)                         | 33.7K |                                               | ✔️                                      | ✔️                                         |
-| [Symfony](https://github.com/symfony/symfony)                            | 30.9K |                                               | ✔️                                      |                                            |
-| [Composer](https://github.com/composer/composer)                         | 29.3K | ✔️                                            |                                         |                                            |
+| [Laravel](https://github.com/laravel/framework)                          | 34.6K | ✔️                                            |                                         |                                            |
+| [NextCloud](https://github.com/nextcloud/server)                         | 34.4K |                                               | ✔️                                      | ✔️                                         |
+| [Symfony](https://github.com/symfony/symfony)                            | 31K   |                                               | ✔️                                      |                                            |
+| [Composer](https://github.com/composer/composer)                         | 29.4K | ✔️                                            |                                         |                                            |
 | [Guzzle](https://github.com/guzzle/guzzle)                               | 23.5K | ✔️                                            | ✔️                                      |                                            |
 | [Monolog](https://github.com/Seldaek/monolog)                            | 21.4K | ✔️                                            |                                         |                                            |
 | [PHPUnit](https://github.com/sebastianbergmann/phpunit)                  | 20K   |                                               | ✔️                                      |                                            |
 | [PHP-Parser](https://github.com/nikic/PHP-Parser)                        | 17.4K | ✔️                                            |                                         |                                            | 
-| [Carbon](https://github.com/briannesbitt/Carbon)                         | 16.7K | ✔️                                            | ✔️                                      |                                            |
+| [Carbon](https://github.com/briannesbitt/Carbon)                         | 16.6K | ✔️                                            | ✔️                                      |                                            |
 | [Yii2](https://github.com/yiisoft/yii2)                                  | 14.3K |                                               |                                         | ✔️                                         |
 | [PhpSpreadsheet](https://github.com/PHPOffice/PhpSpreadsheet)            | 13.9K | ✔️                                            |                                         |                                            |
-| [Flysystem](https://github.com/thephpleague/flysystem)                   | 13.5K | ✔️                                            |                                         | ✔️                                         |
+| [Flysystem](https://github.com/thephpleague/flysystem)                   | 13.6K | ✔️                                            |                                         | ✔️                                         |
 | [PHPDotEnv](https://github.com/vlucas/phpdotenv)                         | 13.5K | ✔️                                            | ✔️                                      |                                            |
 | [Slim](https://github.com/slimphp/Slim)                                  | 12.2K | ✔️                                            | ✔️                                      |                                            |
 | [EmailValidator](https://github.com/egulias/EmailValidator/)             | 11.6K |                                               | ✔️                                      |                                            | 
-| [Pest](https://github.com/pestphp/pest)                                  | 11.2K | ✔️                                            |                                         |                                            |
+| [Pest](https://github.com/pestphp/pest)                                  | 11.4K | ✔️                                            |                                         |                                            |
 | [Phalcon](https://github.com/phalcon/cphalcon)                           | 10.8K | ️                                             | ✔️                                      |                                            |
-| [Doctrine](https://github.com/doctrine/orm)                              | 10.1K | ✔️                                            |                                         |                                            |
+| [Doctrine](https://github.com/doctrine/orm)                              | 10.2K | ✔️                                            |                                         |                                            |
 | [php-jwt](https://github.com/firebase/php-jwt)                           | 9.5K  | ✔️                                            | ️                                       |                                            |
 | [CakePHP](https://github.com/cakephp/cakephp)                            | 8.8K  | ✔️                                            | ✔️                                      |                                            |
-| [Twig](https://github.com/twigphp/Twig)                                  | 8.3K  | ✔️                                            |                                         |                                            |
-| [Predis](https://github.com/predis/predis)                               | 7.7K  | ✔️                                            |                                         |                                            |
+| [Twig](https://github.com/twigphp/Twig)                                  | 8.4K  | ✔️                                            |                                         |                                            |
+| [Predis](https://github.com/predis/predis)                               | 7.8K  | ✔️                                            |                                         |                                            |
 | [AWS SDK](https://github.com/aws/aws-sdk-php)                            | 6.2K  | ✔️                                            |                                         |                                            |
 | [Elasticsearch SDK](https://github.com/elastic/elasticsearch-php)        | 5.3K  | ✔️                                            |                                         |                                            |
+| [Mediawiki](https://github.com/wikimedia/mediawiki)                      | 5K+   |                                               |                                         |                                            |
 | [php-amqplib](https://github.com/php-amqplib/php-amqplib)                | 4.6K  |                                               |                                         | ✔️                                         |
-| [Mediawiki](https://github.com/wikimedia/mediawiki)                      | 4.4K+ |                                               |                                         |                                            |
 | [Stripe SDK](https://github.com/stripe/stripe-php)                       | 4K    | ✔️                                            |                                         |                                            |
 | [Maxmind GeoIP2](https://github.com/maxmind/GeoIP2-php)                  | 2.5K  | ✔️                                            |                                         |                                            |
-| [Paratest](https://github.com/paratestphp/paratest)                      | 2.3K  | ✔️                                            | ️                                       |                                            |
+| [Paratest](https://github.com/paratestphp/paratest)                      | 2.5K  | ✔️                                            | ️                                       |                                            |
 | [Sentry SDK](https://github.com/getsentry/sentry-php)                    | 1.9K  | ✔️                                            | ✔️                                      |                                            |
-| [OpenTelemetry PHP](https://github.com/open-telemetry/opentelemetry-php) | 776   | ✔️                                            | ✔️                                      | ✔️                                         |
-| [OpenSearch PHP](https://github.com/opensearch-project/opensearch-php)   | 115   | ✔️                                            |                                         |                                            |
+| [OpenTelemetry PHP](https://github.com/open-telemetry/opentelemetry-php) | 885   | ✔️                                            | ✔️                                      | ✔️                                         |
+| [OpenSearch PHP](https://github.com/opensearch-project/opensearch-php)   | 148   | ✔️                                            |                                         |                                            |
 
 There are some other fairly popular tools worth mentioning but which were not used by enough projects to be included in the table above.
 * [Phan](https://github.com/phan/phan) isn't used by any of the projects here besides MediaWiki that I could find. It was created originally at Etsy and appears to be the primary tool used by Wikipedia's MediaWiki project. The advertised upside of using Phan is that it has a focus on minimizing false-positives. This makes it trivial to use, but it might catch fewer issues compared to others.
@@ -83,35 +83,35 @@ Here's a selection of some popular packages today.
 
 |                                                                          | ⭐      | [PhpCsFixer](https://github.com/FriendsOfPHP/PHP-CS-Fixer) | [PHPCS](https://github.com/squizlabs/PHP_CodeSniffer) |
 |--------------------------------------------------------------------------|--------|------------------------------------------------------------|-------------------------------------------------------|
-| [Laravel](https://github.com/laravel/framework)                          | 34.4K  | ✔️                                                         |                                                       |
-| [NextCloud](https://github.com/nextcloud/server)                         | 33.7K  | ✔️                                                         |                                                       |
-| [Symfony](https://github.com/symfony/symfony)                            | 30.9K  | ✔️                                                         |                                                       |
-| [Composer](https://github.com/composer/composer)                         | 29.3K  | ✔️                                                         |                                                       |
+| [Laravel](https://github.com/laravel/framework)                          | 34.6K  | ✔️                                                         |                                                       |
+| [NextCloud](https://github.com/nextcloud/server)                         | 34.4K  | ✔️                                                         |                                                       |
+| [Symfony](https://github.com/symfony/symfony)                            | 31K    | ✔️                                                         |                                                       |
+| [Composer](https://github.com/composer/composer)                         | 29.4K  | ✔️                                                         |                                                       |
 | [Guzzle](https://github.com/guzzle/guzzle)                               | 23.5K  | ✔️                                                         |                                                       |
 | [Monolog](https://github.com/Seldaek/monolog)                            | 21.4K  | ✔️                                                         |                                                       |
-| [Wordpress](https://github.com/WordPress/WordPress)                      | 20.7K+ |                                                            | ✔️                                                    |
+| [Wordpress](https://github.com/WordPress/WordPress)                      | 21K+   |                                                            | ✔️                                                    |
 | [PHPUnit](https://github.com/sebastianbergmann/phpunit)                  | 20K    | ✔️                                                         |                                                       |
 | [PHP-Parser](https://github.com/nikic/PHP-Parser)                        | 17.4K  | ✔️                                                         |                                                       |
-| [Carbon](https://github.com/briannesbitt/Carbon)                         | 16.7K  | ✔️                                                         |                                                       |
+| [Carbon](https://github.com/briannesbitt/Carbon)                         | 16.6K  | ✔️                                                         |                                                       |
 | [Yii2](https://github.com/yiisoft/yii2)                                  | 14.3K  |                                                            | ✔️                                                    |
 | [PhpSpreadsheet](https://github.com/PHPOffice/PhpSpreadsheet)            | 13.9K  | ✔️                                                         | ✔️                                                    |
-| [Flysystem](https://github.com/thephpleague/flysystem)                   | 13.5K  | ✔️                                                         |                                                       | 
+| [Flysystem](https://github.com/thephpleague/flysystem)                   | 13.6K  | ✔️                                                         |                                                       | 
 | [Slim](https://github.com/slimphp/Slim)                                  | 12.2K  |                                                            | ✔️                                                    |
 | [Phalcon](https://github.com/phalcon/cphalcon)                           | 10.8K  | ✔️                                                         | ✔️                                                    |
-| [Doctrine](https://github.com/doctrine/orm)                              | 10.1K  |                                                            | ✔️                                                    |
+| [Doctrine](https://github.com/doctrine/orm)                              | 10.2K  |                                                            | ✔️                                                    |
 | [php-jwt](https://github.com/firebase/php-jwt)                           | 9.5K   | ✔️                                                         |                                                       |
 | [CakePHP](https://github.com/cakephp/cakephp)                            | 8.8K   |                                                            | ✔️                                                    |
-| [Twig](https://github.com/twigphp/Twig)                                  | 8.3K   | ✔️                                                         |                                                       |
-| [Predis](https://github.com/predis/predis)                               | 7.7K   | ✔️                                                         |                                                       |
+| [Twig](https://github.com/twigphp/Twig)                                  | 8.4K   | ✔️                                                         |                                                       |
+| [Predis](https://github.com/predis/predis)                               | 7.8K   | ✔️                                                         |                                                       |
+| [Mediawiki](https://github.com/wikimedia/mediawiki)                      | 5K+    |                                                            | ✔️                                                    |
 | [php-amqplib](https://github.com/php-amqplib/php-amqplib)                | 4.6K   |                                                            | ✔️                                                    |
-| [Mediawiki](https://github.com/wikimedia/mediawiki)                      | 4.4K+  |                                                            | ✔️                                                    |
-| [Drupal](https://github.com/drupal/drupal)                               | 4.1K+  |                                                            | ✔️                                                    |
+| [Drupal](https://github.com/drupal/drupal)                               | 4.3K+  |                                                            | ✔️                                                    |
 | [Stripe SDK](https://github.com/stripe/stripe-php)                       | 4K     | ✔️                                                         |                                                       |
 | [Maxmind GeoIP2](https://github.com/maxmind/GeoIP2-php)                  | 2.5K   | ✔️                                                         |                                                       |
-| [Paratest](https://github.com/paratestphp/paratest)                      | 2.3K   |                                                            | ✔️                                                    |
+| [Paratest](https://github.com/paratestphp/paratest)                      | 2.5K   |                                                            | ✔️                                                    |
 | [Sentry SDK](https://github.com/getsentry/sentry-php)                    | 1.9K   | ✔️                                                         |                                                       |
-| [OpenTelemetry PHP](https://github.com/open-telemetry/opentelemetry-php) | 776    | ✔️                                                         | ✔️                                                    |
-| [OpenSearch PHP](https://github.com/opensearch-project/opensearch-php)   | 115    | ✔️                                                         |                                                       |
+| [OpenTelemetry PHP](https://github.com/open-telemetry/opentelemetry-php) | 885    | ✔️                                                         | ✔️                                                    |
+| [OpenSearch PHP](https://github.com/opensearch-project/opensearch-php)   | 148    | ✔️                                                         |                                                       |
 
 ### PhpCsFixer Utilities
 PhpCsFixer isn't the most opinionated tool. A couple of projects have cropped up that ship opinionated configurations for this tool.
