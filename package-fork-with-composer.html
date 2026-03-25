@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  
+  <title>How to use a fork of a Composer Package</title>
+  <meta name="description" content="1. Fork the Git Repository on Github2. Make changes in a branchFor this example I’ll use the branch will be named mybranch3. Add repositories entry in compos...">
+
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="/css/prism.css">
+
+  <link rel="canonical" href="https://meh.dev/package-fork-with-composer">
+  <link rel="alternate" type="application/rss+xml" title="meh.dev" href="https://meh.dev/feed.xml">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5647176622308419"
+          crossorigin="anonymous"></script>
+</head>
+
+  <body class="place-items-center min-h-screen">
+    <div class="mx-2 xl:max-w-7xl grid">
+      <nav class="flex items-center justify-between py-3">
+        <div class="flex items-center space-x-3">
+  <a class="site-title flex items-center space-x-2" href="/">
+    <img src="https://0.gravatar.com/avatar/ccf00de89ec54577fb9fd612358a9808?s=56" class="h-10 w-auto">
+    <span>meh.dev</span>
+  </a>
+</div>
+<div class="flex space-x-6">
+  <a class="page-link" href="/cv">CV</a>
+  <a class="page-link" href="/archive">Archive</a>
+</div>
+
+      </nav>
+      <div class="content-style-green prose prose-sm sm:prose-base md:prose-md prose-img:rounded-xl xl:max-w-5xl md:max-w-3xl mx-auto">
+        
+
+<article itemscope itemtype="http://schema.org/BlogPosting">
+  <h1 class="p-2 xs:p-1" itemprop="name headline">How to use a fork of a Composer Package</h1>
+  <header class="post-header">
+    
+    <div class="post-meta shadow-md">
+    
+    
+    
+      <div class="post-meta-text">
+        <div class="post-meta-icon">
+          <i class="far fa-calendar"></i>
+        </div>
+        Posted on
+        <time datetime="2022-07-09T00:38:31+00:00" itemprop="datePublished">
+          Jul 09, 2022
+        </time>
+      </div>
+    
+    </div>
+
+    
+  </header>
+
+  <div class="p-4" itemprop="articleBody">
+    <h2 id="1-fork-the-git-repository-on-github">1. Fork the Git Repository on Github</h2>
+
+<h2 id="2-make-changes-in-a-branch">2. Make changes in a branch</h2>
+
+<p>For this example I’ll use the branch will be named <code>mybranch</code></p>
+
+<h2 id="3-add-repositories-entry-in-composerjson">3. Add repositories entry in composer.json</h2>
+
+<pre><code class="language-bash">"repositories": [
+    {
+        "type": "vcs",
+        "url": "https://github.com/yourgithubuser/packagename",
+        "no-api": true
+    }
+],
+</code></pre>
+
+<blockquote>
+  <p>⚠️ If you get an error like “GitHub API limit (0 calls/hr) is exhausted, could not fetch”? make sure you have the <code>"no-api": true</code> configuration specified.</p>
+</blockquote>
+
+<h2 id="4-require-custom-version-in-composer">4. Require custom version in Composer</h2>
+
+<p>Require the package with</p>
+<pre><code class="language-bash">composer require vendor/packagename:dev-mybranch
+</code></pre>
+
+<blockquote>
+  <p>ℹ To avoid conflicts with other packages, you can alias your branch as a specific version
+<code>composer require "vendor/packagename:dev-mybranch as 1.0.0"</code></p>
+</blockquote>
+
+
+    
+
+    
+    
+  </div>
+
+  
+
+  <div id="disqus_thread"></div>
+  <script>
+  var disqus_config = function () {
+    this.page.url = "https://meh.dev/package-fork-with-composer";
+    this.page.identifier = '/package-fork-with-composer';
+  };
+  (function() {
+  var d = document, s = d.createElement('script');
+  s.src = 'https://jspaetzel.disqus.com/embed.js';
+  s.setAttribute('data-timestamp', +new Date());
+  (d.head || d.body).appendChild(s);
+  })();
+  </script>
+  <noscript>Please enable JavaScript to view comments</noscript>
+  <script id="dsq-count-scr" src="//jspaetzel.disqus.com/count.js" async></script>
+</article>
+
+
+      </div>
+      <footer class="footer">
+        <div class="copyright">© 2025  <i class="fas fa-heart"></i>  John Spaetzel</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js"></script>
+<script>
+  WebFont.load({
+    google: {
+      families: ['Josefin Sans', 'Noto Sans', 'Roboto Mono', 'Material Icons']
+    }
+  });
+</script>
+<script src="https://kit.fontawesome.com/ea17bff308.js" crossorigin="anonymous"></script>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-W3G88JG6ZH"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-W3G88JG6ZH');
+</script>
+<script src="/js/prism.js"></script>
+
+      </footer>
+    </div>
+  </body>
+</html>

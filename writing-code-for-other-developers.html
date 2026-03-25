@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  
+  <title>Writing code for other developers</title>
+  <meta name="description" content="The users of code are other developers who will inevitably read and modify that code. Your product is code and you should do some product analysis when writi...">
+
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="/css/prism.css">
+
+  <link rel="canonical" href="https://meh.dev/writing-code-for-other-developers">
+  <link rel="alternate" type="application/rss+xml" title="meh.dev" href="https://meh.dev/feed.xml">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5647176622308419"
+          crossorigin="anonymous"></script>
+</head>
+
+  <body class="place-items-center min-h-screen">
+    <div class="mx-2 xl:max-w-7xl grid">
+      <nav class="flex items-center justify-between py-3">
+        <div class="flex items-center space-x-3">
+  <a class="site-title flex items-center space-x-2" href="/">
+    <img src="https://0.gravatar.com/avatar/ccf00de89ec54577fb9fd612358a9808?s=56" class="h-10 w-auto">
+    <span>meh.dev</span>
+  </a>
+</div>
+<div class="flex space-x-6">
+  <a class="page-link" href="/cv">CV</a>
+  <a class="page-link" href="/archive">Archive</a>
+</div>
+
+      </nav>
+      <div class="content-style-green prose prose-sm sm:prose-base md:prose-md prose-img:rounded-xl xl:max-w-5xl md:max-w-3xl mx-auto">
+        
+
+<article itemscope itemtype="http://schema.org/BlogPosting">
+  <h1 class="p-2 xs:p-1" itemprop="name headline">Writing code for other developers</h1>
+  <header class="post-header">
+    
+    <div class="post-meta shadow-md">
+    
+    
+    
+      <div class="post-meta-text">
+        <div class="post-meta-icon">
+          <i class="far fa-calendar"></i>
+        </div>
+        Posted on
+        <time datetime="2020-02-22T08:00:00+00:00" itemprop="datePublished">
+          Feb 22, 2020
+        </time>
+      </div>
+    
+    </div>
+
+    
+    <ul class="tag-list">
+      
+      <li class="inline"><a class="tag-list-link shadow-md" href="/tag/Programming">Programming</a></li>
+      
+    </ul>
+    
+  </header>
+
+  <div class="p-4" itemprop="articleBody">
+    <p>The users of code are other developers who will inevitably read and modify that code. Your product is code and you should do some product analysis when writing new code. It should be optimized to be usable by the subset of developers who will later read that code.</p>
+
+<h1 id="who-are-your-users">Who are your users?</h1>
+
+<p>Who is going to work on your code next is important to consider, it should influence and shape what’s written. Consider what knowledge other developers working with your code have already and target the lowest of your expectations.</p>
+
+<blockquote>
+  <p>E.g. In a large Java codebase with no functional paradigms. You probably shouldn’t casually start using higher-order functions.</p>
+</blockquote>
+
+<p>So who’s going to use it?</p>
+<ul>
+  <li>Programming nerds?</li>
+  <li>Academics?</li>
+  <li>Recent college graduates?</li>
+  <li>Bootcamp students?</li>
+  <li>Web developers?</li>
+  <li>Your mother?</li>
+</ul>
+
+<p>Most of the time you’re writing code for the “average developer” and the lowest common denominator of an average developer is a recent college graduate. Think about yourself from years ago. Which concepts did you understand when you graduated and for the first couple years afterwards. Write code for that version of yourself. If that version can figure out how the code works then anyone can.</p>
+
+<h1 id="consider-the-type-of-code">Consider the type of code</h1>
+
+<p>Not all code is created equally. You have a lot more or less latitude depending on where the code is in an application.</p>
+
+<h2 id="isolated-functions">Isolated functions</h2>
+<p>If you are writing a single function that is well defined, independent of domain logic, narrowly scoped, and unit tested then this is as good as it gets. In this scenario you have the most possible freedom to be creative with your implementation. The cyclomatic complexity will be low so whoever looks at it should be able to figure out what’s going on relatively quickly.</p>
+
+<p>Enjoy the opportunity to write for yourself.</p>
+
+<h2 id="business-logic">Business logic</h2>
+<p>Code which contains domain knowledge is a key part of an application and for most applications is the part that brings value to a product. Writing this should take into consideration language used by the business, by product managers, and by non-technical users. This code is going to be modified, frequently. Very frequently. Strive for flexibility and simplicity. If you cant grok exactly what it’s doing in a few seconds then consider adding documentation. The faster you and others understand how business logic works the faster you can iterate on features that drive value.</p>
+
+<h2 id="developer-apis-and-shared-libraries">Developer APIs and shared libraries</h2>
+<p>The best libraries are the ones that do what you want them to do and then get out of the way. Look at a few libraries that you LOVE and think about why you like them vs other libraries that do the same thing but for some reason just aren’t as good. Also check a few of the most popular libraries and consider what attributes may account for their stickiness.</p>
+
+<p>Depending on the type of developers using your library how you write it may vary quite a lot.</p>
+
+<p>In the case of libraries you need to optimize separately for two groups of people. The developers using the library via it’s public interfaces. And other developers who may want to contribute to the library. Contributors will have substantially more experience then end user developers and you can assume they’ll be willing to spend more time learning in order to contribute back to the library.</p>
+
+<h1 id="tldr">TLDR</h1>
+
+<p>Write code for the least experienced developer on your team because they need to be able to work on it too.</p>
+
+
+    
+
+    
+    
+  </div>
+
+  
+
+  <div id="disqus_thread"></div>
+  <script>
+  var disqus_config = function () {
+    this.page.url = "https://meh.dev/writing-code-for-other-developers";
+    this.page.identifier = '/writing-code-for-other-developers';
+  };
+  (function() {
+  var d = document, s = d.createElement('script');
+  s.src = 'https://jspaetzel.disqus.com/embed.js';
+  s.setAttribute('data-timestamp', +new Date());
+  (d.head || d.body).appendChild(s);
+  })();
+  </script>
+  <noscript>Please enable JavaScript to view comments</noscript>
+  <script id="dsq-count-scr" src="//jspaetzel.disqus.com/count.js" async></script>
+</article>
+
+
+      </div>
+      <footer class="footer">
+        <div class="copyright">© 2025  <i class="fas fa-heart"></i>  John Spaetzel</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js"></script>
+<script>
+  WebFont.load({
+    google: {
+      families: ['Josefin Sans', 'Noto Sans', 'Roboto Mono', 'Material Icons']
+    }
+  });
+</script>
+<script src="https://kit.fontawesome.com/ea17bff308.js" crossorigin="anonymous"></script>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-W3G88JG6ZH"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-W3G88JG6ZH');
+</script>
+<script src="/js/prism.js"></script>
+
+      </footer>
+    </div>
+  </body>
+</html>

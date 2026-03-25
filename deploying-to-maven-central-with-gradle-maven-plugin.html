@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  
+  <title>Deploying to maven central with gradle maven plugin</title>
+  <meta name="description" content="When building new projects I generally want to install the bare minimum and then build. The defaults on Sonatype’s website for deploying to OSSRH with Gradle...">
+
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="/css/prism.css">
+
+  <link rel="canonical" href="https://meh.dev/deploying-to-maven-central-with-gradle-maven-plugin">
+  <link rel="alternate" type="application/rss+xml" title="meh.dev" href="https://meh.dev/feed.xml">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5647176622308419"
+          crossorigin="anonymous"></script>
+</head>
+
+  <body class="place-items-center min-h-screen">
+    <div class="mx-2 xl:max-w-7xl grid">
+      <nav class="flex items-center justify-between py-3">
+        <div class="flex items-center space-x-3">
+  <a class="site-title flex items-center space-x-2" href="/">
+    <img src="https://0.gravatar.com/avatar/ccf00de89ec54577fb9fd612358a9808?s=56" class="h-10 w-auto">
+    <span>meh.dev</span>
+  </a>
+</div>
+<div class="flex space-x-6">
+  <a class="page-link" href="/cv">CV</a>
+  <a class="page-link" href="/archive">Archive</a>
+</div>
+
+      </nav>
+      <div class="content-style-green prose prose-sm sm:prose-base md:prose-md prose-img:rounded-xl xl:max-w-5xl md:max-w-3xl mx-auto">
+        
+
+<article itemscope itemtype="http://schema.org/BlogPosting">
+  <h1 class="p-2 xs:p-1" itemprop="name headline">Deploying to maven central with gradle maven plugin</h1>
+  <header class="post-header">
+    
+    <div class="post-meta shadow-md">
+    
+    
+    
+    <div class="post-meta-text">
+      <div class="post-meta-icon">
+          <i class="far fa-calendar-check"></i>
+        </div>
+        Edited on
+        <time datetime="2020-04-28T08:00:00+00:00" itemprop="dateModified">
+          Apr 28, 2020
+        </time>
+      </div>
+    
+    </div>
+
+    
+    <ul class="tag-list">
+      
+      <li class="inline"><a class="tag-list-link shadow-md" href="/tag/CI">CI</a></li>
+      
+      <li class="inline"><a class="tag-list-link shadow-md" href="/tag/Gradle">Gradle</a></li>
+      
+      <li class="inline"><a class="tag-list-link shadow-md" href="/tag/Java">Java</a></li>
+      
+      <li class="inline"><a class="tag-list-link shadow-md" href="/tag/Maven">Maven</a></li>
+      
+    </ul>
+    
+  </header>
+
+  <div class="p-4" itemprop="articleBody">
+    <p>When building new projects I generally want to install the bare minimum and then build. The defaults on <a href="https://central.sonatype.org/pages/gradle.html">Sonatype’s website for deploying to OSSRH with Gradle</a> modify the build configuration and causes the build to fail if you don’t have credentials set. Building without credentials can be useful for projects which have other contributors who may not be involved in the signing or publishing of artifacts. This post shows what should be changed included in your <code>gradle.build</code> file in order to do both.</p>
+
+<h2 id="errors-encountered">Errors encountered</h2>
+
+<p>The upload task need to be modified to allow builds without any signing credentials to avoid these two errors by just doing less.</p>
+
+<p><code>Could not get unknown property 'ossrhUsername' for object of type org.gradle.api.publication.maven.internal.deployer.DefaultGroovyMavenDeployer.</code></p>
+
+<p>This error is because the ‘ossrhUsername’ variable is unset.</p>
+
+<p><code>Cannot perform signing task ':signArchives' because it has no configured signatory</code></p>
+
+<p>And this one is because the username/password is set but empty.</p>
+
+<h2 id="complete-example-buildgradle">Complete Example build.gradle</h2>
+
+<pre><code class="language-groovy">// Apply Plugins
+apply plugin: 'java'
+apply plugin: 'maven'
+apply plugin: 'signing'
+
+// Metadata Definition
+group = "com.example.applications"
+archivesBaseName = "example-application"
+version = "1.4.7"
+
+tasks.withType(JavaCompile) {
+	options.encoding = 'UTF-8'
+}
+
+// Create Jar Files
+task javadocJar(type: Jar) {
+    classifier = 'javadoc'
+    from javadoc
+}
+
+task sourcesJar(type: Jar) {
+    classifier = 'sources'
+    from sourceSets.main.allSource
+}
+
+artifacts {
+    archives javadocJar, sourcesJar
+}
+
+// Signing and upload
+signing {
+    required { gradle.taskGraph.hasTask("uploadArchives") }
+    sign configurations.archives
+}
+
+uploadArchives {
+  repositories {
+    mavenDeployer {
+      beforeDeployment { MavenDeployment deployment -&gt; signing.signPom(deployment) }
+
+      repository(url: "https://oss.sonatype.org/service/local/staging/deploy/maven2/") {
+        authentication(userName: findProperty('ossrhUsername'), password: findProperty('ossrhPassword'))
+      }
+
+      snapshotRepository(url: "https://oss.sonatype.org/content/repositories/snapshots/") {
+        authentication(userName: findProperty('ossrhUsername'), password: findProperty('ossrhPassword'))
+      }
+
+      pom.project {
+        name 'Example Application'
+        packaging 'jar'
+        // optionally artifactId can be defined here  
+        description 'A application used as an example on how to set up pushing  its components to the Central Repository.'
+        url 'http://www.example.com/example-application'
+
+        scm {
+          connection 'scm:svn:http://foo.googlecode.com/svn/trunk/'
+          developerConnection 'scm:svn:https://foo.googlecode.com/svn/trunk/'
+          url 'http://foo.googlecode.com/svn/trunk/'
+        }
+
+        licenses {
+          license {
+            name 'The Apache License, Version 2.0'
+            url 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+          }
+        }
+
+        developers {
+          developer {
+            id 'jspaetzel'
+            name 'John Spaetzel'
+            email 'john@example.com'
+          }
+        }
+      }
+    }
+  }
+}
+
+// Project Dependencies
+repositories {
+    mavenCentral()
+}
+
+dependencies {}
+</code></pre>
+
+<h2 id="configuration">Configuration</h2>
+
+<p>When you are ready to upload you’ll also need the credentials for signing in a <code>gradle.properties</code> file.</p>
+
+<pre><code class="language-yaml">signing.keyId=YourKeyId
+signing.password=YourPublicKeyPassword
+signing.secretKeyRingFile=PathToYourKeyRingFile
+
+ossrhUsername=your-jira-id
+ossrhPassword=your-jira-password
+</code></pre>
+
+
+    
+
+    
+    
+  </div>
+
+  
+
+  <div id="disqus_thread"></div>
+  <script>
+  var disqus_config = function () {
+    this.page.url = "https://meh.dev/deploying-to-maven-central-with-gradle-maven-plugin";
+    this.page.identifier = '/deploying-to-maven-central-with-gradle-maven-plugin';
+  };
+  (function() {
+  var d = document, s = d.createElement('script');
+  s.src = 'https://jspaetzel.disqus.com/embed.js';
+  s.setAttribute('data-timestamp', +new Date());
+  (d.head || d.body).appendChild(s);
+  })();
+  </script>
+  <noscript>Please enable JavaScript to view comments</noscript>
+  <script id="dsq-count-scr" src="//jspaetzel.disqus.com/count.js" async></script>
+</article>
+
+
+      </div>
+      <footer class="footer">
+        <div class="copyright">© 2025  <i class="fas fa-heart"></i>  John Spaetzel</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js"></script>
+<script>
+  WebFont.load({
+    google: {
+      families: ['Josefin Sans', 'Noto Sans', 'Roboto Mono', 'Material Icons']
+    }
+  });
+</script>
+<script src="https://kit.fontawesome.com/ea17bff308.js" crossorigin="anonymous"></script>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-W3G88JG6ZH"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-W3G88JG6ZH');
+</script>
+<script src="/js/prism.js"></script>
+
+      </footer>
+    </div>
+  </body>
+</html>

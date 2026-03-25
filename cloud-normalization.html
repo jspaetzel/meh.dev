@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  
+  <title>Cloud Normalization</title>
+  <meta name="description" content="I’ve recently started using Amazon Web Services, had already been using Microsoft Azure, and have dabbled with Google’s cloud services. Between them there’s ...">
+
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="/css/prism.css">
+
+  <link rel="canonical" href="https://meh.dev/cloud-normalization">
+  <link rel="alternate" type="application/rss+xml" title="meh.dev" href="https://meh.dev/feed.xml">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5647176622308419"
+          crossorigin="anonymous"></script>
+</head>
+
+  <body class="place-items-center min-h-screen">
+    <div class="mx-2 xl:max-w-7xl grid">
+      <nav class="flex items-center justify-between py-3">
+        <div class="flex items-center space-x-3">
+  <a class="site-title flex items-center space-x-2" href="/">
+    <img src="https://0.gravatar.com/avatar/ccf00de89ec54577fb9fd612358a9808?s=56" class="h-10 w-auto">
+    <span>meh.dev</span>
+  </a>
+</div>
+<div class="flex space-x-6">
+  <a class="page-link" href="/cv">CV</a>
+  <a class="page-link" href="/archive">Archive</a>
+</div>
+
+      </nav>
+      <div class="content-style-green prose prose-sm sm:prose-base md:prose-md prose-img:rounded-xl xl:max-w-5xl md:max-w-3xl mx-auto">
+        
+
+<article itemscope itemtype="http://schema.org/BlogPosting">
+  <h1 class="p-2 xs:p-1" itemprop="name headline">Cloud Normalization</h1>
+  <header class="post-header">
+    
+    <div class="post-meta shadow-md">
+    
+    
+    
+      <div class="post-meta-text">
+        <div class="post-meta-icon">
+          <i class="far fa-calendar"></i>
+        </div>
+        Posted on
+        <time datetime="2016-08-07T05:00:00+00:00" itemprop="datePublished">
+          Aug 07, 2016
+        </time>
+      </div>
+    
+    </div>
+
+    
+    <ul class="tag-list">
+      
+      <li class="inline"><a class="tag-list-link shadow-md" href="/tag/Azure">Azure</a></li>
+      
+      <li class="inline"><a class="tag-list-link shadow-md" href="/tag/AWS">AWS</a></li>
+      
+      <li class="inline"><a class="tag-list-link shadow-md" href="/tag/Google">Google</a></li>
+      
+    </ul>
+    
+  </header>
+
+  <div class="p-4" itemprop="articleBody">
+    <p>I’ve recently started using Amazon Web Services, had already been using Microsoft Azure, and have dabbled with Google’s cloud services. Between them there’s a <em>lot</em> of new terminology many of which has not yet been standardized. This is going to be an ongoing post basically to normalize the naming between all three.
+<!--more--></p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Generic Name</th>
+      <th style="text-align: left">Azure</th>
+      <th style="text-align: left">Amazon</th>
+      <th style="text-align: left">Google</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left">Server</td>
+      <td style="text-align: left">Virtual Machine</td>
+      <td style="text-align: left">EC2</td>
+      <td style="text-align: left">Compute Engine</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Container Hosting</td>
+      <td style="text-align: left">Azure Container Service</td>
+      <td style="text-align: left">EC2 Containers</td>
+      <td style="text-align: left">Container Engine</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Short Lived Containers</td>
+      <td style="text-align: left">Azure Functions</td>
+      <td style="text-align: left">Lambdas</td>
+      <td style="text-align: left">Cloud Functions</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">File Storage</td>
+      <td style="text-align: left">Blob/File Storage</td>
+      <td style="text-align: left">S3</td>
+      <td style="text-align: left">Cloud Storage</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Archival Storage</td>
+      <td style="text-align: left">Cold Storage</td>
+      <td style="text-align: left">Glacier</td>
+      <td style="text-align: left">Nearline Storage</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Content Delivery</td>
+      <td style="text-align: left">Azure CDN</td>
+      <td style="text-align: left">Cloud Front</td>
+      <td style="text-align: left">Cloud CDN</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">NoSQL App Storage</td>
+      <td style="text-align: left">DocumentDB</td>
+      <td style="text-align: left">DynamoDB</td>
+      <td style="text-align: left">Cloud Datastore</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Managed SQL Server</td>
+      <td style="text-align: left">SQL Database</td>
+      <td style="text-align: left">RDS</td>
+      <td style="text-align: left">Cloud SQL</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">In Memory Data Cache</td>
+      <td style="text-align: left">Redis Cache</td>
+      <td style="text-align: left">ElastiCache</td>
+      <td style="text-align: left">Redis Cloud (Partner)</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Data Analytics</td>
+      <td style="text-align: left">Data Warehouse</td>
+      <td style="text-align: left">Redshift</td>
+      <td style="text-align: left">BigTable</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Massive Data Analytics</td>
+      <td style="text-align: left">Data Lake</td>
+      <td style="text-align: left">EMR</td>
+      <td style="text-align: left">BigQuery</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">DNS</td>
+      <td style="text-align: left">Azure DNS</td>
+      <td style="text-align: left">Route 53</td>
+      <td style="text-align: left">Cloud DNS</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Note: This is an overview based on my experiences and therefore is a rough approximation based on how you would use the service, not how it functions technically.</p>
+
+
+    
+
+    
+    
+  </div>
+
+  
+
+  <div id="disqus_thread"></div>
+  <script>
+  var disqus_config = function () {
+    this.page.url = "https://meh.dev/cloud-normalization";
+    this.page.identifier = '/cloud-normalization';
+  };
+  (function() {
+  var d = document, s = d.createElement('script');
+  s.src = 'https://jspaetzel.disqus.com/embed.js';
+  s.setAttribute('data-timestamp', +new Date());
+  (d.head || d.body).appendChild(s);
+  })();
+  </script>
+  <noscript>Please enable JavaScript to view comments</noscript>
+  <script id="dsq-count-scr" src="//jspaetzel.disqus.com/count.js" async></script>
+</article>
+
+
+      </div>
+      <footer class="footer">
+        <div class="copyright">© 2025  <i class="fas fa-heart"></i>  John Spaetzel</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js"></script>
+<script>
+  WebFont.load({
+    google: {
+      families: ['Josefin Sans', 'Noto Sans', 'Roboto Mono', 'Material Icons']
+    }
+  });
+</script>
+<script src="https://kit.fontawesome.com/ea17bff308.js" crossorigin="anonymous"></script>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-W3G88JG6ZH"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-W3G88JG6ZH');
+</script>
+<script src="/js/prism.js"></script>
+
+      </footer>
+    </div>
+  </body>
+</html>

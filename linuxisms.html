@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  
+  <title>Linuxisms</title>
+  <meta name="description" content="This is a living post about linux topics which inhibit linux distros from reaching the masses and my take on them. In no particular order…PackagingHaving acc...">
+
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="/css/prism.css">
+
+  <link rel="canonical" href="https://meh.dev/linuxisms">
+  <link rel="alternate" type="application/rss+xml" title="meh.dev" href="https://meh.dev/feed.xml">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5647176622308419"
+          crossorigin="anonymous"></script>
+</head>
+
+  <body class="place-items-center min-h-screen">
+    <div class="mx-2 xl:max-w-7xl grid">
+      <nav class="flex items-center justify-between py-3">
+        <div class="flex items-center space-x-3">
+  <a class="site-title flex items-center space-x-2" href="/">
+    <img src="https://0.gravatar.com/avatar/ccf00de89ec54577fb9fd612358a9808?s=56" class="h-10 w-auto">
+    <span>meh.dev</span>
+  </a>
+</div>
+<div class="flex space-x-6">
+  <a class="page-link" href="/cv">CV</a>
+  <a class="page-link" href="/archive">Archive</a>
+</div>
+
+      </nav>
+      <div class="content-style-green prose prose-sm sm:prose-base md:prose-md prose-img:rounded-xl xl:max-w-5xl md:max-w-3xl mx-auto">
+        
+
+<article itemscope itemtype="http://schema.org/BlogPosting">
+  <h1 class="p-2 xs:p-1" itemprop="name headline">Linuxisms</h1>
+  <header class="post-header">
+    
+    <div class="post-meta shadow-md">
+    
+    
+    
+    <div class="post-meta-text">
+      <div class="post-meta-icon">
+          <i class="far fa-calendar-check"></i>
+        </div>
+        Edited on
+        <time datetime="2020-11-14T19:01:50+00:00" itemprop="dateModified">
+          Nov 14, 2020
+        </time>
+      </div>
+    
+    </div>
+
+    
+    <ul class="tag-list">
+      
+      <li class="inline"><a class="tag-list-link shadow-md" href="/tag/Linux">Linux</a></li>
+      
+    </ul>
+    
+  </header>
+
+  <div class="p-4" itemprop="articleBody">
+    <p>This is a living post about linux topics which inhibit linux distros from reaching the masses and my take on them. In no particular order…</p>
+
+<h1 id="packaging">Packaging</h1>
+<p>Having access to quality packages is my favorite things about using linux. But it comes with some issues.</p>
+
+<ul>
+  <li>
+    <p>A big issue is the support between distributions. Ubuntu is pretty ubiquitously supported but most distros are not.</p>
+  </li>
+  <li>
+    <p>For Ubuntu users their distro is most likely supported but the way to install an application is not universal. This is actually getting somewhat worse currently. Many applications are now distributed via snap, apt, AppImages, or a plain old binary.</p>
+  </li>
+  <li>
+    <p>Another drawback is for maintainers, it’s super complex for a popular package to support every potential distro which takes time away from their project. This makes development less popular and harder for the ones willing to do it.</p>
+  </li>
+</ul>
+
+<h1 id="updates">Updates</h1>
+<p>Linux makes updates scarier then they need to be by displaying too much information.</p>
+
+<p>Information overload is a real thing and it can scare people away from upgrading or scare people away entirely.</p>
+
+<p>One nuisance I have with distribution updates (at least on Ubuntu) is that custom sources added to apt get disabled with each update. Then I have to manually inspect and re-enable each one.</p>
+
+<p><img src="./assets/linuxisms/ubuntu-install.png" alt="Ubuntu Updater" /></p>
+
+<p>I actually kinda enjoy seeing what’s being updated, but this is somewhat a regression for Google Chrome which receives updates so regularly. On Windows and Linux it just updates itself and occasionally prompts to be restarted. On linux having to wait for me to trigger it’s update besides being inconvenient is also a security hazard. 👎</p>
+
+<h1 id="graphics-drivers">Graphics drivers</h1>
+<p>The graphics drivers on linux are getting pretty great and I think this is almost a solved problem as of 2020.</p>
+
+<p>The main hurdle is for proprietary drivers which don’t typically come preinstalled. Some distros are now including these drivers though or have easy way to install them which mostly resolves this issue.</p>
+
+<p>Information overload is still an issue with this too. Custom drivers still require the user to click some things to install them, it’s not quite plug &amp; play.</p>
+
+<h1 id="enterprise">Enterprise</h1>
+<p>Enterprise support is pretty lacking still, a lot of the host management that IT departments want doesn’t work well or isn’t sufficient especially for power users who cant have a totally locked down environment.</p>
+
+
+    
+
+    
+    
+  </div>
+
+  
+
+  <div id="disqus_thread"></div>
+  <script>
+  var disqus_config = function () {
+    this.page.url = "https://meh.dev/linuxisms";
+    this.page.identifier = '/linuxisms';
+  };
+  (function() {
+  var d = document, s = d.createElement('script');
+  s.src = 'https://jspaetzel.disqus.com/embed.js';
+  s.setAttribute('data-timestamp', +new Date());
+  (d.head || d.body).appendChild(s);
+  })();
+  </script>
+  <noscript>Please enable JavaScript to view comments</noscript>
+  <script id="dsq-count-scr" src="//jspaetzel.disqus.com/count.js" async></script>
+</article>
+
+
+      </div>
+      <footer class="footer">
+        <div class="copyright">© 2025  <i class="fas fa-heart"></i>  John Spaetzel</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js"></script>
+<script>
+  WebFont.load({
+    google: {
+      families: ['Josefin Sans', 'Noto Sans', 'Roboto Mono', 'Material Icons']
+    }
+  });
+</script>
+<script src="https://kit.fontawesome.com/ea17bff308.js" crossorigin="anonymous"></script>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-W3G88JG6ZH"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-W3G88JG6ZH');
+</script>
+<script src="/js/prism.js"></script>
+
+      </footer>
+    </div>
+  </body>
+</html>

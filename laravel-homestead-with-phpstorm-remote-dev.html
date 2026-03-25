@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  
+  <title>Developing with PHPStorm and Laravel Homestead on Windows</title>
+  <meta name="description" content="It’s the end of 2021, and we can finally port our development environments. You might be thinking, “just use docker” right? That’s part of the solution, but ...">
+
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="/css/prism.css">
+
+  <link rel="canonical" href="https://meh.dev/laravel-homestead-with-phpstorm-remote-dev">
+  <link rel="alternate" type="application/rss+xml" title="meh.dev" href="https://meh.dev/feed.xml">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5647176622308419"
+          crossorigin="anonymous"></script>
+</head>
+
+  <body class="place-items-center min-h-screen">
+    <div class="mx-2 xl:max-w-7xl grid">
+      <nav class="flex items-center justify-between py-3">
+        <div class="flex items-center space-x-3">
+  <a class="site-title flex items-center space-x-2" href="/">
+    <img src="https://0.gravatar.com/avatar/ccf00de89ec54577fb9fd612358a9808?s=56" class="h-10 w-auto">
+    <span>meh.dev</span>
+  </a>
+</div>
+<div class="flex space-x-6">
+  <a class="page-link" href="/cv">CV</a>
+  <a class="page-link" href="/archive">Archive</a>
+</div>
+
+      </nav>
+      <div class="content-style-green prose prose-sm sm:prose-base md:prose-md prose-img:rounded-xl xl:max-w-5xl md:max-w-3xl mx-auto">
+        
+
+<article itemscope itemtype="http://schema.org/BlogPosting">
+  <h1 class="p-2 xs:p-1" itemprop="name headline">Developing with PHPStorm and Laravel Homestead on Windows</h1>
+  <header class="post-header">
+    
+    <div class="post-meta shadow-md">
+    
+    
+    
+      <div class="post-meta-text">
+        <div class="post-meta-icon">
+          <i class="far fa-calendar"></i>
+        </div>
+        Posted on
+        <time datetime="2021-12-28T01:47:45+00:00" itemprop="datePublished">
+          Dec 28, 2021
+        </time>
+      </div>
+    
+    </div>
+
+    
+  </header>
+
+  <div class="p-4" itemprop="articleBody">
+    <p>It’s the end of 2021, and we can finally port our development environments. You might be thinking, “just use docker” right? That’s part of the solution, but the missing piece for a while has been a way to run the development environment directly along-side the application so that you can have a seamless experience when debugging.</p>
+
+<p>You’ve been able to do this for some time using VSCode, via it’s <a href="https://code.visualstudio.com/docs/remote/remote-overview">Remote Development</a> feature. Recently Jetbrains <a href="https://blog.jetbrains.com/blog/2021/11/29/introducing-remote-development-for-jetbrains-ides/">announced similar functionality</a>. Let’s see what this feature can do!</p>
+
+<p>I want to be able to develop on Linux, Mac, or Windows, so I’ll need a workflow that works for all of those.</p>
+
+<p>The project im testing this with I started development on my Linux machine about a year ago.</p>
+<ul>
+  <li>PHP 7.4</li>
+  <li>Symfony 5</li>
+  <li>MySQL</li>
+  <li>Nginx</li>
+  <li>xDebug</li>
+  <li>PHPUnit</li>
+  <li>NPM &amp; Webpack Dev Server</li>
+  <li>React</li>
+</ul>
+
+<p>In order to support another developer I switched the project over to <a href="https://laravel.com/docs/8.x/homestead">Homestead</a>. I chose Homestead over Docker containers mainly because Homestead comes pre-baked with all the dependencies I need, and it was easy to set up.</p>
+
+<p>The only interesting part of the Homestead.yaml is the <code>folders</code> section which I optimized for filesystem performance reasons. I’m only allowing syncing of files which I intend to commit since all other operations will happen within the VM.</p>
+
+<pre><code class="language-yaml">folders:
+  -
+    map: ./
+    to: /home/vagrant/code
+    type: "rsync"
+    options:
+      :type: "rsync"
+      :rsync__exclude: [
+          ".git/",
+          "vendor/",
+          "node_modules/",
+          "var/",
+          "public/build/",
+          "public/uploads/"
+      ]
+</code></pre>
+
+<h1 id="running-the-development-environment">Running the Development Environment</h1>
+<p>First we run vagrant like normal. <code>vagrant up</code></p>
+
+<p>Then we set up the IDE. This is a little different from what we’re used to in PHPStorm.</p>
+
+<p><img src="./assets/remote-dev/welcome.png" alt="New Welcome Screen" /></p>
+
+<p><img src="./assets/remote-dev/connection.png" alt="Connection Settings" /></p>
+
+<p><img src="./assets/remote-dev/downloadstart.png" alt="Download &amp; Start" /></p>
+
+<blockquote>
+  <p>⚠ When I first started running this I had to increase the resources available. A minimum of 4G is recommended for memory. I increased my Homestead.yaml to have <code>memory: 4096</code> and <code>cpus: 4</code> which works well for my application.</p>
+</blockquote>
+
+<p>Once started we can use the IDE pretty much like normal except it’s running INSIDE the VM. This means everything we see is “local” to the VM where the IDE is also running. The editor you see is just a dumb pane of glass.</p>
+
+<p>Some advantages come from this. The most obvious is that the PHP interpreter is local, so you don’t have to create a new tunnel when debugging. This makes everything a little faster. The other obvious advantage I’ve found is that dependencies are “real”. What I mean by this is the files you see in the IDE are the ones being used by the project, and they don’t have to be synchronized to the host machine. This results in more accurate and more performant analysis by the IDE since there’s no file synchronization needed for large directories like the node_modules and vendor folders. It also prevents weird behavior between Vagrant host machines. For instance, the node_modules folder often causes bugs on Windows machines due to directory depth. That’s no longer a potential problem.</p>
+
+<p>You also run the npm dev server within the VM, everyone uses the same npm version from the VM and setup of Javascript debugging is easier too since it’s running locally too.</p>
+
+<p>This feature is still in “Beta” but I’m really liking what im seeing here. So far it feels really polished and solves a huge gap in functionality for the fullstack multi-platform development that I like to do. The thing I like most about this particular solution is that it all can run locally. Sure, you can also connect it to a cloud provider, but I like having the option to run everything without an internet connection.</p>
+
+
+    
+
+    
+    
+  </div>
+
+  
+
+  <div id="disqus_thread"></div>
+  <script>
+  var disqus_config = function () {
+    this.page.url = "https://meh.dev/laravel-homestead-with-phpstorm-remote-dev";
+    this.page.identifier = '/laravel-homestead-with-phpstorm-remote-dev';
+  };
+  (function() {
+  var d = document, s = d.createElement('script');
+  s.src = 'https://jspaetzel.disqus.com/embed.js';
+  s.setAttribute('data-timestamp', +new Date());
+  (d.head || d.body).appendChild(s);
+  })();
+  </script>
+  <noscript>Please enable JavaScript to view comments</noscript>
+  <script id="dsq-count-scr" src="//jspaetzel.disqus.com/count.js" async></script>
+</article>
+
+
+      </div>
+      <footer class="footer">
+        <div class="copyright">© 2025  <i class="fas fa-heart"></i>  John Spaetzel</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js"></script>
+<script>
+  WebFont.load({
+    google: {
+      families: ['Josefin Sans', 'Noto Sans', 'Roboto Mono', 'Material Icons']
+    }
+  });
+</script>
+<script src="https://kit.fontawesome.com/ea17bff308.js" crossorigin="anonymous"></script>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-W3G88JG6ZH"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-W3G88JG6ZH');
+</script>
+<script src="/js/prism.js"></script>
+
+      </footer>
+    </div>
+  </body>
+</html>
