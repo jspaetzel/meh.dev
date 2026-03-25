@@ -3,7 +3,11 @@ services:
     build:
       context: .
       dockerfile: "docker/Dockerfile"
-    command: jekyll serve --watch --force_polling --verbose
+    user: "${UID:-1000}:${GID:-1000}"
+    environment:
+      HOME: /tmp
+      BUNDLE_PATH: /tmp/bundle
+      BUNDLE_APP_CONFIG: /tmp/bundle/config
     ports:
       - "4000:4000"
     volumes:
