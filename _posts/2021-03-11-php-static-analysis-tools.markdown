@@ -70,6 +70,8 @@ There are some other fairly popular tools worth mentioning but which were not us
 
 * [Qodana](https://www.jetbrains.com/qodana/): This is a newer commercial product from JetBrains which is still in early access. It's a hosted solution which can be used to analyze code and identify bugs and vulnerabilities.
 
+* [Mago](https://mago.carthage.software/): A newer tool written in Rust that combines static analysis, linting, and formatting into a single high-performance package. It aims to provide exceptional speed and a unified developer experience.
+
 ## Style Tools
 
 * [PHPCS](https://github.com/squizlabs/PHP_CodeSniffer) is the original code standards tool for PHP and dates back to 2006. It's primary use is to establish standards and identify violations. It does however also provide a package `phpcbf` which can sometimes automatically fix violations. PHPCS is extremely mature and very flexible and comes with a massive selection of pre-written "Sniffs" available to use.
@@ -128,6 +130,10 @@ I found this analysis interesting when reviewing these tools for my own usage. I
 
 ## News & Changelog
 This post is periodically updated to keep up with the latest trends.
+
+### Jan 2026
+* PER Coding Style 3.0 was released
+
 
 ### Jan 2025
 * Audited the status of all projects
