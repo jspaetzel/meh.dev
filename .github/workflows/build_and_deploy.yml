@@ -2,15 +2,20 @@ name: CI
 
 on:
   push:
-    branches: 
+    branches:
       - master
+
+permissions:
+  contents: write
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@master
-      - uses: actions/setup-node@v2
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
       - uses: ruby/setup-ruby@v1
         with:
           ruby-version: '3.0'
@@ -18,14 +23,17 @@ jobs:
       - run: npm install
       - run: NODE_ENV=production bundle exec jekyll build
       - run: |
-          git clone "https://${PAT}@github.com/${GITHUB_REPOSITORY}.git"
+          git clone "https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
           cd $(basename "${GITHUB_REPOSITORY}")
-          git config user.name "Gitub Actions"
-          git config user.email ""
+          git config user.name "GitHub Actions"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
           rsync -avz --delete --exclude '.git*' ../_site/ .
           touch .nojekyll
           git add -A .
-          git commit -m "Generated Jekyll site by Github Action - ${GITHUB_ACTION}"
-          git push --force "https://${PAT}@github.com/${GITHUB_REPOSITORY}.git" HEAD:gh-pages
-        env: 
-          PAT: ${{ secrets.PAT }}
+          if git diff --cached --quiet; then
+            exit 0
+          fi
+          git commit -m "Generated Jekyll site by GitHub Action - ${GITHUB_ACTION}"
+          git push --force "https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" HEAD:gh-pages
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
